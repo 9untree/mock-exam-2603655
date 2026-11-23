@@ -1,0 +1,1182 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0b1220">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mock Exam 2603655">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<title>Mock Exam ปลายภาค · 2603655</title>
+<style>
+  :root {
+    --ink: #101828;
+    --muted: #667085;
+    --soft: #98a2b3;
+    --line: #e4e7ec;
+    --bg: #f6f7fb;
+    --card: #ffffff;
+    --brand: #4f46e5;
+    --brand-dark: #3730a3;
+    --brand-soft: #eef2ff;
+    --teal: #0f766e;
+    --green: #067647;
+    --green-soft: #ecfdf3;
+    --green-line: #abefc6;
+    --red: #b42318;
+    --red-soft: #fef3f2;
+    --red-line: #fecdca;
+    --amber: #b54708;
+    --amber-soft: #fffaeb;
+    --shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 10px 28px rgba(16, 24, 40, .06);
+    --radius: 18px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    background:
+      radial-gradient(1000px 520px at 8% -8%, rgba(79, 70, 229, .10), transparent 60%),
+      radial-gradient(900px 500px at 100% 8%, rgba(15, 118, 110, .09), transparent 55%),
+      var(--bg);
+    font-family: "Sarabun", "Noto Sans Thai", "Leelawadee UI", "Tahoma", system-ui, -apple-system, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  button, input, textarea { font: inherit; }
+  button { color: inherit; touch-action: manipulation; }
+  a { color: var(--brand-dark); }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    background:
+      radial-gradient(700px 340px at 85% 0%, rgba(45, 212, 191, .20), transparent 60%),
+      radial-gradient(600px 320px at 8% 100%, rgba(129, 140, 248, .25), transparent 60%),
+      linear-gradient(135deg, #0b1220 0%, #111c33 52%, #0d2426 100%);
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,.7), transparent);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 44px 24px 38px;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #a7f3d0;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 26px;
+    height: 2px;
+    background: #2dd4bf;
+    border-radius: 2px;
+  }
+  .hero h1 {
+    margin: 12px 0 8px;
+    font-size: clamp(32px, 5vw, 50px);
+    line-height: 1.12;
+    letter-spacing: -.03em;
+    font-weight: 800;
+  }
+  .hero p {
+    margin: 0;
+    color: #cbd5e1;
+    font-size: clamp(15px, 2vw, 18px);
+    max-width: 720px;
+  }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 22px;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.16);
+    background: rgba(255,255,255,.07);
+    color: #e2e8f0;
+    font-size: 12.5px;
+    font-weight: 600;
+    backdrop-filter: blur(6px);
+  }
+  .hero-badge strong { color: #fff; }
+
+  .week-nav-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: rgba(255,255,255,.88);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(14px);
+  }
+  .week-nav {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 10px 18px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+  .week-tab {
+    flex: 0 0 auto;
+    min-width: 128px;
+    padding: 9px 11px 10px;
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    background: #fff;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color .15s, background .15s, transform .15s, box-shadow .15s;
+  }
+  .week-tab:hover { border-color: #c7d2fe; background: #fbfbff; transform: translateY(-1px); }
+  .week-tab.active {
+    border-color: var(--brand);
+    background: var(--brand-soft);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, .12);
+  }
+  .week-tab.bonus .wt-label::after {
+    content: "BONUS";
+    margin-left: 6px;
+    font-size: 8px;
+    letter-spacing: .06em;
+    color: var(--amber);
+    background: var(--amber-soft);
+    border: 1px solid #fedf89;
+    padding: 1px 4px;
+    border-radius: 4px;
+    vertical-align: 1px;
+  }
+  .wt-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .wt-label { font-size: 11px; font-weight: 800; letter-spacing: .08em; color: var(--brand-dark); }
+  .wt-score { font-size: 10.5px; font-weight: 700; color: var(--muted); }
+  .wt-title { display: block; margin-top: 2px; font-size: 12px; font-weight: 700; color: var(--ink); white-space: nowrap; }
+  .wt-bar { display: block; height: 3px; margin-top: 7px; border-radius: 3px; background: #eaecf0; overflow: hidden; }
+  .wt-bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--brand), #2dd4bf); }
+  .week-tab.active .wt-bar i { background: linear-gradient(90deg, var(--brand-dark), var(--brand)); }
+
+  .container { max-width: 1000px; margin: 0 auto; padding: 24px 18px calc(80px + env(safe-area-inset-bottom)); }
+
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 16px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    background: rgba(255,255,255,.92);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+  }
+  .mode { display: flex; align-items: center; gap: 10px; min-width: 210px; }
+  .switch { position: relative; display: inline-flex; flex: 0 0 auto; width: 44px; height: 26px; }
+  .switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .slider {
+    position: absolute; inset: 0; border-radius: 999px; background: #d0d5dd; cursor: pointer; transition: background .18s;
+  }
+  .slider::after {
+    content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%;
+    background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.2); transition: transform .18s;
+  }
+  .switch input:checked + .slider { background: var(--brand); }
+  .switch input:checked + .slider::after { transform: translateX(18px); }
+  .mode-copy { display: flex; flex-direction: column; line-height: 1.25; }
+  .mode-copy strong { font-size: 13px; }
+  .mode-copy small { font-size: 11px; color: var(--muted); }
+  .toolbar-sep { width: 1px; height: 34px; background: var(--line); }
+  .timer-box {
+    display: flex; align-items: center; gap: 8px; padding: 6px 9px 6px 11px;
+    border: 1px solid var(--line); border-radius: 10px; background: #fcfcfd;
+  }
+  .timer {
+    min-width: 64px; font-variant-numeric: tabular-nums; font-weight: 800; font-size: 15px; letter-spacing: .02em;
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  }
+  .timer.warn { color: var(--red); }
+  .timer-actions { display: flex; gap: 4px; }
+  .mini-btn {
+    border: 1px solid var(--line); background: #fff; border-radius: 7px; padding: 3px 6px;
+    font-size: 10.5px; font-weight: 700; color: var(--muted); cursor: pointer;
+  }
+  .mini-btn:hover { border-color: #c7d2fe; color: var(--brand-dark); }
+  .toolbar-actions { display: flex; flex-wrap: wrap; gap: 7px; margin-left: auto; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+    border: 1px solid transparent; border-radius: 10px; padding: 9px 13px;
+    font-size: 12.5px; font-weight: 800; cursor: pointer; text-decoration: none;
+    transition: background .15s, border-color .15s, color .15s, transform .12s, box-shadow .15s;
+    white-space: nowrap;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--brand); color: #fff; box-shadow: 0 3px 8px rgba(79,70,229,.22); }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-dark { background: var(--ink); color: #fff; }
+  .btn-dark:hover { background: #344054; }
+  .btn-ghost { background: #fff; border-color: var(--line); color: var(--ink); }
+  .btn-ghost:hover { border-color: #c7d2fe; background: #fbfbff; color: var(--brand-dark); }
+  .btn-danger-ghost { background: #fff; border-color: var(--line); color: var(--muted); }
+  .btn-danger-ghost:hover { border-color: var(--red-line); background: var(--red-soft); color: var(--red); }
+  .btn[disabled] { opacity: .42; cursor: not-allowed; }
+  .score-pill {
+    display: flex; align-items: baseline; gap: 3px; padding: 7px 11px; border-radius: 10px;
+    background: var(--brand-soft); color: var(--brand-dark); font-weight: 800;
+  }
+  .score-pill b { font-size: 18px; }
+  .score-pill span { font-size: 11px; opacity: .75; }
+
+  .week-head {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 20px;
+    padding: 24px 26px 22px;
+    margin-bottom: 24px;
+    color: #fff;
+    border-radius: 20px;
+    background:
+      radial-gradient(560px 220px at 100% 0%, rgba(45,212,191,.18), transparent 60%),
+      linear-gradient(135deg, #111827, #1f2937 55%, #0f2f2c);
+    box-shadow: 0 14px 32px rgba(15, 23, 42, .18);
+  }
+  .week-head.bonus { background: radial-gradient(560px 220px at 100% 0%, rgba(251,191,36,.16), transparent 60%), linear-gradient(135deg, #1c1917, #292524 55%, #1f2937); }
+  .week-head .eyebrow { color: #b9f6e7; }
+  .week-head h2 { margin: 8px 0 7px; font-size: clamp(23px, 3.2vw, 32px); line-height: 1.2; letter-spacing: -.02em; }
+  .week-head p { margin: 0; color: #d0d5dd; font-size: 13.5px; max-width: 680px; }
+  .week-meta { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .week-meta span {
+    padding: 4px 9px; border-radius: 999px; border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.06); font-size: 11px; color: #e5e7eb; font-weight: 600;
+  }
+  .head-score {
+    align-self: start; min-width: 112px; padding: 13px 15px; text-align: center;
+    border: 1px solid rgba(255,255,255,.14); border-radius: 16px; background: rgba(255,255,255,.06);
+    backdrop-filter: blur(6px);
+  }
+  .head-score strong { font-size: 32px; line-height: 1; letter-spacing: -.03em; }
+  .head-score span { font-size: 13px; color: #cbd5e1; }
+  .head-score small { display: block; margin-top: 5px; font-size: 10px; color: #9ca3af; }
+  .head-progress { grid-column: 1 / -1; display: flex; align-items: center; gap: 11px; margin-top: 2px; }
+  .head-progress .bar { flex: 1; height: 6px; border-radius: 999px; background: rgba(255,255,255,.14); overflow: hidden; }
+  .head-progress .bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #2dd4bf, #a7f3d0); transition: width .25s; }
+  .head-progress span { font-size: 10.5px; color: #cbd5e1; font-weight: 700; white-space: nowrap; }
+
+  .section-head { display: flex; align-items: flex-end; gap: 12px; margin: 30px 2px 14px; }
+  .section-kicker {
+    flex: 0 0 auto; padding: 4px 8px; border-radius: 6px; background: var(--ink); color: #fff;
+    font-size: 10px; font-weight: 900; letter-spacing: .12em;
+  }
+  .section-head h3 { margin: 0; font-size: 19px; letter-spacing: -.01em; }
+  .section-head p { margin: 0 0 1px auto; color: var(--muted); font-size: 11.5px; }
+
+  .q-card {
+    margin-bottom: 13px; padding: 18px 19px 16px; background: var(--card);
+    border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);
+    scroll-margin-top: 92px;
+  }
+  .q-card.flash { animation: flashCard 1.2s ease; }
+  @keyframes flashCard {
+    0%, 100% { box-shadow: var(--shadow); }
+    20% { box-shadow: 0 0 0 5px rgba(79,70,229,.18), var(--shadow); border-color: #a5b4fc; }
+  }
+  .q-top { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .q-num {
+    display: inline-flex; align-items: center; justify-content: center; min-width: 34px; height: 27px;
+    padding: 0 8px; border-radius: 8px; background: var(--ink); color: #fff;
+    font-size: 11.5px; font-weight: 900; letter-spacing: .03em;
+  }
+  .q-type { font-size: 10.5px; color: var(--muted); font-weight: 700; }
+  .q-status {
+    margin-left: auto; padding: 3px 8px; border-radius: 999px; font-size: 10px; font-weight: 800; white-space: nowrap;
+    background: #f2f4f7; color: var(--muted);
+  }
+  .q-status.ok { background: var(--green-soft); color: var(--green); }
+  .q-status.bad { background: var(--red-soft); color: var(--red); }
+  .q-status.done { background: var(--brand-soft); color: var(--brand-dark); }
+  .q-status.seen { background: var(--amber-soft); color: var(--amber); }
+  .q-prompt { font-size: 15px; line-height: 1.72; }
+  .q-prompt > :first-child { margin-top: 0; }
+  .q-prompt > :last-child { margin-bottom: 0; }
+  .q-prompt p { margin: 0 0 9px; }
+  .q-prompt ul, .q-prompt ol { margin: 8px 0 10px; padding-left: 24px; }
+  .q-prompt li { margin: 3px 0; }
+  .q-prompt pre { margin: 11px 0; }
+
+  .options { display: grid; gap: 8px; margin-top: 13px; }
+  .option {
+    display: flex; align-items: flex-start; gap: 11px; width: 100%; padding: 11px 12px;
+    border: 1.5px solid var(--line); border-radius: 12px; background: #fff;
+    text-align: left; cursor: pointer; font-size: 14px; line-height: 1.55;
+    transition: border-color .14s, background .14s, box-shadow .14s;
+  }
+  .option:hover:not([disabled]) { border-color: #a5b4fc; background: #fbfbff; }
+  .option[disabled] { cursor: default; }
+  .opt-key {
+    flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center;
+    min-width: 27px; height: 27px; margin-top: 1px; padding: 0 7px; border-radius: 8px;
+    background: #f2f4f7; color: #475467; font-size: 11px; font-weight: 900;
+  }
+  .option.wide .opt-key { min-width: 40px; }
+  .opt-text { min-width: 0; }
+  .opt-text p { margin: 0; }
+  .option.selected { border-color: var(--brand); background: var(--brand-soft); box-shadow: 0 0 0 3px rgba(79,70,229,.08); }
+  .option.selected .opt-key { background: var(--brand); color: #fff; }
+  .option.correct { border-color: #12b76a; background: var(--green-soft); }
+  .option.correct .opt-key { background: var(--green); color: #fff; }
+  .option.wrong { border-color: #f04438; background: var(--red-soft); }
+  .option.wrong .opt-key { background: var(--red); color: #fff; }
+
+  .q-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin-top: 13px; }
+  .q-actions .btn { padding: 7px 11px; font-size: 11.5px; }
+  .q-hint { color: var(--soft); font-size: 11px; }
+
+  .feedback {
+    margin-top: 15px; padding: 13px 15px; border: 1px solid var(--line);
+    border-radius: 13px; background: #f9fafb;
+  }
+  .feedback.ok { border-color: var(--green-line); background: #f6fef9; }
+  .feedback.bad { border-color: var(--red-line); background: #fffbfa; }
+  .feedback.info { border-color: #b2ddff; background: #f5faff; }
+  .verdict { display: flex; align-items: center; gap: 7px; font-weight: 900; font-size: 13px; }
+  .feedback.ok .verdict { color: var(--green); }
+  .feedback.bad .verdict { color: var(--red); }
+  .feedback.info .verdict { color: #175cd3; }
+  .verdict .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+  .explain { margin-top: 7px; color: #344054; font-size: 13.5px; line-height: 1.7; }
+  .explain p { margin: 0 0 8px; }
+  .explain p:last-child { margin-bottom: 0; }
+  .explain ul, .explain ol { margin: 6px 0 8px; padding-left: 22px; }
+  .answer-label { margin-top: 13px; font-size: 10px; font-weight: 900; letter-spacing: .1em; color: var(--muted); text-transform: uppercase; }
+  .model-answer { margin-top: 6px; font-size: 13.5px; }
+  .model-answer > :first-child { margin-top: 0; }
+  .model-answer > :last-child { margin-bottom: 0; }
+  .model-answer p { margin: 0 0 8px; }
+  .model-answer ul, .model-answer ol { margin: 6px 0 8px; padding-left: 22px; }
+  .model-answer li { margin: 3px 0; }
+  .model-answer table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 12.5px; }
+  .model-answer th, .model-answer td { border: 1px solid var(--line); padding: 7px 9px; text-align: left; }
+  .model-answer th { background: #f2f4f7; }
+
+  pre {
+    margin: 10px 0; padding: 15px 16px; overflow-x: auto; border-radius: 12px;
+    background: #0f172a; color: #e2e8f0; font-size: 12.5px; line-height: 1.65;
+    border: 1px solid #1e293b;
+  }
+  pre code { background: none; padding: 0; color: inherit; font-size: inherit; }
+  code { font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; }
+  :not(pre) > code { padding: .15em .42em; border-radius: 5px; background: var(--brand-soft); color: var(--brand-dark); font-size: .92em; }
+  .q-prompt table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 13px; }
+  .q-prompt th, .q-prompt td { border: 1px solid var(--line); padding: 7px 9px; text-align: left; }
+  .q-prompt th { background: #f2f4f7; }
+
+  .open-input {
+    width: 100%; min-height: 96px; margin-top: 13px; padding: 11px 12px;
+    border: 1.5px solid var(--line); border-radius: 12px; background: #fcfcfd; resize: vertical;
+    font-size: 13.5px; line-height: 1.65; color: var(--ink); outline: none;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .open-input:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(79,70,229,.10); background: #fff; }
+  .open-input::placeholder { color: var(--soft); }
+  .self-grade { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin-top: 12px; padding-top: 11px; border-top: 1px dashed var(--line); }
+  .self-grade > span:first-child { font-size: 11px; font-weight: 800; color: var(--muted); }
+  .grade-btn {
+    padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: #fff;
+    font-size: 11px; font-weight: 800; cursor: pointer;
+  }
+  .grade-btn:hover { border-color: #a5b4fc; background: #fbfbff; }
+  .grade-btn.active-ok { border-color: #12b76a; background: var(--green-soft); color: var(--green); }
+  .grade-btn.active-bad { border-color: #f04438; background: var(--red-soft); color: var(--red); }
+  .graded-note { margin-left: auto; font-size: 10.5px; font-weight: 800; color: var(--muted); }
+
+  .summary-card {
+    margin: 26px 0 18px; padding: 24px; border-radius: 20px; border: 1px solid #c7d2fe;
+    background: linear-gradient(135deg, #eef2ff, #f8faff 55%, #ecfdf5);
+    box-shadow: var(--shadow);
+  }
+  .summary-top { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 26px; }
+  .summary-score { display: flex; align-items: baseline; gap: 4px; }
+  .summary-score strong { font-size: 46px; line-height: 1; letter-spacing: -.04em; color: var(--brand-dark); }
+  .summary-score span { font-size: 16px; color: var(--muted); font-weight: 700; }
+  .summary-title { flex: 1; min-width: 220px; }
+  .summary-title h3 { margin: 0 0 3px; font-size: 17px; }
+  .summary-title p { margin: 0; color: var(--muted); font-size: 12.5px; }
+  .summary-breakdown { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .score-chip {
+    display: flex; align-items: baseline; gap: 6px; padding: 8px 11px; border-radius: 9px;
+    background: rgba(255,255,255,.72); border: 1px solid #dbe3ff; font-size: 11px; font-weight: 700; color: var(--muted);
+  }
+  .score-chip b { font-size: 15px; color: var(--ink); }
+  .summary-note { margin: 13px 0 0; font-size: 12px; color: var(--muted); }
+  .wrong-list { display: flex; flex-wrap: wrap; gap: 6px; margin: 11px 0 0; padding: 0; list-style: none; }
+  .wrong-list a {
+    display: inline-flex; padding: 4px 8px; border-radius: 6px; background: #fff;
+    border: 1px solid var(--line); color: var(--red); font-size: 11px; font-weight: 800; text-decoration: none;
+  }
+  .wrong-list a:hover { border-color: var(--red-line); background: var(--red-soft); }
+
+  .answer-key {
+    margin: 22px 0; border: 1px solid var(--line); border-radius: 16px; background: #fff;
+    box-shadow: var(--shadow); overflow: hidden;
+  }
+  .answer-key summary {
+    padding: 15px 17px; cursor: pointer; font-weight: 800; font-size: 13.5px;
+    display: flex; align-items: center; gap: 8px; list-style: none;
+  }
+  .answer-key summary::-webkit-details-marker { display: none; }
+  .answer-key summary::before { content: "▸"; color: var(--brand); font-size: 14px; transition: transform .2s; }
+  .answer-key[open] summary::before { transform: rotate(90deg); }
+  .answer-key summary span { margin-left: auto; color: var(--muted); font-size: 11px; font-weight: 600; }
+  .key-body { padding: 0 17px 17px; }
+  .key-section-label { margin: 12px 0 7px; font-size: 10px; font-weight: 900; color: var(--muted); letter-spacing: .1em; }
+  .key-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); gap: 6px; }
+  .key-chip {
+    display: flex; align-items: center; justify-content: space-between; gap: 5px;
+    padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; background: #fcfcfd;
+    font-size: 10.5px; font-weight: 700; cursor: pointer; color: var(--muted);
+  }
+  .key-chip:hover { border-color: #a5b4fc; background: #fbfbff; }
+  .key-chip b { color: var(--brand-dark); font-size: 11.5px; }
+  .key-actions { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+
+  .page-footer { margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--soft); font-size: 11px; text-align: center; }
+
+  .toast {
+    position: fixed; left: 50%; bottom: calc(22px + env(safe-area-inset-bottom)); z-index: 100; transform: translate(-50%, 20px);
+    max-width: min(92vw, 520px); padding: 11px 16px; border-radius: 11px;
+    background: #101828; color: #fff; box-shadow: 0 12px 30px rgba(16,24,40,.28);
+    font-size: 12.5px; font-weight: 700; opacity: 0; pointer-events: none;
+    transition: opacity .22s, transform .22s;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  .hidden { display: none !important; }
+
+  @media (max-width: 720px) {
+    .hero-inner { padding: 32px 18px 28px; }
+    .week-nav { padding: 8px 12px; }
+    .week-tab { min-width: 116px; }
+    .container { padding: 16px 12px 64px; }
+    .toolbar { gap: 10px; padding: 12px; }
+    .toolbar-sep { display: none; }
+    .toolbar-actions { margin-left: 0; width: 100%; }
+    .toolbar-actions .btn { flex: 1 1 auto; }
+    .week-head { grid-template-columns: 1fr; padding: 20px; }
+    .head-score { display: flex; align-items: baseline; justify-content: center; gap: 4px; min-width: 0; }
+    .head-score small { margin: 0 0 0 6px; }
+    .section-head { align-items: flex-start; flex-wrap: wrap; }
+    .section-head p { margin: 0; width: 100%; }
+    .q-card { padding: 15px 14px 14px; }
+    .q-prompt { font-size: 14px; }
+    .option { font-size: 13px; }
+    .summary-top { gap: 12px; }
+    .summary-score strong { font-size: 38px; }
+  }
+
+  @media print {
+    body { background: #fff; }
+    .hero, .week-nav-wrap, .toolbar, .answer-key, .q-actions, .toast, .page-footer { display: none !important; }
+    .container { max-width: none; padding: 0; }
+    .week-head { color: #000; background: #fff; border: 1px solid #ddd; box-shadow: none; }
+    .week-head p, .week-meta span, .head-score small, .head-progress span { color: #333; }
+    .week-meta span, .head-score { border-color: #ddd; background: #fafafa; }
+    .q-card { break-inside: avoid; box-shadow: none; border-color: #ddd; }
+    .feedback { display: block !important; }
+  }
+</style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">2603655 · Final Mock Exam</div>
+      <h1>Mock Exam ปลายภาค</h1>
+      <p>Data Acquisition and Preparation · 8 สัปดาห์ · 240 ข้อ · กดทำได้เลย พร้อมเฉลยและคำอธิบายทุกข้อ</p>
+      <div class="hero-badges">
+        <span class="hero-badge"><strong>WK8–WK14</strong> เนื้อหาออกสอบ</span>
+        <span class="hero-badge"><strong>WK15</strong> Bonus (No Exam)</span>
+        <span class="hero-badge"><strong>เฉลยละเอียด</strong> ทุกข้อ</span>
+        <span class="hero-badge"><strong>บันทึกคะแนน</strong> อัตโนมัติ</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="week-nav-wrap">
+    <nav class="week-nav" id="weekNav" aria-label="เลือกสัปดาห์"></nav>
+  </div>
+
+  <main class="container">
+    <section class="toolbar" aria-label="เครื่องมือทำข้อสอบ">
+      <div class="mode">
+        <label class="switch" title="เปิด/ปิดเฉลยทันที">
+          <input type="checkbox" id="instantToggle">
+          <span class="slider"></span>
+        </label>
+        <div class="mode-copy">
+          <strong>เฉลยทันที</strong>
+          <small id="modeHint">ปิดอยู่ = ทำแบบสอบก่อน แล้วค่อยตรวจ</small>
+        </div>
+      </div>
+      <div class="toolbar-sep"></div>
+      <div class="timer-box">
+        <span class="timer" id="timer">45:00</span>
+        <div class="timer-actions">
+          <button class="mini-btn" id="timerToggle" type="button">เริ่ม</button>
+          <button class="mini-btn" id="timerReset" type="button">รีเซ็ต</button>
+        </div>
+      </div>
+      <div class="score-pill" title="คะแนนที่ตรวจแล้วของ Week นี้"><b id="toolbarScore">0</b><span>/ 30</span></div>
+      <div class="toolbar-actions">
+        <button class="btn btn-primary" id="checkAllBtn" type="button">ตรวจทั้งชุด</button>
+        <button class="btn btn-ghost" id="retryWeekBtn" type="button">ทำใหม่ Week นี้</button>
+        <button class="btn btn-danger-ghost" id="clearAllBtn" type="button">ล้างทั้งหมด</button>
+      </div>
+    </section>
+
+    <section id="weekHead"></section>
+    <div id="quiz"></div>
+    <section id="summary"></section>
+    <section id="answerKey"></section>
+
+    <footer class="page-footer">
+      Mock Exam 2603655 · สร้างจากสรุปและสไลด์ WK8–WK15 · คะแนนถูกบันทึกใน browser ของคุณ
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const EXAM_DATA = {"weeks":[{"id":"wk8","label":"WK8","title":"Structured Data & SQL","short":"SQL & pandas","desc":"ฐานข้อมูล 관계형, SELECT, JOIN, Subquery และการเทียบ SQL กับ pandas","time":45,"bonus":false,"questions":[{"id":"wk8-A1","section":"A","num":1,"type":"mcq","prompt":"<p>ข้อใดอธิบายฐานข้อมูล SQL ได้ถูกต้องที่สุด?<\/p>","options":[{"key":"ก","text":"เก็บข้อมูลเป็นไฟล์ข้อความอิสระ ไม่มีโครงสร้าง"},{"key":"ข","text":"เก็บข้อมูลในตารางที่มีแถวและคอลัมน์ ชนิดข้อมูลเข้มงวด และเชื่อมตารางด้วยความสัมพันธ์"},{"key":"ค","text":"เก็บได้เฉพาะข้อมูล JSON เท่านั้น"},{"key":"ง","text":"ไม่ต้องมี schema หรือกฎใด ๆ ในการเก็บข้อมูล"}],"answer":"ข","explanation":"<p>SQL database เก็บข้อมูลแบบตาราง มี schema/ชนิดข้อมูลเข้มงวด และใช้ relationship เชื่อมตารางเพื่อลดความซ้ำซ้อน<\/p>"},{"id":"wk8-A2","section":"A","num":2,"type":"mcq","prompt":"<p>ลำดับการเข้าถึงฐานข้อมูลจากโปรแกรม Python ข้อใดถูกต้อง?<\/p>","options":[{"key":"ก","text":"Python → DBMS → Driver → Library → Data"},{"key":"ข","text":"Python → Library → Driver → DBMS → Data"},{"key":"ค","text":"Driver → Python → Library → Data → DBMS"},{"key":"ง","text":"Library → DBMS → Python → Driver → Data"}],"answer":"ข","explanation":"<p><code>Python Program → Python Library → Database Driver → DBMS → Data<\/code><\/p>"},{"id":"wk8-A3","section":"A","num":3,"type":"mcq","prompt":"<p>Workflow การทำงานกับฐานข้อมูลข้อใดเรียงถูกต้อง?<\/p>","options":[{"key":"ก","text":"Execution → Connection → Query Preparation → Data Collection → Serialization → Consumption"},{"key":"ข","text":"Connection → Query Preparation → Execution → Data Collection → Data Consumption → Data Serialization"},{"key":"ค","text":"Connection → Execution → Query Preparation → Serialization → Data Collection → Consumption"},{"key":"ง","text":"Query Preparation → Connection → Data Consumption → Execution → Collection → Serialization"}],"answer":"ข","explanation":"<p><code>Connection → Query Preparation → Execution → Data Collection → Data Consumption → Data Serialization<\/code><\/p>"},{"id":"wk8-A4","section":"A","num":4,"type":"mcq","prompt":"<p>คำสั่งใดอยู่ในกลุ่ม <strong>DDL (Data Definition Language)<\/strong>?<\/p>","options":[{"key":"ก","text":"<code>SELECT<\/code>"},{"key":"ข","text":"<code>INSERT<\/code>"},{"key":"ค","text":"<code>CREATE<\/code>"},{"key":"ง","text":"<code>COMMIT<\/code>"}],"answer":"ค","explanation":"<p>DDL ได้แก่ <code>CREATE<\/code>, <code>ALTER<\/code>, <code>DROP<\/code>, <code>TRUNCATE<\/code><\/p>"},{"id":"wk8-A5","section":"A","num":5,"type":"mcq","prompt":"<p>คำสั่งใดอยู่ในกลุ่ม <strong>DML (Data Manipulation Language)<\/strong>?<\/p>","options":[{"key":"ก","text":"<code>GRANT<\/code>"},{"key":"ข","text":"<code>UPDATE<\/code>"},{"key":"ค","text":"<code>DROP<\/code>"},{"key":"ง","text":"<code>ROLLBACK<\/code>"}],"answer":"ข","explanation":"<p>DML ได้แก่ <code>SELECT<\/code>, <code>INSERT<\/code>, <code>UPDATE<\/code>, <code>DELETE<\/code><\/p>"},{"id":"wk8-A6","section":"A","num":6,"type":"mcq","prompt":"<p><code>GRANT<\/code> และ <code>REVOKE<\/code> จัดอยู่ในกลุ่มใด?<\/p>","options":[{"key":"ก","text":"DDL"},{"key":"ข","text":"DML"},{"key":"ค","text":"DCL"},{"key":"ง","text":"TCL"}],"answer":"ค","explanation":"<p>DCL ได้แก่ <code>GRANT<\/code>, <code>REVOKE<\/code><\/p>"},{"id":"wk8-A7","section":"A","num":7,"type":"mcq","prompt":"<p>คำสั่งคู่ใดอยู่ในกลุ่ม <strong>TCL (Transaction Control Language)<\/strong>?<\/p>","options":[{"key":"ก","text":"<code>CREATE<\/code>, <code>ALTER<\/code>"},{"key":"ข","text":"<code>SELECT<\/code>, <code>DELETE<\/code>"},{"key":"ค","text":"<code>COMMIT<\/code>, <code>ROLLBACK<\/code>"},{"key":"ง","text":"<code>GRANT<\/code>, <code>REVOKE<\/code>"}],"answer":"ค","explanation":"<p>TCL ได้แก่ <code>COMMIT<\/code>, <code>ROLLBACK<\/code>, <code>SAVEPOINT<\/code><\/p>"},{"id":"wk8-A8","section":"A","num":8,"type":"mcq","prompt":"<p>ชนิดข้อมูลใดเหมาะกับข้อความที่มีความยาวไม่แน่นอน?<\/p>","options":[{"key":"ก","text":"<code>CHAR<\/code>"},{"key":"ข","text":"<code>VARCHAR<\/code>"},{"key":"ค","text":"<code>INT<\/code>"},{"key":"ง","text":"<code>BOOL<\/code>"}],"answer":"ข","explanation":"<p><code>VARCHAR<\/code> เก็บข้อความยาวไม่แน่นอน; <code>CHAR<\/code> เป็นความยาวคงที่<\/p>"},{"id":"wk8-A9","section":"A","num":9,"type":"mcq","prompt":"<p>ลำดับการทำงานเชิงแนวคิดของ <code>SELECT<\/code> ข้อใดถูกต้อง?<\/p>","options":[{"key":"ก","text":"<code>SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY → LIMIT<\/code>"},{"key":"ข","text":"<code>FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT<\/code>"},{"key":"ค","text":"<code>FROM → GROUP BY → WHERE → SELECT → HAVING → LIMIT → ORDER BY<\/code>"},{"key":"ง","text":"<code>WHERE → FROM → SELECT → GROUP BY → ORDER BY → HAVING → LIMIT<\/code>"}],"answer":"ข","explanation":"<p><code>FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT<\/code> (ลำดับเชิงแนวคิดที่ใช้สอน)<\/p>"},{"id":"wk8-A10","section":"A","num":10,"type":"mcq","prompt":"<p>Clause ใดใช้กรอง <strong>กลุ่ม<\/strong> หลังจากทำ aggregate แล้ว?<\/p>","options":[{"key":"ก","text":"<code>WHERE<\/code>"},{"key":"ข","text":"<code>HAVING<\/code>"},{"key":"ค","text":"<code>GROUP BY<\/code>"},{"key":"ง","text":"<code>ORDER BY<\/code>"}],"answer":"ข","explanation":"<p><code>WHERE<\/code> กรองแถวก่อนจัดกลุ่ม; <code>HAVING<\/code> กรองกลุ่มหลัง aggregate<\/p>"},{"id":"wk8-A11","section":"A","num":11,"type":"mcq","prompt":"<p><code>COUNT(phone)<\/code> ต่างจาก <code>COUNT(*)<\/code> อย่างไร?<\/p>","options":[{"key":"ก","text":"<code>COUNT(phone)<\/code> นับทุกแถวรวมแถวที่ phone เป็น NULL"},{"key":"ข","text":"<code>COUNT(phone)<\/code> นับเฉพาะแถวที่ phone ไม่เป็น NULL"},{"key":"ค","text":"<code>COUNT(phone)<\/code> นับเฉพาะแถวที่ phone เป็น NULL"},{"key":"ง","text":"ทั้งสองให้ผลเท่ากันเสมอ"}],"answer":"ข","explanation":"<p><code>COUNT(column)<\/code> ไม่นับ NULL; <code>COUNT(*)<\/code> นับทุกแถว<\/p>"},{"id":"wk8-A12","section":"A","num":12,"type":"mcq","prompt":"<p>ข้อใดใช้ตรวจหาพนักงานที่ยังไม่มีแผนก (department เป็น NULL) ได้ถูกต้อง?<\/p>","options":[{"key":"ก","text":"<code>WHERE department = NULL<\/code>"},{"key":"ข","text":"<code>WHERE department IS NULL<\/code>"},{"key":"ค","text":"<code>WHERE department == NULL<\/code>"},{"key":"ง","text":"<code>WHERE NULL = department<\/code>"}],"answer":"ข","explanation":"<p>เปรียบเทียบ NULL ต้องใช้ <code>IS NULL<\/code> / <code>IS NOT NULL<\/code> ไม่ใช้ <code>= NULL<\/code><\/p>"},{"id":"wk8-A13","section":"A","num":13,"type":"mcq","prompt":"<p><code>WHERE title LIKE 'The %'<\/code> ตรงกับข้อมูลลักษณะใด?<\/p>","options":[{"key":"ก","text":"ทุกชื่อเรื่องที่มีคำว่า The อยู่ที่ใดก็ได้"},{"key":"ข","text":"ชื่อเรื่องที่ขึ้นต้นด้วย <code>The<\/code> (The ตามด้วยช่องว่าง)"},{"key":"ค","text":"ชื่อเรื่องที่ลงท้ายด้วย <code>The<\/code>"},{"key":"ง","text":"ชื่อเรื่องที่มีความยาวเท่ากับ 4 ตัวอักษร"}],"answer":"ข","explanation":"<p><code>%<\/code> เป็น wildcard หลายตัวอักษร; <code>'The %'<\/code> = ขึ้นต้นด้วย <code>The<\/code> (มีช่องว่าง)<\/p>"},{"id":"wk8-A14","section":"A","num":14,"type":"mcq","prompt":"<p><code>INNER JOIN<\/code> ให้ผลลัพธ์อย่างไร?<\/p>","options":[{"key":"ก","text":"ทุกแถวของตารางซ้าย โดยแถวที่ไม่ตรงเป็น NULL"},{"key":"ข","text":"เฉพาะแถวที่มี key ตรงกันทั้งสองตาราง"},{"key":"ค","text":"ทุกแถวของทั้งสองตาราง โดยแถวที่ไม่ตรงเป็น NULL"},{"key":"ง","text":"ทุกแถวของตารางขวาเท่านั้น"}],"answer":"ข","explanation":"<p>INNER JOIN เก็บเฉพาะแถวที่ key ตรงกันทั้งสองฝั่ง<\/p>"},{"id":"wk8-A15","section":"A","num":15,"type":"mcq","prompt":"<p>ถ้าเขียน <code>FROM customers LEFT JOIN orders ON customers.id = orders.customer_id<\/code> ผลลัพธ์คือข้อใด?<\/p>","options":[{"key":"ก","text":"เฉพาะลูกค้าที่มี order"},{"key":"ข","text":"ลูกค้าทุกคน + order ที่ตรง (ลูกค้าที่ไม่มี order จะได้ order_id เป็น NULL)"},{"key":"ค","text":"order ทุกใบ + ลูกค้าที่ตรง"},{"key":"ง","text":"เฉพาะ order ที่ไม่มีลูกค้า"}],"answer":"ข","explanation":"<p>LEFT JOIN เก็บลูกค้าทุกคน; ลูกค้าที่ไม่มี order จะได้คอลัมน์ฝั่งขวาเป็น NULL<\/p>"},{"id":"wk8-A16","section":"A","num":16,"type":"mcq","prompt":"<p>ตาราง A มี 5 แถว ตาราง B มี 3 แถว และทุกแถวของ A มี key ตรงกับ B พอดี 1 แถว ถ้า <code>INNER JOIN<\/code> A กับ B จะได้กี่แถว?<\/p>","options":[{"key":"ก","text":"3 แถว"},{"key":"ข","text":"5 แถว"},{"key":"ค","text":"8 แถว"},{"key":"ง","text":"15 แถว"}],"answer":"ข","explanation":"<p>5 แถว เพราะแต่ละแถวของ A จับคู่กับ B เพียง 1 แถว<\/p>"},{"id":"wk8-A17","section":"A","num":17,"type":"mcq","prompt":"<p><code>SELF JOIN<\/code> เหมาะกับสถานการณ์ใดมากที่สุด?<\/p>","options":[{"key":"ก","text":"รวมตารางสองตารางที่มีชื่อต่างกัน"},{"key":"ข","text":"หาความสัมพันธ์ภายในตารางเดียวกัน เช่น employee–manager"},{"key":"ค","text":"ลบแถวที่ซ้ำกันในตาราง"},{"key":"ง","text":"แปลงตารางเป็น JSON"}],"answer":"ข","explanation":"<p>SELF JOIN ใช้ตารางเดียวกัน join กับตัวเอง เช่น employee กับ manager ที่อยู่ในตาราง employees เดียวกัน<\/p>"},{"id":"wk8-A18","section":"A","num":18,"type":"mcq","prompt":"<p>ข้อควรระวังของ <code>NATURAL JOIN<\/code> คืออะไร?<\/p>","options":[{"key":"ก","text":"ใช้ได้เฉพาะตารางที่มีแถวน้อยกว่า 10 แถว"},{"key":"ข","text":"อาจ join ผิดคอลัมน์ ถ้ามีคอลัมน์ชื่อซ้ำกันโดยไม่ได้ตั้งใจ"},{"key":"ค","text":"ไม่สามารถใช้กับตารางที่มี NULL ได้"},{"key":"ง","text":"บังคับให้ต้องมีคอลัมน์ชื่อ <code>id<\/code> เสมอ"}],"answer":"ข","explanation":"<p>NATURAL JOIN join อัตโนมัติตามคอลัมน์ชื่อเดียวกันทั้งหมด จึงอาจพลาดถ้ามีชื่อซ้ำโดยไม่ตั้งใจ<\/p>"},{"id":"wk8-A19","section":"A","num":19,"type":"mcq","prompt":"<p>Subquery ชนิดใดคืนค่าเพียงค่าเดียว และใช้เปรียบเทียบใน <code>WHERE<\/code> ได้?<\/p>","options":[{"key":"ก","text":"Scalar subquery"},{"key":"ข","text":"Row subquery"},{"key":"ค","text":"Table subquery"},{"key":"ง","text":"Correlated subquery ที่คืนตาราง"}],"answer":"ก","explanation":"<p>Scalar subquery คืนค่าเดียว; row subquery คืนหนึ่งแถว; table subquery คืนตาราง<\/p>"},{"id":"wk8-A20","section":"A","num":20,"type":"mcq","prompt":"<p>ข้อใดเทียบเท่า SQL <code>LEFT JOIN<\/code> ใน pandas?<\/p>","options":[{"key":"ก","text":"<code>pd.merge(df1, df2, on='key')<\/code>"},{"key":"ข","text":"<code>pd.merge(df1, df2, on='key', how='left')<\/code>"},{"key":"ค","text":"<code>pd.concat([df1, df2])<\/code>"},{"key":"ง","text":"<code>df1.append(df2)<\/code>"}],"answer":"ข","explanation":"<p><code>pd.merge(..., how='left')<\/code> เทียบเท่า LEFT JOIN; <code>how='outer'<\/code> เทียบเท่า FULL OUTER JOIN<\/p>"},{"id":"wk8-B1","section":"B","num":1,"type":"tf","prompt":"<p><code>WHERE<\/code> สามารถใช้กรองกลุ่มหลังจาก <code>GROUP BY<\/code> ได้<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ผิด","explanation":"<p><code>WHERE<\/code> กรองแถวก่อนจัดกลุ่ม; ต้องใช้ <code>HAVING<\/code> หลัง <code>GROUP BY<\/code><\/p>"},{"id":"wk8-B2","section":"B","num":2,"type":"tf","prompt":"<p><code>COUNT(*)<\/code> นับทุกแถวรวมแถวที่มี NULL ส่วน <code>COUNT(column)<\/code> ไม่นับ NULL ในคอลัมน์นั้น<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ถูก","explanation":"<p><code>COUNT(*)<\/code> นับทุกแถว ส่วน <code>COUNT(column)<\/code> ข้าม NULL<\/p>"},{"id":"wk8-B3","section":"B","num":3,"type":"tf","prompt":"<p><code>LEFT JOIN<\/code> ให้ผลลัพธ์อย่างน้อยเท่าจำนวนแถวของตารางซ้าย (อาจมากกว่าได้ถ้าฝั่งขวาตรงหลายแถว)<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ถูก","explanation":"<p>LEFT JOIN รักษาทุกแถวของตารางซ้าย และอาจได้หลายแถวถ้าฝั่งขวาตรงหลายรายการ<\/p>"},{"id":"wk8-B4","section":"B","num":4,"type":"tf","prompt":"<p><code>pd.merge(df1, df2, on='key', how='outer')<\/code> เทียบได้กับ <code>FULL OUTER JOIN<\/code><\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ถูก","explanation":"<p><code>how='outer'<\/code> ให้ทุกแถวของทั้งสองตาราง โดยแถวที่ไม่ตรงเป็น NULL<\/p>"},{"id":"wk8-B5","section":"B","num":5,"type":"tf","prompt":"<p>Subquery สามารถใช้ได้ใน <code>SELECT<\/code>, <code>FROM<\/code>, <code>WHERE<\/code> และ <code>HAVING<\/code><\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ถูก","explanation":"<p>Subquery ใช้ได้ใน <code>SELECT<\/code>, <code>FROM<\/code>, <code>WHERE<\/code>, <code>HAVING<\/code><\/p>"},{"id":"wk8-C1","section":"C","num":1,"type":"open","prompt":"<p>จากตาราง <code>employees(emp_id, employee_name, salary, dept_id)<\/code> และ <code>departments(dept_id, dept_name)<\/code> จงเขียน SQL หาชื่อแผนกและเงินเดือนเฉลี่ย เฉพาะแผนกที่มีเงินเดือนเฉลี่ยมากกว่า 50,000 เรียงจากมากไปน้อย<\/p>","answer_html":"<pre><code class=\"language-sql\">SELECT d.dept_name, AVG(e.salary) AS avg_salary\nFROM employees e\nJOIN departments d ON e.dept_id = d.dept_id\nGROUP BY d.dept_name\nHAVING AVG(e.salary) &gt; 50000\nORDER BY avg_salary DESC;\n<\/code><\/pre>"},{"id":"wk8-C2","section":"C","num":2,"type":"open","prompt":"<p>จงเขียน SQL หาชื่อและเงินเดือนของพนักงานที่ได้เงินเดือนมากกว่าค่าเฉลี่ยของบริษัท (ใช้ scalar subquery)<\/p>","answer_html":"<pre><code class=\"language-sql\">SELECT employee_name, salary\nFROM employees\nWHERE salary &gt; (SELECT AVG(salary) FROM employees);\n<\/code><\/pre>"},{"id":"wk8-C3","section":"C","num":3,"type":"open","prompt":"<p>จากตาราง <code>customers(customer_id, customer_name)<\/code> และ <code>orders(order_id, customer_id, order_date)<\/code> จงเขียน SQL หาลูกค้าที่ <strong>ไม่เคยสั่งซื้อเลย<\/strong> (ใช้ <code>LEFT JOIN<\/code>)<\/p>","answer_html":"<pre><code class=\"language-sql\">SELECT c.customer_id, c.customer_name\nFROM customers c\nLEFT JOIN orders o ON c.customer_id = o.customer_id\nWHERE o.order_id IS NULL;\n<\/code><\/pre>\n<p>ทางเลือก: <code>WHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.customer_id = c.customer_id)<\/code><\/p>"},{"id":"wk8-C4","section":"C","num":4,"type":"open","prompt":"<p>แปลง SQL ต่อไปนี้เป็น pandas<\/p>\n<pre><code class=\"language-sql\">SELECT dept, COUNT(*) AS n, AVG(salary) AS avg_salary\nFROM emp\nWHERE status = 'active'\nGROUP BY dept\nHAVING COUNT(*) &gt;= 5\nORDER BY avg_salary DESC\nLIMIT 3;\n<\/code><\/pre>","answer_html":"<pre><code class=\"language-python\">out = (\n    df[df[&quot;status&quot;] == &quot;active&quot;]\n    .groupby(&quot;dept&quot;)\n    .agg(n=(&quot;salary&quot;, &quot;size&quot;), avg_salary=(&quot;salary&quot;, &quot;mean&quot;))\n    .reset_index()\n)\nout = out[out[&quot;n&quot;] &gt;= 5].sort_values(&quot;avg_salary&quot;, ascending=False).head(3)\n<\/code><\/pre>\n<p>หมายเหตุ: <code>size<\/code> นับทุกแถวรวม NULL ได้เหมือน <code>COUNT(*)<\/code>; ถ้าใช้ <code>count<\/code> กับ <code>salary<\/code> จะไม่นับ NULL<\/p>"},{"id":"wk8-C5","section":"C","num":5,"type":"open","prompt":"<p>อธิบายว่าทำไมการเอาเงื่อนไขของตารางฝั่งขวาไปใส่ใน <code>WHERE<\/code> หลัง <code>LEFT JOIN<\/code> อาจทำให้ผลลัพธ์กลายเป็น <code>INNER JOIN<\/code> โดยไม่ตั้งใจ พร้อมยกตัวอย่างและวิธีแก้<\/p>","answer_html":"<p>ตัวอย่าง:<\/p>\n<pre><code class=\"language-sql\">SELECT c.customer_name, o.order_id\nFROM customers c\nLEFT JOIN orders o ON c.customer_id = o.customer_id\nWHERE o.status = 'paid';\n<\/code><\/pre>\n<p>ลูกค้าที่ไม่มี order จะมี <code>o.status<\/code> เป็น NULL → ถูก <code>WHERE o.status = 'paid'<\/code> กรองออก → เหลือเฉพาะลูกค้าที่มี order ที่ paid → ผลกลายเป็น INNER JOIN<\/p>\n<p>วิธีแก้: ย้ายเงื่อนไขของตารางขวาไปไว้ใน <code>ON<\/code><\/p>\n<pre><code class=\"language-sql\">LEFT JOIN orders o\n  ON c.customer_id = o.customer_id\n AND o.status = 'paid'\n<\/code><\/pre>\n<p>หรือคง <code>WHERE<\/code> แต่ยอมให้ NULL ผ่าน เช่น <code>WHERE o.status = 'paid' OR o.order_id IS NULL<\/code><\/p>"}]},{"id":"wk9","label":"WK9","title":"Serialization & JSON","short":"JSON & Base64","desc":"Serialization, JSON, pandas orient, datetime, Base64 และ JSON-RPC","time":45,"bonus":false,"questions":[{"id":"wk9-A1","section":"A","num":1,"type":"mcq","prompt":"<p>หน่วยความจำใดเป็นแบบ <strong>volatile<\/strong> (ปิดเครื่องแล้วข้อมูลหาย)?<\/p>","options":[{"key":"ก","text":"RAM"},{"key":"ข","text":"Disk"},{"key":"ค","text":"SSD"},{"key":"ง","text":"Cloud storage"}],"answer":"ก","explanation":"<p>RAM เป็น volatile; Disk/SSD/Cloud เป็น non-volatile<\/p>"},{"id":"wk9-A2","section":"A","num":2,"type":"mcq","prompt":"<p>การทำ <strong>deserialization<\/strong> คือข้อใด?<\/p>","options":[{"key":"ก","text":"แปลง object ในหน่วยความจำเป็น JSON string"},{"key":"ข","text":"แปลง JSON string/ไฟล์กลับเป็น object ในหน่วยความจำ"},{"key":"ค","text":"เข้ารหัส binary เป็น Base64"},{"key":"ง","text":"บีบอัด JSON เป็น ZIP"}],"answer":"ข","explanation":"<p>Deserialization แปลง JSON string/ไฟล์กลับเป็น object ใน memory<\/p>"},{"id":"wk9-A3","section":"A","num":3,"type":"mcq","prompt":"<p>ข้อใดกล่าวถูกต้องเกี่ยวกับรูปแบบข้อความ (text format) เมื่อเทียบกับ binary format?<\/p>","options":[{"key":"ก","text":"มนุษย์อ่านได้ แต่โดยทั่วไปมีขนาดใหญ่กว่า"},{"key":"ข","text":"มนุษย์อ่านไม่ได้ แต่มีขนาดเล็กกว่าเสมอ"},{"key":"ค","text":"เร็วกว่า binary ทุกกรณี"},{"key":"ง","text":"ใช้ได้กับรูปภาพเท่านั้น"}],"answer":"ก","explanation":"<p>Text format อ่านง่ายแต่ใหญ่กว่า; binary เล็ก/เร็วสำหรับเครื่องแต่คนอ่านยาก<\/p>"},{"id":"wk9-A4","section":"A","num":4,"type":"mcq","prompt":"<p>JSON ย่อมาจากอะไร?<\/p>","options":[{"key":"ก","text":"Java Standard Object Network"},{"key":"ข","text":"JavaScript Object Notation"},{"key":"ค","text":"Joint Serialization Object Notation"},{"key":"ง","text":"JavaScript Online Table"}],"answer":"ข","explanation":"<p>JavaScript Object Notation<\/p>"},{"id":"wk9-A5","section":"A","num":5,"type":"mcq","prompt":"<p>ข้อใดเป็น JSON ที่ถูกต้องตาม syntax?<\/p>","options":[{"key":"ก","text":"<code>{'name': 'Alice', 'age': 25}<\/code>"},{"key":"ข","text":"<code>{\"name\": \"Alice\", \"age\": 25,}<\/code>"},{"key":"ค","text":"<code>{\"name\": \"Alice\", \"age\": 25, \"active\": true}<\/code>"},{"key":"ง","text":"<code>{name: \"Alice\", age: 25}<\/code>"}],"answer":"ค","explanation":"<p>JSON ต้องใช้ double quotes, ไม่มี trailing comma, และ key ต้องอยู่ในเครื่องหมายคำพูด<\/p>"},{"id":"wk9-A6","section":"A","num":6,"type":"mcq","prompt":"<p>ค่าใดใน JSON ใช้แทน “ไม่มีค่า/ว่าง”?<\/p>","options":[{"key":"ก","text":"<code>None<\/code>"},{"key":"ข","text":"<code>NULL<\/code>"},{"key":"ค","text":"<code>null<\/code>"},{"key":"ง","text":"<code>nil<\/code>"}],"answer":"ค","explanation":"<p><code>null<\/code> ตัวพิมพ์เล็ก<\/p>"},{"id":"wk9-A7","section":"A","num":7,"type":"mcq","prompt":"<p>JSON ได้รับการรับรองเป็นมาตรฐานสากล RFC 8259 ในปีใด?<\/p>","options":[{"key":"ก","text":"1992"},{"key":"ข","text":"2001"},{"key":"ค","text":"2017"},{"key":"ง","text":"2020"}],"answer":"ค","explanation":"<p>RFC 8259 ปี 2017; Crockford “ค้นพบ” JSON ปี 2001<\/p>"},{"id":"wk9-A8","section":"A","num":8,"type":"mcq","prompt":"<p><code>json.dumps(obj)<\/code> ต่างจาก <code>json.dump(obj, f)<\/code> อย่างไร?<\/p>","options":[{"key":"ก","text":"<code>dumps<\/code> เขียนลงไฟล์; <code>dump<\/code> คืน string"},{"key":"ข","text":"<code>dumps<\/code> คืน string; <code>dump<\/code> เขียนลงไฟล์"},{"key":"ค","text":"ทั้งสองคืน string เหมือนกัน"},{"key":"ง","text":"<code>dump<\/code> ใช้ได้เฉพาะ list"}],"answer":"ข","explanation":"<p><code>dumps<\/code> → string; <code>dump<\/code> → file object<\/p>"},{"id":"wk9-A9","section":"A","num":9,"type":"mcq","prompt":"<p>ข้อใดใช้แปลงไฟล์ JSON กลับเป็น object ใน Python?<\/p>","options":[{"key":"ก","text":"<code>json.dumps(f)<\/code>"},{"key":"ข","text":"<code>json.dump(obj, f)<\/code>"},{"key":"ค","text":"<code>json.load(f)<\/code>"},{"key":"ง","text":"<code>json.loads(f)<\/code>"}],"answer":"ค","explanation":"<p><code>json.load(f)<\/code> อ่านจาก file object; <code>json.loads(s)<\/code> อ่านจาก string<\/p>"},{"id":"wk9-A10","section":"A","num":10,"type":"mcq","prompt":"<p><code>ensure_ascii=False<\/code> ใน <code>json.dumps<\/code> มีผลอย่างไร?<\/p>","options":[{"key":"ก","text":"ลบอักขระที่ไม่ใช่ ASCII ออก"},{"key":"ข","text":"เก็บอักขระภาษาไทย/Unicode ไว้ตรง ๆ แทนการแปลงเป็น <code>\\uXXXX<\/code>"},{"key":"ค","text":"บังคับให้ key เป็นตัวพิมพ์ใหญ่"},{"key":"ง","text":"เพิ่ม padding ให้ JSON"}],"answer":"ข","explanation":"<p><code>ensure_ascii=False<\/code> เก็บ Unicode ตรง ๆ เช่น ภาษาไทย<\/p>"},{"id":"wk9-A11","section":"A","num":11,"type":"mcq","prompt":"<p><code>indent=2<\/code> ใน <code>json.dumps<\/code> มีผลอย่างไร?<\/p>","options":[{"key":"ก","text":"จัด JSON ให้อ่านง่าย โดยย่อหน้า 2 ช่อง"},{"key":"ข","text":"จำกัดความลึกของ JSON ไว้ 2 ระดับ"},{"key":"ค","text":"ใส่ช่องว่าง 2 ตัวท้ายทุกบรรทัด"},{"key":"ง","text":"แปลง JSON เป็น XML"}],"answer":"ก","explanation":"<p><code>indent<\/code> จัดรูปแบบให้อ่านง่าย<\/p>"},{"id":"wk9-A12","section":"A","num":12,"type":"mcq","prompt":"<p>pandas <code>orient='records'<\/code> มีโครงสร้างอย่างไร?<\/p>","options":[{"key":"ก","text":"<code>{index: {column: value}}<\/code>"},{"key":"ข","text":"<code>[{column: value}, ...]<\/code> — แถวละ object"},{"key":"ค","text":"<code>{column: {index: value}}<\/code>"},{"key":"ง","text":"array ของ array"}],"answer":"ข","explanation":"<p>records = list ของ row objects<\/p>"},{"id":"wk9-A13","section":"A","num":13,"type":"mcq","prompt":"<p><code>orient='table'<\/code> มีข้อดีอย่างไร?<\/p>","options":[{"key":"ก","text":"เก็บ schema และ data แยกกัน ทำให้ round-trip ได้ดี"},{"key":"ข","text":"เก็บทุกอย่างเป็น string"},{"key":"ค","text":"ไม่ต้องระบุ dtype"},{"key":"ง","text":"ใช้ได้เฉพาะข้อมูลภาพ"}],"answer":"ก","explanation":"<p>table เก็บ schema + data แยกกัน เหมาะกับ round-trip<\/p>"},{"id":"wk9-A14","section":"A","num":14,"type":"mcq","prompt":"<p>ข้อใดอ่าน JSON ที่อยู่ภายในไฟล์ ZIP ได้โดยตรง?<\/p>","options":[{"key":"ก","text":"<code>pd.read_json(\"data.zip\")<\/code>"},{"key":"ข","text":"<code>pd.read_json(\"data.zip\", compression=\"zip\", orient=\"table\")<\/code>"},{"key":"ค","text":"<code>pd.read_csv(\"data.zip\")<\/code>"},{"key":"ง","text":"<code>json.load(\"data.zip\")<\/code>"}],"answer":"ข","explanation":"<p>ระบุ <code>compression=\"zip\"<\/code> ให้ pandas อ่าน ZIP โดยตรง<\/p>"},{"id":"wk9-A15","section":"A","num":15,"type":"mcq","prompt":"<p>ข้อใดกล่าวถูกต้องเกี่ยวกับ datetime ใน JSON?<\/p>","options":[{"key":"ก","text":"JSON มีชนิด <code>datetime<\/code> โดยตรง"},{"key":"ข","text":"JSON ไม่มีชนิด datetime ต้องเก็บเป็น ISO string หรือ epoch number"},{"key":"ค","text":"JSON เก็บ datetime ได้เฉพาะเป็น boolean"},{"key":"ง","text":"JSON เก็บ datetime ได้เฉพาะเป็น array"}],"answer":"ข","explanation":"<p>JSON ไม่มี datetime; ใช้ ISO string หรือ epoch<\/p>"},{"id":"wk9-A16","section":"A","num":16,"type":"mcq","prompt":"<p>ถ้าคอลัมน์ <code>date<\/code> เป็น epoch หน่วยมิลลิวินาที ข้อใดแปลงเป็น datetime ได้ถูกต้อง?<\/p>","options":[{"key":"ก","text":"<code>pd.to_datetime(df[\"date\"])<\/code>"},{"key":"ข","text":"<code>pd.to_datetime(df[\"date\"], unit=\"ms\")<\/code>"},{"key":"ค","text":"<code>pd.to_datetime(df[\"date\"], unit=\"s\")<\/code>"},{"key":"ง","text":"<code>df[\"date\"].astype(str)<\/code>"}],"answer":"ข","explanation":"<p>epoch milliseconds ต้องใช้ <code>unit=\"ms\"<\/code><\/p>"},{"id":"wk9-A17","section":"A","num":17,"type":"mcq","prompt":"<p><code>df.to_json(\"out.json\", orient=\"table\", date_format=\"iso\")<\/code> ทำอะไรกับวันที่?<\/p>","options":[{"key":"ก","text":"เขียนวันที่เป็น ISO string"},{"key":"ข","text":"ลบวันที่ออก"},{"key":"ค","text":"เขียนวันที่เป็น boolean"},{"key":"ง","text":"เขียนวันที่เป็น Base64"}],"answer":"ก","explanation":"<p><code>date_format=\"iso\"<\/code> เขียนวันที่เป็น ISO string<\/p>"},{"id":"wk9-A18","section":"A","num":18,"type":"mcq","prompt":"<p>ข้อมูล binary ขนาด 1,200 ไบต์ เมื่อ encode เป็น Base64 จะมีขนาดประมาณเท่าไร?<\/p>","options":[{"key":"ก","text":"1,200 ตัวอักษร"},{"key":"ข","text":"1,600 ตัวอักษร"},{"key":"ค","text":"1,800 ตัวอักษร"},{"key":"ง","text":"2,400 ตัวอักษร"}],"answer":"ข","explanation":"<p>1,200 × 4/3 = 1,600 ตัวอักษร (ประมาณ)<\/p>"},{"id":"wk9-A19","section":"A","num":19,"type":"mcq","prompt":"<p>ข้อใดอธิบายการทำงานของ Base64 ถูกต้อง?<\/p>","options":[{"key":"ก","text":"แบ่งข้อมูลเป็นกลุ่มละ 3 ไบต์ (24 บิต) แล้วแบ่งเป็น 4 กลุ่ม กลุ่มละ 6 บิต"},{"key":"ข","text":"แบ่งข้อมูลเป็นกลุ่มละ 4 ไบต์ แล้วแบ่งเป็น 3 กลุ่ม กลุ่มละ 8 บิต"},{"key":"ค","text":"เข้ารหัสด้วย key ลับแบบ AES"},{"key":"ง","text":"บีบอัดข้อมูลให้เล็กลง 33%"}],"answer":"ก","explanation":"<p>3 ไบต์ = 24 บิต → 4 กลุ่ม กลุ่มละ 6 บิต → 4 ตัวอักษร Base64<\/p>"},{"id":"wk9-A20","section":"A","num":20,"type":"mcq","prompt":"<p>JSON-RPC request ใดเป็น <strong>notification<\/strong> (ไม่ต้องมี response)?<\/p>","options":[{"key":"ก","text":"<code>{\"jsonrpc\":\"2.0\",\"method\":\"log\",\"params\":{\"msg\":\"hi\"},\"id\":1}<\/code>"},{"key":"ข","text":"<code>{\"jsonrpc\":\"2.0\",\"method\":\"log\",\"params\":{\"msg\":\"hi\"}}<\/code>"},{"key":"ค","text":"<code>{\"jsonrpc\":\"2.0\",\"result\":{},\"id\":1}<\/code>"},{"key":"ง","text":"<code>{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-1},\"id\":1}<\/code>"}],"answer":"ข","explanation":"<p>ไม่มี <code>id<\/code> = notification; request ที่มี id ต้องมี response<\/p>"},{"id":"wk9-B1","section":"B","num":1,"type":"tf","prompt":"<p>JSON อนุญาตให้ใส่ comment ด้วย <code>//<\/code> ได้เหมือน JavaScript<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ผิด","explanation":"<p>JSON ไม่รองรับ comment<\/p>"},{"id":"wk9-B2","section":"B","num":2,"type":"tf","prompt":"<p><code>json.dumps<\/code> คืนค่าเป็น string ส่วน <code>json.dump<\/code> เขียน object ลงไฟล์<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ถูก","explanation":"<p><code>dumps<\/code>/<code>loads<\/code> ใช้กับ string; <code>dump<\/code>/<code>load<\/code> ใช้กับไฟล์<\/p>"},{"id":"wk9-B3","section":"B","num":3,"type":"tf","prompt":"<p>Base64 ทำให้ข้อมูลมีขนาดเพิ่มขึ้นประมาณ 50%<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ผิด","explanation":"<p>Base64 เพิ่มขนาดประมาณ 33% (3 ไบต์ → 4 ตัวอักษร)<\/p>"},{"id":"wk9-B4","section":"B","num":4,"type":"tf","prompt":"<p>JSON-RPC notification คือ request ที่ไม่มี <code>id<\/code> และไม่ต้องมี response กลับ<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ถูก","explanation":"<p>Notification ไม่มี <code>id<\/code> และไม่ต้องตอบกลับ<\/p>"},{"id":"wk9-B5","section":"B","num":5,"type":"tf","prompt":"<p><code>orient='records'<\/code> เก็บข้อมูลเป็น array ของ object โดยแต่ละ object คือหนึ่งแถว<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ถูก","explanation":"<p>records เป็น array ของ object ต่อแถว<\/p>"},{"id":"wk9-C1","section":"C","num":1,"type":"open","prompt":"<p>จงเขียน JSON object แทนหนังสือ 1 เล่ม โดยมี <code>title<\/code>, <code>authors<\/code> (array), <code>year<\/code> (number), <code>available<\/code> (boolean)<\/p>","answer_html":"<pre><code class=\"language-json\">{\n  &quot;title&quot;: &quot;Data Acquisition&quot;,\n  &quot;authors&quot;: [&quot;Alice&quot;, &quot;Bob&quot;],\n  &quot;year&quot;: 2026,\n  &quot;available&quot;: true\n}\n<\/code><\/pre>"},{"id":"wk9-C2","section":"C","num":2,"type":"open","prompt":"<p>จงเขียนโค้ด Python เพื่อบันทึก dict ชื่อ <code>data<\/code> ลงไฟล์ <code>book.json<\/code> โดยให้อ่านภาษาไทยได้ตรง ๆ และจัดรูปแบบสวยงามด้วย indent 2 ช่อง จากนั้นอ่านกลับมาเป็น object<\/p>","answer_html":"<pre><code class=\"language-python\">import json\n\nwith open(&quot;book.json&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:\n    json.dump(data, f, ensure_ascii=False, indent=2)\n\nwith open(&quot;book.json&quot;, &quot;r&quot;, encoding=&quot;utf-8&quot;) as f:\n    obj = json.load(f)\n<\/code><\/pre>"},{"id":"wk9-C3","section":"C","num":3,"type":"open","prompt":"<p>ข้อมูล binary ขนาด 900 ไบต์ เมื่อ encode เป็น Base64 จะได้ประมาณกี่ตัวอักษร? ถ้าข้อมูลมีขนาด 901 และ 902 ไบต์ จะมี padding อย่างละกี่ตัว?<\/p>","answer_html":"<ul>\n<li>900 ไบต์ = 300 กลุ่ม × 4 = <strong>1,200 ตัวอักษร<\/strong><\/li>\n<li>901 ไบต์ → 301 กลุ่ม × 4 = <strong>1,204 ตัวอักษร<\/strong>, padding <code>==<\/code> (remainder 1)<\/li>\n<li>902 ไบต์ → 301 กลุ่ม × 4 = <strong>1,204 ตัวอักษร<\/strong>, padding <code>=<\/code> (remainder 2)<\/li>\n<li>สูตร: <code>4 × ceil(n / 3)<\/code><\/li>\n<\/ul>"},{"id":"wk9-C4","section":"C","num":4,"type":"open","prompt":"<p>จงเขียน JSON-RPC 2.0 ต่อไปนี้\n1. Request เรียก method <code>search<\/code> พารามิเตอร์ <code>{\"query\": \"cat\"}<\/code> และ <code>id = 7<\/code>\n2. Response สำเร็จที่คืน <code>{\"matches\": 3}<\/code> และ id เดียวกัน\n3. Error response กรณีไม่พบ method โดยใช้ code <code>-32601<\/code> และ message <code>\"Method not found\"<\/code><\/p>","answer_html":"<pre><code class=\"language-json\">{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;method&quot;: &quot;search&quot;, &quot;params&quot;: {&quot;query&quot;: &quot;cat&quot;}, &quot;id&quot;: 7}\n<\/code><\/pre>\n<pre><code class=\"language-json\">{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;result&quot;: {&quot;matches&quot;: 3}, &quot;id&quot;: 7}\n<\/code><\/pre>\n<pre><code class=\"language-json\">{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;error&quot;: {&quot;code&quot;: -32601, &quot;message&quot;: &quot;Method not found&quot;}, &quot;id&quot;: 7}\n<\/code><\/pre>"},{"id":"wk9-C5","section":"C","num":5,"type":"open","prompt":"<p>คอลัมน์ <code>date<\/code> ใน DataFrame เก็บ epoch หน่วยมิลลิวินาที เช่น <code>1735689600000<\/code> จงเขียนโค้ดแปลงเป็น datetime และอธิบายว่าจะเกิดอะไรขึ้นถ้าลืมใส่ <code>unit=\"ms\"<\/code><\/p>","answer_html":"<pre><code class=\"language-python\">df[&quot;date&quot;] = pd.to_datetime(df[&quot;date&quot;], unit=&quot;ms&quot;)\n<\/code><\/pre>\n<p>ถ้าลืม <code>unit=\"ms\"<\/code> pandas จะตีความตัวเลขเป็น nanoseconds ตั้งแต่ epoch → ได้วันที่ราวปี 1970 ไม่ใช่วันที่จริง<\/p>"}]},{"id":"wk10","label":"WK10","title":"XML, Archive & MCP","short":"XML & zipfile","desc":"MCP, JSON-RPC, ภาษามาร์กอัป, ElementTree และ zipfile","time":45,"bonus":false,"questions":[{"id":"wk10-A1","section":"A","num":1,"type":"mcq","prompt":"<p>MCP (Model Context Protocol) คืออะไร?<\/p>","options":[{"key":"ก","text":"ภาษามาร์กอัปสำหรับสร้างเว็บไซต์"},{"key":"ข","text":"กรอบข้อมูลมาตรฐานสำหรับเชื่อม LLM กับ tools/data sources ภายนอก"},{"key":"ค","text":"ฐานข้อมูลเวกเตอร์สำหรับเก็บ embedding"},{"key":"ง","text":"อัลกอริทึมจัดกลุ่มเอกสาร"}],"answer":"ข","explanation":"<p>MCP เป็นกรอบมาตรฐานเชื่อม LLM กับ tools/data ภายนอก<\/p>"},{"id":"wk10-A2","section":"A","num":2,"type":"mcq","prompt":"<p>MCP ใช้มาตรฐานใดเป็นพื้นฐานในการสื่อสาร?<\/p>","options":[{"key":"ก","text":"HTML 5"},{"key":"ข","text":"XML Schema"},{"key":"ค","text":"JSON-RPC 2.0"},{"key":"ง","text":"CSV"}],"answer":"ค","explanation":"<p>MCP ใช้ JSON-RPC 2.0<\/p>"},{"id":"wk10-A3","section":"A","num":3,"type":"mcq","prompt":"<p>JSON-RPC 2.0 request ต้องมีฟิลด์ใดบ้าง?<\/p>","options":[{"key":"ก","text":"<code>jsonrpc<\/code>, <code>method<\/code>, <code>id<\/code> (และ <code>params<\/code> ถ้ามี)"},{"key":"ข","text":"<code>jsonrpc<\/code>, <code>result<\/code>, <code>error<\/code>"},{"key":"ค","text":"<code>method<\/code>, <code>result<\/code>, <code>id<\/code>"},{"key":"ง","text":"<code>jsonrpc<\/code>, <code>status<\/code>, <code>body<\/code>"}],"answer":"ก","explanation":"<p>Request มี <code>jsonrpc<\/code>, <code>method<\/code>, <code>id<\/code>; <code>params<\/code> มีได้ตามความจำเป็น<\/p>"},{"id":"wk10-A4","section":"A","num":4,"type":"mcq","prompt":"<p>JSON-RPC response ที่สำเร็จจะมีฟิลด์ใด?<\/p>","options":[{"key":"ก","text":"<code>error<\/code>"},{"key":"ข","text":"<code>result<\/code>"},{"key":"ค","text":"<code>params<\/code>"},{"key":"ง","text":"<code>method<\/code>"}],"answer":"ข","explanation":"<p>สำเร็จใช้ <code>result<\/code>; ล้มเหลวใช้ <code>error<\/code><\/p>"},{"id":"wk10-A5","section":"A","num":5,"type":"mcq","prompt":"<p>ฟิลด์ <code>id<\/code> ใน JSON-RPC มีหน้าที่อะไร?<\/p>","options":[{"key":"ก","text":"ระบุเวอร์ชันของ JSON"},{"key":"ข","text":"ระบุคำขอให้ไม่ซ้ำ และ response ต้องมี id เดียวกัน"},{"key":"ค","text":"เก็บชื่อ method"},{"key":"ง","text":"เก็บข้อความ error"}],"answer":"ข","explanation":"<p><code>id<\/code> ใช้จับคู่ request กับ response<\/p>"},{"id":"wk10-A6","section":"A","num":6,"type":"mcq","prompt":"<p>JSON-RPC notification ต่างจาก request ปกติอย่างไร?<\/p>","options":[{"key":"ก","text":"ไม่มี <code>method<\/code>"},{"key":"ข","text":"ไม่มี <code>id<\/code> และไม่ต้องมี response"},{"key":"ค","text":"ต้องมี <code>error<\/code> เสมอ"},{"key":"ง","text":"ใช้ได้เฉพาะ MCP"}],"answer":"ข","explanation":"<p>Notification ไม่มี <code>id<\/code> และไม่ต้องมี response<\/p>"},{"id":"wk10-A7","section":"A","num":7,"type":"mcq","prompt":"<p>ภาษามาร์กอัป (markup language) คืออะไร?<\/p>","options":[{"key":"ก","text":"ภาษาที่ใช้เขียนโปรแกรมเชิงวัตถุ"},{"key":"ข","text":"ระบบสำหรับ annotate เอกสารเพื่อจัดโครงสร้าง/จัดรูปแบบเนื้อหา"},{"key":"ค","text":"ภาษาสำหรับ query ฐานข้อมูล"},{"key":"ง","text":"ภาษาสำหรับบีบอัดไฟล์"}],"answer":"ข","explanation":"<p>Markup language ใช้ annotate เอกสารเพื่อจัดโครงสร้าง/รูปแบบ<\/p>"},{"id":"wk10-A8","section":"A","num":8,"type":"mcq","prompt":"<p>GML (Generalized Markup Language) พัฒนาโดยใครและในช่วงใด?<\/p>","options":[{"key":"ก","text":"IBM ในทศวรรษ 1960"},{"key":"ข","text":"Microsoft ในทศวรรษ 1980"},{"key":"ค","text":"Google ในทศวรรษ 2000"},{"key":"ง","text":"W3C ในปี 1998"}],"answer":"ก","explanation":"<p>GML พัฒนาโดย IBM ในทศวรรษ 1960<\/p>"},{"id":"wk10-A9","section":"A","num":9,"type":"mcq","prompt":"<p>SGML ถูกทำให้เป็นมาตรฐานในปีใด?<\/p>","options":[{"key":"ก","text":"1960"},{"key":"ข","text":"1986"},{"key":"ค","text":"1991"},{"key":"ง","text":"1998"}],"answer":"ข","explanation":"<p>SGML มาตรฐานปี 1986<\/p>"},{"id":"wk10-A10","section":"A","num":10,"type":"mcq","prompt":"<p>HTML ถูกแยกออกจาก SGML ในปีใด และมีลักษณะสำคัญอย่างไร?<\/p>","options":[{"key":"ก","text":"1991 — แท็กคงที่ เพื่อโครงสร้าง/นำเสนอหน้าเว็บ"},{"key":"ข","text":"1986 — แท็กกำหนดเองได้ เพื่อเก็บข้อมูล"},{"key":"ค","text":"1998 — ใช้แลกเปลี่ยนข้อมูลทั่วไป"},{"key":"ง","text":"2001 — ใช้แทน JSON"}],"answer":"ก","explanation":"<p>HTML ปี 1991 แท็กคงที่ เพื่อเว็บ<\/p>"},{"id":"wk10-A11","section":"A","num":11,"type":"mcq","prompt":"<p>XML ถูกกำหนดในปีใด และมีจุดประสงค์หลักอะไร?<\/p>","options":[{"key":"ก","text":"1986 — จัดรูปแบบเอกสารสิ่งพิมพ์"},{"key":"ข","text":"1991 — สร้างหน้าเว็บ"},{"key":"ค","text":"1998 — จัดเก็บและแลกเปลี่ยนข้อมูล"},{"key":"ง","text":"2017 — เป็นมาตรฐาน API"}],"answer":"ค","explanation":"<p>XML ปี 1998 ใช้จัดเก็บ/แลกเปลี่ยนข้อมูล และกำหนดแท็กเองได้<\/p>"},{"id":"wk10-A12","section":"A","num":12,"type":"mcq","prompt":"<p>แนวคิดสำคัญของ GML คือข้อใด?<\/p>","options":[{"key":"ก","text":"รวมเนื้อหากับการนำเสนอไว้ด้วยกัน"},{"key":"ข","text":"แยกเนื้อหา (content) ออกจากการนำเสนอ (presentation)"},{"key":"ค","text":"ใช้แท็กคงที่เหมือน HTML"},{"key":"ง","text":"บังคับให้ทุกเอกสารมีแท็ก <code>&lt;html&gt;<\/code>"}],"answer":"ข","explanation":"<p>GML แยก content ออกจาก presentation<\/p>"},{"id":"wk10-A13","section":"A","num":13,"type":"mcq","prompt":"<p>ในโครงสร้างต้นไม้ XML องค์ประกอบราก (root element) คืออะไร?<\/p>","options":[{"key":"ก","text":"องค์ประกอบที่อยู่ลึกที่สุด"},{"key":"ข","text":"องค์ประกอบที่เป็นบรรพบุรุษสูงสุดของทั้งเอกสาร"},{"key":"ค","text":"องค์ประกอบที่มี attribute มากที่สุด"},{"key":"ง","text":"ข้อความภายในแท็ก"}],"answer":"ข","explanation":"<p>root คือบรรพบุรุษสูงสุดของต้นไม้ XML<\/p>"},{"id":"wk10-A14","section":"A","num":14,"type":"mcq","prompt":"<p>ข้อใดเป็น XML ที่ well-formed?<\/p>","options":[{"key":"ก","text":"<code>&lt;book&gt;&lt;title&gt;X&lt;/title&gt;&lt;/book&gt;<\/code>"},{"key":"ข","text":"<code>&lt;book&gt;&lt;title&gt;X&lt;/book&gt;&lt;/title&gt;<\/code>"},{"key":"ค","text":"<code>&lt;book&gt;&lt;title&gt;X&lt;/title&gt;<\/code>"},{"key":"ง","text":"<code>&lt;book&gt;&lt;title&gt;X&lt;/title&gt;&lt;/book&gt;&lt;book&gt;<\/code>"}],"answer":"ก","explanation":"<p>ต้องมีแท็กเปิด/ปิดครบ จับคู่ถูก และมี root เดียว<\/p>"},{"id":"wk10-A15","section":"A","num":15,"type":"mcq","prompt":"<p>ข้อใดเปรียบเทียบ XML กับ JSON ได้ถูกต้อง?<\/p>","options":[{"key":"ก","text":"XML เบากว่า JSON และเป็นมาตรฐาน API สมัยใหม่"},{"key":"ข","text":"XML จัดโครงสร้างเอกสารได้ดีกว่า; JSON เบากว่าและนิยมใช้แลกเปลี่ยนข้อมูล"},{"key":"ค","text":"XML ไม่สามารถมี attribute ได้"},{"key":"ง","text":"JSON ต้องปิดแท็กทุกครั้ง"}],"answer":"ข","explanation":"<p>XML เหมาะกับโครงสร้างเอกสาร; JSON เบากว่าและนิยมกับ API<\/p>"},{"id":"wk10-A16","section":"A","num":16,"type":"mcq","prompt":"<p><code>ET.parse(\"books.xml\")<\/code> คืนค่าอะไร?<\/p>","options":[{"key":"ก","text":"root element โดยตรง"},{"key":"ข","text":"ElementTree object ซึ่งเรียก <code>.getroot()<\/code> เพื่อเอา root"},{"key":"ค","text":"list ของทุก element"},{"key":"ง","text":"string ของทั้งไฟล์"}],"answer":"ข","explanation":"<p><code>ET.parse<\/code> คืน ElementTree; ใช้ <code>.getroot()<\/code> เพื่อเอา root<\/p>"},{"id":"wk10-A17","section":"A","num":17,"type":"mcq","prompt":"<p><code>root.findall(\"book\")<\/code> ใน ElementTree ทำอะไร?<\/p>","options":[{"key":"ก","text":"หา element <code>book<\/code> ตัวแรก"},{"key":"ข","text":"หา element <code>book<\/code> ทั้งหมดที่เป็นลูกโดยตรง (direct children)"},{"key":"ค","text":"หา element <code>book<\/code> ทุกระดับชั้น"},{"key":"ง","text":"สร้าง element <code>book<\/code> ใหม่"}],"answer":"ข","explanation":"<p><code>findall<\/code> หา direct children ทั้งหมด; ไม่ลงลึก<\/p>"},{"id":"wk10-A18","section":"A","num":18,"type":"mcq","prompt":"<p><code>root.iter(\"title\")<\/code> ต่างจาก <code>findall(\"title\")<\/code> อย่างไร?<\/p>","options":[{"key":"ก","text":"<code>iter<\/code> หาเฉพาะลูกโดยตรง"},{"key":"ข","text":"<code>iter<\/code> หา element <code>title<\/code> ทุกระดับชั้น (descendants ทั้งหมด)"},{"key":"ค","text":"<code>iter<\/code> ใช้ได้เฉพาะ attribute"},{"key":"ง","text":"ทั้งสองทำงานเหมือนกันทุกกรณี"}],"answer":"ข","explanation":"<p><code>iter<\/code> เดินทุก descendant ตามชื่อ tag<\/p>"},{"id":"wk10-A19","section":"A","num":19,"type":"mcq","prompt":"<p><code>ET.SubElement(parent, \"book\", {\"id\": \"3\"})<\/code> ทำอะไร?<\/p>","options":[{"key":"ก","text":"สร้าง element ลูกชื่อ <code>book<\/code> พร้อม attribute <code>id=\"3\"<\/code>"},{"key":"ข","text":"ลบ element <code>book<\/code> ที่มี id 3"},{"key":"ค","text":"อ่านค่า attribute id ของ book"},{"key":"ง","text":"แปลง XML เป็น JSON"}],"answer":"ก","explanation":"<p><code>SubElement<\/code> สร้าง element ลูกและคืน object ของ element ใหม่<\/p>"},{"id":"wk10-A20","section":"A","num":20,"type":"mcq","prompt":"<p>ข้อใดอ่านเนื้อหาไฟล์ <code>data.csv<\/code> ที่อยู่ใน ZIP โดยไม่ต้องแตกไฟล์ลงดิสก์?<\/p>","options":[{"key":"ก","text":"<code>zipfile.ZipFile(\"data.zip\").extractall()<\/code>"},{"key":"ข","text":"<code>zipfile.ZipFile(\"data.zip\").read(\"data.csv\")<\/code>"},{"key":"ค","text":"<code>open(\"data.zip/data.csv\")<\/code>"},{"key":"ง","text":"<code>zipfile.ZipFile(\"data.csv\")<\/code>"}],"answer":"ข","explanation":"<p><code>ZipFile.read(name)<\/code> คืน bytes โดยไม่ต้องแตกไฟล์<\/p>"},{"id":"wk10-B1","section":"B","num":1,"type":"tf","prompt":"<p>XML อนุญาตให้ผู้ใช้กำหนดชื่อแท็กเองได้<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ถูก","explanation":"<p>XML ออกแบบมาให้กำหนดแท็กเองได้<\/p>"},{"id":"wk10-B2","section":"B","num":2,"type":"tf","prompt":"<p><code>root.findall(\"book\")<\/code> ค้นหา element <code>book<\/code> ทุกระดับชั้นในเอกสาร<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ผิด","explanation":"<p><code>findall<\/code> หาเฉพาะลูกโดยตรง; ต้องใช้ <code>iter<\/code> หรือ <code>.//book<\/code> เพื่อลงลึก<\/p>"},{"id":"wk10-B3","section":"B","num":3,"type":"tf","prompt":"<p><code>root.iter(\"book\")<\/code> ใช้เดินดู (traverse) element <code>book<\/code> ทุกระดับชั้นได้<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ถูก","explanation":"<p><code>iter<\/code> เดินทุกระดับชั้น<\/p>"},{"id":"wk10-B4","section":"B","num":4,"type":"tf","prompt":"<p>ใน ElementTree <code>elem.text<\/code> คืนข้อความทั้งหมดภายใน element รวมข้อความของลูกหลาน<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ผิด","explanation":"<p><code>elem.text<\/code> เป็นข้อความที่อยู่ก่อนลูกคนแรก (อาจเป็น <code>None<\/code>); ไม่ได้รวมข้อความของ descendants<\/p>"},{"id":"wk10-B5","section":"B","num":5,"type":"tf","prompt":"<p><code>zipfile<\/code> สามารถอ่านสมาชิกใน ZIP เป็น bytes ในหน่วยความจำได้โดยไม่ต้อง <code>extractall<\/code><\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ถูก","explanation":"<p><code>read()<\/code> หรือ <code>open()<\/code> อ่านจาก ZIP ในหน่วยความจำได้<\/p>"},{"id":"wk10-C1","section":"C","num":1,"type":"open","prompt":"<p>กำหนด XML ต่อไปนี้ จงเขียนโค้ด ElementTree เพื่อพิมพ์ <code>id<\/code>, <code>title<\/code>, <code>author<\/code>, <code>year<\/code> ของทุกหนังสือ<\/p>\n<pre><code class=\"language-xml\">&lt;library&gt;\n  &lt;book id=&quot;1&quot;&gt;\n    &lt;title&gt;Data Acquisition&lt;/title&gt;\n    &lt;author&gt;Alice&lt;/author&gt;\n    &lt;year&gt;2020&lt;/year&gt;\n  &lt;/book&gt;\n  &lt;book id=&quot;2&quot;&gt;\n    &lt;title&gt;Python for Data&lt;/title&gt;\n    &lt;author&gt;Bob&lt;/author&gt;\n    &lt;year&gt;2021&lt;/year&gt;\n  &lt;/book&gt;\n&lt;/library&gt;\n<\/code><\/pre>","answer_html":"<pre><code class=\"language-python\">import xml.etree.ElementTree as ET\n\ntree = ET.parse(&quot;books.xml&quot;)\nroot = tree.getroot()\n\nfor book in root.findall(&quot;book&quot;):\n    print(\n        book.get(&quot;id&quot;),\n        book.find(&quot;title&quot;).text,\n        book.find(&quot;author&quot;).text,\n        book.find(&quot;year&quot;).text,\n    )\n<\/code><\/pre>"},{"id":"wk10-C2","section":"C","num":2,"type":"open","prompt":"<p>จาก XML ในข้อ C1 จงเขียนโค้ดเพิ่มหนังสือ <code>id=\"3\"<\/code> ชื่อ <code>New Book<\/code> ผู้แต่ง <code>Alice<\/code> ปี <code>2026<\/code> แล้วบันทึกเป็น <code>out.xml<\/code> แบบ UTF-8 พร้อม XML declaration<\/p>","answer_html":"<pre><code class=\"language-python\">import xml.etree.ElementTree as ET\n\ntree = ET.parse(&quot;books.xml&quot;)\nroot = tree.getroot()\n\nnew_book = ET.SubElement(root, &quot;book&quot;, {&quot;id&quot;: &quot;3&quot;})\nET.SubElement(new_book, &quot;title&quot;).text = &quot;New Book&quot;\nET.SubElement(new_book, &quot;author&quot;).text = &quot;Alice&quot;\nET.SubElement(new_book, &quot;year&quot;).text = &quot;2026&quot;\n\ntree.write(&quot;out.xml&quot;, encoding=&quot;utf-8&quot;, xml_declaration=True)\n<\/code><\/pre>"},{"id":"wk10-C3","section":"C","num":3,"type":"open","prompt":"<p>อธิบายความแตกต่างระหว่าง <code>find<\/code>, <code>findall<\/code>, <code>iter<\/code> และบอกว่าจะหา element <code>title<\/code> ที่ซ้อนลึกได้อย่างไร<\/p>","answer_html":"<ul>\n<li><code>find(\"tag\")<\/code> → element ลูกโดยตรงตัวแรกที่ชื่อ tag; คืน <code>None<\/code> ถ้าไม่พบ<\/li>\n<li><code>findall(\"tag\")<\/code> → list ของ element ลูกโดยตรงทั้งหมดที่ชื่อ tag<\/li>\n<li><code>iter(\"tag\")<\/code> → ทุก element ชื่อ tag ในทุกระดับชั้น (descendants)<\/li>\n<li>หา title ที่ซ้อนลึก: <code>root.find(\".//title\")<\/code> (ตัวแรก) หรือ <code>root.findall(\".//title\")<\/code> (ทั้งหมด) หรือ <code>root.iter(\"title\")<\/code><\/li>\n<li>ระวัง: <code>elem.text<\/code> ของ element ที่มีลูกอาจเป็น <code>None<\/code> หรือเป็นข้อความก่อนลูกแรก<\/li>\n<\/ul>"},{"id":"wk10-C4","section":"C","num":4,"type":"open","prompt":"<p>จงเขียนโค้ด <code>zipfile<\/code> เพื่อ\n1. แสดงรายชื่อไฟล์ทั้งหมดใน <code>data.zip<\/code>\n2. อ่าน <code>data.csv<\/code> เป็น bytes แล้ว decode เป็นข้อความ\n3. เปิด <code>image.jpg<\/code> ใน ZIP เป็น file object เพื่อส่งให้ PIL โดยไม่แตกไฟล์ลงดิสก์<\/p>","answer_html":"<pre><code class=\"language-python\">import zipfile\nfrom PIL import Image\n\nwith zipfile.ZipFile(&quot;data.zip&quot;, &quot;r&quot;) as z:\n    # 1) รายชื่อไฟล์\n    print(z.namelist())\n\n    # 2) อ่าน CSV เป็น bytes แล้ว decode\n    raw = z.read(&quot;data.csv&quot;)\n    text = raw.decode(&quot;utf-8&quot;)\n\n    # 3) เปิดรูปเป็น file object โดยไม่แตกไฟล์\n    with z.open(&quot;image.jpg&quot;) as f:\n        img = Image.open(f)\n<\/code><\/pre>"},{"id":"wk10-C5","section":"C","num":5,"type":"open","prompt":"<p>จงเขียน JSON-RPC 2.0\n1. Request เรียก method <code>extract<\/code> พารามิเตอร์ <code>{\"file\": \"a.pdf\"}<\/code> และ <code>id = 9<\/code>\n2. Error response กรณีไม่รู้จัก method โดยใช้ code <code>-32601<\/code> และ message <code>\"Method not found\"<\/code><\/p>","answer_html":"<pre><code class=\"language-json\">{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;method&quot;: &quot;extract&quot;, &quot;params&quot;: {&quot;file&quot;: &quot;a.pdf&quot;}, &quot;id&quot;: 9}\n<\/code><\/pre>\n<pre><code class=\"language-json\">{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;error&quot;: {&quot;code&quot;: -32601, &quot;message&quot;: &quot;Method not found&quot;}, &quot;id&quot;: 9}\n<\/code><\/pre>"}]},{"id":"wk11","label":"WK11","title":"HTML & Text Preparation","short":"HTML & Text","desc":"BeautifulSoup, NLP, tokenization, n-gram และสถิติของ corpus","time":45,"bonus":false,"questions":[{"id":"wk11-A1","section":"A","num":1,"type":"mcq","prompt":"<p>BeautifulSoup ใช้ทำอะไร?<\/p>","options":[{"key":"ก","text":"เปิดเว็บและรัน JavaScript"},{"key":"ข","text":"Parse HTML/XML เป็น parse tree เพื่อค้นหาและดึงข้อมูล"},{"key":"ค","text":"เก็บ embedding ลงฐานข้อมูลเวกเตอร์"},{"key":"ง","text":"บีบอัดไฟล์ HTML"}],"answer":"ข","explanation":"<p>BeautifulSoup parse HTML/XML เป็น tree เพื่อค้นหา/ดึงข้อมูล<\/p>"},{"id":"wk11-A2","section":"A","num":2,"type":"mcq","prompt":"<p>ข้อใดสร้าง BeautifulSoup จาก <code>requests<\/code> response ได้ถูกต้อง?<\/p>","options":[{"key":"ก","text":"<code>soup = BeautifulSoup(response.text, \"html.parser\")<\/code>"},{"key":"ข","text":"<code>soup = BeautifulSoup(response.url, \"html.parser\")<\/code>"},{"key":"ค","text":"<code>soup = BeautifulSoup(response.status_code, \"html.parser\")<\/code>"},{"key":"ง","text":"<code>soup = BeautifulSoup(response.headers, \"html.parser\")<\/code>"}],"answer":"ก","explanation":"<p>ใช้ <code>response.text<\/code> หรือ <code>response.content<\/code> ก็ได้; ที่ถูกในตัวเลือกคือ <code>response.text<\/code><\/p>"},{"id":"wk11-A3","section":"A","num":3,"type":"mcq","prompt":"<p><code>soup.find(\"h3\")<\/code> ต่างจาก <code>soup.find_all(\"h3\")<\/code> อย่างไร?<\/p>","options":[{"key":"ก","text":"<code>find<\/code> หาตัวแรก; <code>find_all<\/code> หาทั้งหมดเป็น list"},{"key":"ข","text":"<code>find<\/code> หาทั้งหมด; <code>find_all<\/code> หาตัวแรก"},{"key":"ค","text":"ทั้งสองใช้กับ attribute เท่านั้น"},{"key":"ง","text":"<code>find_all<\/code> ใช้ได้เฉพาะ <code>&lt;div&gt;<\/code>"}],"answer":"ก","explanation":"<p><code>find<\/code> ตัวแรก; <code>find_all<\/code> ทั้งหมดเป็น list<\/p>"},{"id":"wk11-A4","section":"A","num":4,"type":"mcq","prompt":"<p><code>soup.select(\"article h3\")<\/code> ทำอะไร?<\/p>","options":[{"key":"ก","text":"เลือก <code>&lt;article&gt;<\/code> ที่มี <code>&lt;h3&gt;<\/code> เป็น parent"},{"key":"ข","text":"เลือก <code>&lt;h3&gt;<\/code> ทั้งหมดที่อยู่ภายใต้ <code>&lt;article&gt;<\/code> ตาม CSS selector"},{"key":"ค","text":"สร้าง <code>&lt;article&gt;<\/code> ใหม่"},{"key":"ง","text":"ลบ <code>&lt;h3&gt;<\/code> ออกจาก <code>&lt;article&gt;<\/code>"}],"answer":"ข","explanation":"<p><code>select<\/code> ใช้ CSS selector; <code>article h3<\/code> = h3 ที่อยู่ใต้ article<\/p>"},{"id":"wk11-A5","section":"A","num":5,"type":"mcq","prompt":"<p><code>.text<\/code> ต่างจาก <code>.string<\/code> ใน BeautifulSoup อย่างไร?<\/p>","options":[{"key":"ก","text":"<code>.text<\/code> รวมข้อความของลูกหลาน; <code>.string<\/code> ใช้ได้เมื่อ element มีลูกเดียว/ข้อความเดียว"},{"key":"ข","text":"<code>.text<\/code> ใช้ได้เฉพาะ attribute"},{"key":"ค","text":"<code>.string<\/code> รวมข้อความทั้งหมด; <code>.text<\/code> คืน <code>None<\/code> เสมอ"},{"key":"ง","text":"ทั้งสองเหมือนกันทุกกรณี"}],"answer":"ก","explanation":"<p><code>.text<\/code> รวม descendants; <code>.string<\/code> ใช้เมื่อมีลูกเดียว/ข้อความเดียว<\/p>"},{"id":"wk11-A6","section":"A","num":6,"type":"mcq","prompt":"<p>ข้อใดดึงค่า <code>href<\/code> จาก <code>&lt;a href=\"/home\"&gt;Home&lt;/a&gt;<\/code> ได้?<\/p>","options":[{"key":"ก","text":"<code>tag.get(\"href\")<\/code>"},{"key":"ข","text":"<code>tag.text(\"href\")<\/code>"},{"key":"ค","text":"<code>tag.find(\"href\")<\/code>"},{"key":"ง","text":"<code>tag.string(\"href\")<\/code>"}],"answer":"ก","explanation":"<p><code>tag.get(\"href\")<\/code> หรือ <code>tag[\"href\"]<\/code><\/p>"},{"id":"wk11-A7","section":"A","num":7,"type":"mcq","prompt":"<p><code>soup.prettify()<\/code> มีประโยชน์อย่างไร?<\/p>","options":[{"key":"ก","text":"แสดง HTML จัดรูปแบบให้อ่านง่าย"},{"key":"ข","text":"ลบแท็ก HTML ทั้งหมด"},{"key":"ค","text":"แปลง HTML เป็น JSON"},{"key":"ง","text":"เปิดเว็บในเบราว์เซอร์"}],"answer":"ก","explanation":"<p><code>prettify()<\/code> จัดรูปแบบ HTML ให้อ่านง่าย<\/p>"},{"id":"wk11-A8","section":"A","num":8,"type":"mcq","prompt":"<p>ข้อใด <strong>ไม่ใช่<\/strong> ข้อจำกัดของ BeautifulSoup?<\/p>","options":[{"key":"ก","text":"ไม่สามารถรัน JavaScript"},{"key":"ข","text":"ไม่มี HTTP client ในตัว"},{"key":"ค","text":"รองรับ CSS selector"},{"key":"ง","text":"ไม่สามารถคลิก/โต้ตอบกับหน้าเว็บ"}],"answer":"ค","explanation":"<p>การรองรับ CSS selector เป็นความสามารถ ไม่ใช่ข้อจำกัด<\/p>"},{"id":"wk11-A9","section":"A","num":9,"type":"mcq","prompt":"<p>ถ้าเนื้อหาถูกโหลดด้วย JavaScript ควรใช้เครื่องมือใดแทน BeautifulSoup?<\/p>","options":[{"key":"ก","text":"Selenium, Playwright หรือเรียก API"},{"key":"ข","text":"<code>json.load<\/code>"},{"key":"ค","text":"<code>zipfile<\/code>"},{"key":"ง","text":"<code>xml.etree.ElementTree<\/code>"}],"answer":"ก","explanation":"<p>เนื้อหา dynamic ต้องใช้ Selenium/Playwright หรือเรียก API<\/p>"},{"id":"wk11-A10","section":"A","num":10,"type":"mcq","prompt":"<p>ข้อใดอธิบายการทำงานร่วมกันของ <code>requests<\/code> กับ BeautifulSoup ถูกต้อง?<\/p>","options":[{"key":"ก","text":"<code>requests<\/code> ดึง HTML; BeautifulSoup parse HTML ที่ได้"},{"key":"ข","text":"BeautifulSoup ดึง HTML; <code>requests<\/code> parse"},{"key":"ค","text":"ทั้งสองรัน JavaScript"},{"key":"ง","text":"<code>requests<\/code> ใช้เก็บ embedding"}],"answer":"ก","explanation":"<p><code>requests<\/code> ทำ HTTP; BeautifulSoup parse HTML<\/p>"},{"id":"wk11-A11","section":"A","num":11,"type":"mcq","prompt":"<p>NLP คืออะไร?<\/p>","options":[{"key":"ก","text":"การสอนคอมพิวเตอร์ให้เข้าใจ ตีความ และสร้างภาษามนุษย์"},{"key":"ข","text":"การบีบอัดข้อมูลข้อความ"},{"key":"ค","text":"การเขียน SQL query"},{"key":"ง","text":"การแปลงรูปภาพเป็นเวกเตอร์"}],"answer":"ก","explanation":"<p>NLP = ให้คอมพิวเตอร์เข้าใจ/ตีความ/สร้างภาษามนุษย์<\/p>"},{"id":"wk11-A12","section":"A","num":12,"type":"mcq","prompt":"<p>NLU ต่างจาก NLG อย่างไร?<\/p>","options":[{"key":"ก","text":"NLU = สร้างภาษา; NLG = เข้าใจภาษา"},{"key":"ข","text":"NLU = เข้าใจภาษา; NLG = สร้างภาษา"},{"key":"ค","text":"ทั้งสองคือการจัดกลุ่มเอกสาร"},{"key":"ง","text":"NLU ใช้เฉพาะภาษาไทย"}],"answer":"ข","explanation":"<p>NLU = understanding; NLG = generation<\/p>"},{"id":"wk11-A13","section":"A","num":13,"type":"mcq","prompt":"<p>Core process ของงาน NLP ข้อใดเรียงถูกต้อง?<\/p>","options":[{"key":"ก","text":"Text data → Text processing → Feature engineering → Modeling/Training → Evaluation → Insight/Application"},{"key":"ข","text":"Modeling → Text data → Evaluation → Feature engineering → Text processing"},{"key":"ค","text":"Feature engineering → Text data → Modeling → Text processing → Evaluation"},{"key":"ง","text":"Text processing → Modeling → Text data → Insight → Evaluation"}],"answer":"ก","explanation":"<p>ตาม core process ในสไลด์<\/p>"},{"id":"wk11-A14","section":"A","num":14,"type":"mcq","prompt":"<p>ข้อใด <strong>ไม่ใช่<\/strong> แหล่ง corpus ตามที่กล่าวในบทเรียน?<\/p>","options":[{"key":"ก","text":"Internet"},{"key":"ข","text":"Book/Literature"},{"key":"ค","text":"Library"},{"key":"ง","text":"GPU"}],"answer":"ง","explanation":"<p>GPU ไม่ใช่แหล่ง corpus<\/p>"},{"id":"wk11-A15","section":"A","num":15,"type":"mcq","prompt":"<p>ขั้นตอนการเตรียมข้อมูลภาษาตามบทเรียน เรียงถูกต้องอย่างไร?<\/p>","options":[{"key":"ก","text":"N-Gram → Tokenization → Cleaning"},{"key":"ข","text":"Cleaning the noise → Tokenization → N-Gram"},{"key":"ค","text":"Tokenization → Cleaning → Modeling"},{"key":"ง","text":"Modeling → N-Gram → Cleaning"}],"answer":"ข","explanation":"<p>Cleaning → Tokenization → N-Gram<\/p>"},{"id":"wk11-A16","section":"A","num":16,"type":"mcq","prompt":"<p>Tokenization คืออะไร?<\/p>","options":[{"key":"ก","text":"การแบ่งข้อความออกเป็นหน่วยย่อยที่เรียกว่า token"},{"key":"ข","text":"การแปลง token เป็นเวกเตอร์ TF-IDF"},{"key":"ค","text":"การลบ stop words ทั้งหมด"},{"key":"ง","text":"การรวมทุกประโยคเป็น token เดียว"}],"answer":"ก","explanation":"<p>แบ่งข้อความเป็น token<\/p>"},{"id":"wk11-A17","section":"A","num":17,"type":"mcq","prompt":"<p>ข้อใดใช้ตัดคำภาษาไทยได้เหมาะสม?<\/p>","options":[{"key":"ก","text":"<code>text.split(\" \")<\/code>"},{"key":"ข","text":"<code>word_tokenize(text, engine=\"newmm\")<\/code> จาก <code>pythainlp<\/code>"},{"key":"ค","text":"<code>json.loads(text)<\/code>"},{"key":"ง","text":"<code>BeautifulSoup(text, \"html.parser\")<\/code>"}],"answer":"ข","explanation":"<p>ภาษาไทยไม่มีช่องว่างคั่นคำ ต้องใช้ tokenizer เช่น pythainlp <code>newmm<\/code><\/p>"},{"id":"wk11-A18","section":"A","num":18,"type":"mcq","prompt":"<p>ประโยค <code>\"I love NLP\"<\/code> มี bigram กี่รายการ และคืออะไร?<\/p>","options":[{"key":"ก","text":"2 รายการ: <code>(\"I\", \"love\")<\/code>, <code>(\"love\", \"NLP\")<\/code>"},{"key":"ข","text":"3 รายการ: <code>(\"I\")<\/code>, <code>(\"love\")<\/code>, <code>(\"NLP\")<\/code>"},{"key":"ค","text":"1 รายการ: <code>(\"I\", \"love\", \"NLP\")<\/code>"},{"key":"ง","text":"4 รายการ: <code>(\"I\", \"love\")<\/code>, <code>(\"love\", \"NLP\")<\/code>, <code>(\"I\", \"NLP\")<\/code>, <code>(\"NLP\", \"I\")<\/code>"}],"answer":"ก","explanation":"<p>bigram = ลำดับ 2 คำติดกัน; <code>I love<\/code>, <code>love NLP<\/code><\/p>"},{"id":"wk11-A19","section":"A","num":19,"type":"mcq","prompt":"<p>Corpus มี 500 token และมี 200 unique token — TTR เท่าไร?<\/p>","options":[{"key":"ก","text":"0.2"},{"key":"ข","text":"0.4"},{"key":"ค","text":"2.5"},{"key":"ง","text":"5.0"}],"answer":"ข","explanation":"<p>TTR = 200/500 = 0.4<\/p>"},{"id":"wk11-A20","section":"A","num":20,"type":"mcq","prompt":"<p>Hapax legomena หมายถึงอะไร?<\/p>","options":[{"key":"ก","text":"คำที่เกิด 1 ครั้งใน corpus"},{"key":"ข","text":"คำที่เกิดมากที่สุด"},{"key":"ค","text":"จำนวนเอกสารทั้งหมด"},{"key":"ง","text":"จำนวน token ทั้งหมด"}],"answer":"ก","explanation":"<p>hapax = คำที่เกิดครั้งเดียว<\/p>"},{"id":"wk11-B1","section":"B","num":1,"type":"tf","prompt":"<p>BeautifulSoup สามารถรัน JavaScript และคลิกปุ่มบนหน้าเว็บได้ด้วยตัวเอง<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ผิด","explanation":"<p>BeautifulSoup ไม่รัน JS และไม่โต้ตอบกับหน้าเว็บ<\/p>"},{"id":"wk11-B2","section":"B","num":2,"type":"tf","prompt":"<p><code>.text<\/code> ของ BeautifulSoup รวมข้อความของ element ลูกหลานทั้งหมด<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ถูก","explanation":"<p><code>.text<\/code> รวมข้อความของ descendants<\/p>"},{"id":"wk11-B3","section":"B","num":3,"type":"tf","prompt":"<p><code>.string<\/code> จะคืนค่า <code>None<\/code> เมื่อ element มีลูกมากกว่าหนึ่ง<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ถูก","explanation":"<p><code>.string<\/code> ใช้ได้เมื่อมีข้อความเดียว; ถ้าหลายลูกจะได้ <code>None<\/code><\/p>"},{"id":"wk11-B4","section":"B","num":4,"type":"tf","prompt":"<p>Type-Token Ratio (TTR) คำนวณจากจำนวน unique token หารจำนวน token ทั้งหมด<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ถูก","explanation":"<p>TTR = V/N = unique/total<\/p>"},{"id":"wk11-B5","section":"B","num":5,"type":"tf","prompt":"<p>N-gram เข้าใจความหมายเชิงลึกของประโยคได้ดีกว่า embedding ทุกกรณี<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ผิด","explanation":"<p>n-gram จับลำดับที่ปรากฏ ไม่เข้าใจความหมายเชิงลึก<\/p>"},{"id":"wk11-C1","section":"C","num":1,"type":"open","prompt":"<p>กำหนด HTML ต่อไปนี้ จงเขียนโค้ด BeautifulSoup ดึง title และ date ของทุก article<\/p>\n<pre><code class=\"language-html\">&lt;section&gt;\n  &lt;article&gt;\n    &lt;h3 data-tb-title=&quot;1&quot;&gt;Data Acquisition&lt;/h3&gt;\n    &lt;span&gt;2026-01-01&lt;/span&gt;\n  &lt;/article&gt;\n  &lt;article&gt;\n    &lt;h3 data-tb-title=&quot;2&quot;&gt;Python for Data&lt;/h3&gt;\n    &lt;span&gt;2026-02-02&lt;/span&gt;\n  &lt;/article&gt;\n&lt;/section&gt;\n<\/code><\/pre>","answer_html":"<pre><code class=\"language-python\">from bs4 import BeautifulSoup\n\nsoup = BeautifulSoup(html_doc, &quot;html.parser&quot;)\n\nfor article in soup.find_all(&quot;article&quot;):\n    title = article.find(&quot;h3&quot;, attrs={&quot;data-tb-title&quot;: True}).text.strip()\n    date = article.find(&quot;span&quot;).text.strip()\n    print(title, date)\n<\/code><\/pre>"},{"id":"wk11-C2","section":"C","num":2,"type":"open","prompt":"<p>จงเขียนโค้ดดึงข้อความและ <code>href<\/code> ของลิงก์ทั้งหมดที่อยู่ภายใน <code>&lt;div class=\"content\"&gt;<\/code><\/p>","answer_html":"<pre><code class=\"language-python\">for a in soup.select(&quot;div.content a&quot;):\n    print(a.get_text(strip=True), a.get(&quot;href&quot;))\n<\/code><\/pre>\n<p>หรือ <code>soup.find(\"div\", class_=\"content\").find_all(\"a\")<\/code><\/p>"},{"id":"wk11-C3","section":"C","num":3,"type":"open","prompt":"<p>ตัดคำประโยค <code>\"I love learning NLP!\"<\/code> แล้วสร้าง\n1. Unigram\n2. Bigram\n3. Trigram<\/p>\n<p>พร้อมบอกจำนวนรายการของแต่ละแบบ (ถือว่าเครื่องหมาย <code>!<\/code> เป็น token หนึ่งตัว)<\/p>","answer_html":"<p>tokens = <code>[\"I\", \"love\", \"learning\", \"NLP\", \"!\"]<\/code>\n- Unigram: 5 รายการ — <code>I<\/code>, <code>love<\/code>, <code>learning<\/code>, <code>NLP<\/code>, <code>!<\/code>\n- Bigram: 4 รายการ — <code>(I, love)<\/code>, <code>(love, learning)<\/code>, <code>(learning, NLP)<\/code>, <code>(NLP, !)<\/code>\n- Trigram: 3 รายการ — <code>(I, love, learning)<\/code>, <code>(love, learning, NLP)<\/code>, <code>(learning, NLP, !)<\/code><\/p>"},{"id":"wk11-C4","section":"C","num":4,"type":"open","prompt":"<p>Corpus หนึ่งมี 1,200 token, 300 unique token และมี hapax 80 คำ\n1. จงคำนวณ TTR\n2. อธิบายความหมายของค่า TTR ที่ได้\n3. เพราะเหตุใดการเปรียบเทียบ TTR ระหว่างเอกสารยาว 1,200 token กับเอกสาร 200 token จึงต้องระวัง<\/p>","answer_html":"<ol>\n<li>TTR = 300 / 1,200 = <strong>0.25<\/strong><\/li>\n<li>หมายถึงสัดส่วนคำไม่ซ้ำต่อคำทั้งหมด 25% — ยิ่งสูงยิ่งหลากหลาย<\/li>\n<li>TTR ขึ้นกับความยาวเอกสาร: เอกสารยาวมักมี TTR ต่ำกว่าเพราะมีคำซ้ำมากขึ้น การเปรียบเทียบข้ามเอกสารต่างขนาดจึงไม่ยุติธรรม ควรใช้ measure ที่ปรับตามความยาวหรือเปรียบเทียบช่วงความยาวใกล้กัน<\/li>\n<\/ol>"},{"id":"wk11-C5","section":"C","num":5,"type":"open","prompt":"<p>จงเขียนโค้ด <code>pythainlp<\/code> เพื่อตัดคำภาษาไทยด้วย engine <code>newmm<\/code> และกรอง token ที่มีความยาวไม่เกิน 1 ตัวอักษรออก พร้อมระบุขั้นตอนทำความสะอาดข้อความอย่างน้อย 3 ข้อ<\/p>","answer_html":"<pre><code class=\"language-python\">from pythainlp.tokenize import word_tokenize\n\ntokens = word_tokenize(text, engine=&quot;newmm&quot;)\ntokens = [t for t in tokens if len(t) &gt; 1 and t.strip()]\n<\/code><\/pre>\n<p>ขั้นตอนทำความสะอาด:\n- ลบ HTML tags\n- ลบ symbol/อักขระพิเศษ\n- แปลงเป็นตัวพิมพ์เล็ก (ถ้าเหมาะสม)\n- ลบ stop words\n- กรอง token ที่ยาว 1 ตัวอักษร\n- ลบช่องว่างซ้ำ<\/p>"}]},{"id":"wk12","label":"WK12","title":"Vectorization & DBSCAN","short":"TF-IDF & DBSCAN","desc":"BoW, Binary/Count/TF-IDF, cosine, L1/L2, sparse matrix และ DBSCAN","time":50,"bonus":false,"questions":[{"id":"wk12-A1","section":"A","num":1,"type":"mcq","prompt":"<p>ข้อใด <strong>ไม่ใช่<\/strong> เหตุผลที่ต้องแปลงข้อความเป็นเวกเตอร์?<\/p>","options":[{"key":"ก","text":"อัลกอริทึม ML คำนวณได้เฉพาะตัวเลข"},{"key":"ข","text":"ช่วยจับความหมาย/โครงสร้างบางระดับของข้อความ"},{"key":"ค","text":"ช่วยลดมิติของข้อมูลข้อความ"},{"key":"ง","text":"ทำให้ทุกเอกสารมีจำนวน token เท่ากันโดยอัตโนมัติ"}],"answer":"ง","explanation":"<p>การทำเวกเตอร์ไม่ได้ทำให้จำนวน token เท่ากัน; เอกสารยังยาวต่างกันได้ (แต่เวกเตอร์มีมิติ vocabulary เท่ากัน)<\/p>"},{"id":"wk12-A2","section":"A","num":2,"type":"mcq","prompt":"<p>Bag of Words (BoW) มีลักษณะสำคัญอย่างไร?<\/p>","options":[{"key":"ก","text":"สนลำดับคำและไวยากรณ์อย่างเคร่งครัด"},{"key":"ข","text":"แทนข้อความด้วยคำที่ไม่สนลำดับและไวยากรณ์ โดยสนว่ามีคำอะไร/กี่ครั้ง"},{"key":"ค","text":"เก็บข้อความทั้งหมดเป็น string เดียว"},{"key":"ง","text":"ใช้ได้เฉพาะภาษาไทย"}],"answer":"ข","explanation":"<p>BoW ไม่สนลำดับ/ไวยากรณ์ สนแค่การปรากฏของคำ<\/p>"},{"id":"wk12-A3","section":"A","num":3,"type":"mcq","prompt":"<p>Binary vectorizer เก็บค่าในเวกเตอร์อย่างไร?<\/p>","options":[{"key":"ก","text":"0 หรือ 1 ตามการมี/ไม่มีของคำ"},{"key":"ข","text":"จำนวนครั้งที่คำปรากฏ"},{"key":"ค","text":"ค่า TF-IDF"},{"key":"ง","text":"ค่า embedding 384 มิติ"}],"answer":"ก","explanation":"<p>Binary เก็บ 0/1 ตามการมี/ไม่มี<\/p>"},{"id":"wk12-A4","section":"A","num":4,"type":"mcq","prompt":"<p>Count vectorizer ต่างจาก binary vectorizer อย่างไร?<\/p>","options":[{"key":"ก","text":"Count สนใจจำนวนครั้งที่คำปรากฏ; Binary สนใจแค่ว่ามีหรือไม่มี"},{"key":"ข","text":"Count ใช้ได้เฉพาะตัวเลข; Binary ใช้กับข้อความ"},{"key":"ค","text":"Binary ให้ค่า TF-IDF; Count ให้ค่า 0/1"},{"key":"ง","text":"ทั้งสองให้ผลเหมือนกันเสมอ"}],"answer":"ก","explanation":"<p>Count เก็บจำนวนครั้ง; Binary เก็บแค่การมี/ไม่มี<\/p>"},{"id":"wk12-A5","section":"A","num":5,"type":"mcq","prompt":"<p>TF-IDF จะให้ค่าสูงกับคำลักษณะใด?<\/p>","options":[{"key":"ก","text":"คำที่ปรากฏบ่อยในเอกสารนี้ แต่หายากในเอกสารอื่น"},{"key":"ข","text":"คำที่ปรากฏในทุกเอกสาร"},{"key":"ค","text":"คำที่ยาวที่สุดในเอกสาร"},{"key":"ง","text":"คำที่ปรากฏครั้งเดียวในทุกเอกสาร"}],"answer":"ก","explanation":"<p>TF-IDF สูง = บ่อยในเอกสารนี้ แต่หายากในคลัง<\/p>"},{"id":"wk12-A6","section":"A","num":6,"type":"mcq","prompt":"<p>ตามสูตรในสไลด์ <code>TF(t, d)<\/code> คำนวณอย่างไร?<\/p>","options":[{"key":"ก","text":"จำนวนครั้งที่คำ t ปรากฏในเอกสาร d หารจำนวนคำทั้งหมดในเอกสาร d"},{"key":"ข","text":"จำนวนเอกสารทั้งหมดหารจำนวนเอกสารที่มีคำ t"},{"key":"ค","text":"จำนวนครั้งที่คำ t ปรากฏในทุกเอกสาร"},{"key":"ง","text":"ความยาวของเวกเตอร์เอกสาร d"}],"answer":"ก","explanation":"<p><code>TF(t,d) = count(t,d) / total_terms(d)<\/code><\/p>"},{"id":"wk12-A7","section":"A","num":7,"type":"mcq","prompt":"<p>ตามสูตรในสไลด์ <code>IDF(t, D)<\/code> คำนวณอย่างไร?<\/p>","options":[{"key":"ก","text":"จำนวนครั้งที่คำ t ปรากฏในเอกสาร d"},{"key":"ข","text":"จำนวนเอกสารทั้งหมดในคลัง D หารจำนวนเอกสารที่มีคำ t"},{"key":"ค","text":"จำนวนคำทั้งหมดในเอกสาร d"},{"key":"ง","text":"ค่าเฉลี่ยความยาวเอกสาร"}],"answer":"ข","explanation":"<p><code>IDF(t,D) = N / df(t)<\/code><\/p>"},{"id":"wk12-A8","section":"A","num":8,"type":"mcq","prompt":"<p>ถ้าคำหนึ่งปรากฏในทุกเอกสารของคลัง ตามสูตรสไลด์ <code>IDF = N/df<\/code> ค่า IDF จะเป็นเท่าไร?<\/p>","options":[{"key":"ก","text":"0"},{"key":"ข","text":"1"},{"key":"ค","text":"N"},{"key":"ง","text":"ไม่สามารถคำนวณได้"}],"answer":"ข","explanation":"<p>ถ้าปรากฏทุกเอกสาร <code>df = N<\/code> → <code>IDF = N/N = 1<\/code><\/p>"},{"id":"wk12-A9","section":"A","num":9,"type":"mcq","prompt":"<p><code>TfidfVectorizer<\/code> ของ sklearn ใช้ normalization แบบใดเป็นค่าเริ่มต้น?<\/p>","options":[{"key":"ก","text":"l1"},{"key":"ข","text":"l2"},{"key":"ค","text":"max"},{"key":"ง","text":"ไม่ normalize"}],"answer":"ข","explanation":"<p>sklearn ใช้ <code>norm='l2'<\/code> เป็นค่าเริ่มต้น<\/p>"},{"id":"wk12-A10","section":"A","num":10,"type":"mcq","prompt":"<p>กฎการใช้งาน <code>TfidfVectorizer<\/code> ข้อใดถูกต้อง?<\/p>","options":[{"key":"ก","text":"<code>fit<\/code> บน train แล้ว <code>transform<\/code> test/query"},{"key":"ข","text":"<code>fit<\/code> ใหม่บน test ทุกครั้งเพื่อให้ vocabulary ตรง"},{"key":"ค","text":"<code>fit<\/code> บน query แล้ว <code>transform<\/code> train"},{"key":"ง","text":"ไม่ต้อง fit เลย"}],"answer":"ก","explanation":"<p>Fit บน train เท่านั้น; test/query ใช้ transform<\/p>"},{"id":"wk12-A11","section":"A","num":11,"type":"mcq","prompt":"<p>สูตร Cosine similarity ข้อใดถูกต้อง?<\/p>","options":[{"key":"ก","text":"<code>(A·B) / (‖A‖ × ‖B‖)<\/code>"},{"key":"ข","text":"<code>(‖A‖ × ‖B‖) / (A·B)<\/code>"},{"key":"ค","text":"<code>Σ|aᵢ - bᵢ|<\/code>"},{"key":"ง","text":"<code>√(Σ(aᵢ - bᵢ)²)<\/code>"}],"answer":"ก","explanation":"<p><code>cos(A,B) = (A·B)/(‖A‖‖B‖)<\/code><\/p>"},{"id":"wk12-A12","section":"A","num":12,"type":"mcq","prompt":"<p>ให้ A = <code>[1, 2, 2]<\/code> และ B = <code>[2, 1, 2]<\/code> Cosine similarity เท่าไร?<\/p>","options":[{"key":"ก","text":"0.5"},{"key":"ข","text":"0.889"},{"key":"ค","text":"1.0"},{"key":"ง","text":"0.667"}],"answer":"ข","explanation":"<p>dot = 1×2 + 2×1 + 2×2 = 8; norms = 3 ทั้งคู่; cos = 8/9 ≈ 0.889<\/p>"},{"id":"wk12-A13","section":"A","num":13,"type":"mcq","prompt":"<p>ข้อใดอธิบาย Cosine similarity ได้ถูกต้อง?<\/p>","options":[{"key":"ก","text":"วัดทิศทาง/มุมระหว่างเวกเตอร์ ไม่สนขนาด"},{"key":"ข","text":"วัดระยะทางตรงระหว่างจุด ไวต่อขนาดมาก"},{"key":"ค","text":"วัดจำนวนคำที่ต่างกัน"},{"key":"ง","text":"ใช้ได้เฉพาะเวกเตอร์ 2 มิติ"}],"answer":"ก","explanation":"<p>Cosine วัดมุม/ทิศทาง ไม่สนขนาด<\/p>"},{"id":"wk12-A14","section":"A","num":14,"type":"mcq","prompt":"<p>Cosine distance คำนวณอย่างไร?<\/p>","options":[{"key":"ก","text":"<code>1 + cosine similarity<\/code>"},{"key":"ข","text":"<code>1 - cosine similarity<\/code>"},{"key":"ค","text":"<code>cosine similarity / 2<\/code>"},{"key":"ง","text":"<code>√cosine similarity<\/code>"}],"answer":"ข","explanation":"<p>Cosine distance = <code>1 - cosine similarity<\/code><\/p>"},{"id":"wk12-A15","section":"A","num":15,"type":"mcq","prompt":"<p>L1 normalize เวกเตอร์ <code>[3, 4]<\/code> ได้ผลลัพธ์ใด?<\/p>","options":[{"key":"ก","text":"<code>[0.6, 0.8]<\/code>"},{"key":"ข","text":"<code>[3/7, 4/7]<\/code>"},{"key":"ค","text":"<code>[3, 4]<\/code>"},{"key":"ง","text":"<code>[0.5, 0.5]<\/code>"}],"answer":"ข","explanation":"<p>L1 norm = 3+4 = 7 → <code>[3/7, 4/7]<\/code><\/p>"},{"id":"wk12-A16","section":"A","num":16,"type":"mcq","prompt":"<p>L2 normalize เวกเตอร์ <code>[3, 4]<\/code> ได้ผลลัพธ์ใด?<\/p>","options":[{"key":"ก","text":"<code>[0.6, 0.8]<\/code>"},{"key":"ข","text":"<code>[3/7, 4/7]<\/code>"},{"key":"ค","text":"<code>[1, 1]<\/code>"},{"key":"ง","text":"<code>[0.75, 1.0]<\/code>"}],"answer":"ก","explanation":"<p>L2 norm = √(9+16) = 5 → <code>[0.6, 0.8]<\/code><\/p>"},{"id":"wk12-A17","section":"A","num":17,"type":"mcq","prompt":"<p>ถ้าเวกเตอร์ A และ B ถูก L2-normalize แล้ว ข้อใดถูกต้อง?<\/p>","options":[{"key":"ก","text":"<code>cos(A, B) = A·B<\/code>"},{"key":"ข","text":"<code>cos(A, B) = ‖A‖ + ‖B‖<\/code>"},{"key":"ค","text":"<code>cos(A, B) = 1<\/code> เสมอ"},{"key":"ง","text":"<code>cos(A, B) = 0<\/code> เสมอ"}],"answer":"ก","explanation":"<p>ถ้า normalize แล้ว dot product = cosine<\/p>"},{"id":"wk12-A18","section":"A","num":18,"type":"mcq","prompt":"<p>ใน sparse matrix ค่า <code>nnz<\/code> หมายถึงอะไร?<\/p>","options":[{"key":"ก","text":"จำนวนสมาชิกทั้งหมด"},{"key":"ข","text":"จำนวนค่าที่ไม่เป็นศูนย์"},{"key":"ค","text":"จำนวนแถว"},{"key":"ง","text":"จำนวนคอลัมน์"}],"answer":"ข","explanation":"<p><code>nnz<\/code> = number of non-zero elements<\/p>"},{"id":"wk12-A19","section":"A","num":19,"type":"mcq","prompt":"<p>DBSCAN ให้ label เป็น <code>-1<\/code> กับจุดประเภทใด?<\/p>","options":[{"key":"ก","text":"Core point"},{"key":"ข","text":"Border point"},{"key":"ค","text":"Noise/outlier"},{"key":"ง","text":"จุดศูนย์กลางคลัสเตอร์"}],"answer":"ค","explanation":"<p><code>-1<\/code> = noise/outlier<\/p>"},{"id":"wk12-A20","section":"A","num":20,"type":"mcq","prompt":"<p>ข้อใดเป็นข้อดีของ DBSCAN เมื่อเทียบกับ K-Means?<\/p>","options":[{"key":"ก","text":"ต้องระบุจำนวนกลุ่มล่วงหน้า"},{"key":"ข","text":"จับกลุ่มรูปทรงใดก็ได้และระบุ noise อัตโนมัติ"},{"key":"ค","text":"ทำนายจุดใหม่ได้โดยตรงทุกกรณี"},{"key":"ง","text":"เร็วกว่า K-Means ในทุกชุดข้อมูล"}],"answer":"ข","explanation":"<p>DBSCAN ไม่ต้องระบุ k, จับกลุ่มรูปทรงใดก็ได้, และแยก noise ได้<\/p>"},{"id":"wk12-B1","section":"B","num":1,"type":"tf","prompt":"<p>Bag of Words เก็บลำดับของคำในเอกสารไว้ครบถ้วน<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ผิด","explanation":"<p>BoW ไม่สนลำดับคำ<\/p>"},{"id":"wk12-B2","section":"B","num":2,"type":"tf","prompt":"<p>Binary vectorizer นับจำนวนครั้งที่คำปรากฏในเอกสาร<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ผิด","explanation":"<p>Binary เก็บแค่ 0/1; Count ต่างหากที่นับจำนวนครั้ง<\/p>"},{"id":"wk12-B3","section":"B","num":3,"type":"tf","prompt":"<p>การ <code>fit<\/code> <code>TfidfVectorizer<\/code> ใหม่บน test set เป็นวิธีที่ถูกต้องเพื่อให้ vocabulary ครอบคลุมคำใน test<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ผิด","explanation":"<p>ห้าม fit บน test; fit บน train แล้ว transform test<\/p>"},{"id":"wk12-B4","section":"B","num":4,"type":"tf","prompt":"<p>Cosine similarity ของเวกเตอร์ BoW/TF-IDF ที่ค่าไม่เป็นลบจะมีช่วงอยู่ระหว่าง 0 ถึง 1<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ถูก","explanation":"<p>ค่าไม่เป็นลบ → dot ไม่เป็นลบ → cosine อยู่ใน [0, 1]<\/p>"},{"id":"wk12-B5","section":"B","num":5,"type":"tf","prompt":"<p>DBSCAN ต้องระบุจำนวนคลัสเตอร์ <code>k<\/code> ล่วงหน้าเหมือน K-Means<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ผิด","explanation":"<p>DBSCAN ใช้ <code>eps<\/code> และ <code>min_samples<\/code>; K-Means ต้องระบุ k<\/p>"},{"id":"wk12-C1","section":"C","num":1,"type":"open","prompt":"<p>กำหนดเอกสาร 3 ฉบับ\n- D1: <code>apple banana apple<\/code>\n- D2: <code>banana cherry<\/code>\n- D3: <code>apple cherry cherry<\/code><\/p>\n<p>จงคำนวณ TF-IDF ตามสูตรในสไลด์ (<code>TF = count/total<\/code>, <code>IDF = N/df<\/code>) แล้ว L2-normalize เวกเตอร์ของแต่ละเอกสาร พร้อมหา cosine similarity ระหว่าง D1–D2 และ D1–D3<\/p>","answer_html":"<p>Vocabulary = <code>apple, banana, cherry<\/code>; N = 3\ndf: apple = 2, banana = 2, cherry = 2 → IDF = 3/2 = 1.5 ทุกคำ<\/p>\n<table>\n<thead>\n<tr>\n<th>เอกสาร<\/th>\n<th style=\"text-align: right;\">apple<\/th>\n<th style=\"text-align: right;\">banana<\/th>\n<th style=\"text-align: right;\">cherry<\/th>\n<\/tr>\n<\/thead>\n<tbody>\n<tr>\n<td>D1 TF<\/td>\n<td style=\"text-align: right;\">2/3<\/td>\n<td style=\"text-align: right;\">1/3<\/td>\n<td style=\"text-align: right;\">0<\/td>\n<\/tr>\n<tr>\n<td>D1 TF-IDF<\/td>\n<td style=\"text-align: right;\">1.0<\/td>\n<td style=\"text-align: right;\">0.5<\/td>\n<td style=\"text-align: right;\">0<\/td>\n<\/tr>\n<tr>\n<td>D1 L2-normalized<\/td>\n<td style=\"text-align: right;\">0.894<\/td>\n<td style=\"text-align: right;\">0.447<\/td>\n<td style=\"text-align: right;\">0<\/td>\n<\/tr>\n<tr>\n<td>D2 TF<\/td>\n<td style=\"text-align: right;\">0<\/td>\n<td style=\"text-align: right;\">1/2<\/td>\n<td style=\"text-align: right;\">1/2<\/td>\n<\/tr>\n<tr>\n<td>D2 TF-IDF<\/td>\n<td style=\"text-align: right;\">0<\/td>\n<td style=\"text-align: right;\">0.75<\/td>\n<td style=\"text-align: right;\">0.75<\/td>\n<\/tr>\n<tr>\n<td>D2 L2-normalized<\/td>\n<td style=\"text-align: right;\">0<\/td>\n<td style=\"text-align: right;\">0.707<\/td>\n<td style=\"text-align: right;\">0.707<\/td>\n<\/tr>\n<tr>\n<td>D3 TF<\/td>\n<td style=\"text-align: right;\">1/3<\/td>\n<td style=\"text-align: right;\">0<\/td>\n<td style=\"text-align: right;\">2/3<\/td>\n<\/tr>\n<tr>\n<td>D3 TF-IDF<\/td>\n<td style=\"text-align: right;\">0.5<\/td>\n<td style=\"text-align: right;\">0<\/td>\n<td style=\"text-align: right;\">1.0<\/td>\n<\/tr>\n<tr>\n<td>D3 L2-normalized<\/td>\n<td style=\"text-align: right;\">0.447<\/td>\n<td style=\"text-align: right;\">0<\/td>\n<td style=\"text-align: right;\">0.894<\/td>\n<\/tr>\n<\/tbody>\n<\/table>\n<ul>\n<li><code>cos(D1, D2) = 0.447 × 0.707 = 0.316<\/code><\/li>\n<li><code>cos(D1, D3) = 0.894 × 0.447 = 0.400<\/code><\/li>\n<li>D1 ใกล้ D3 มากกว่า D2<\/li>\n<\/ul>"},{"id":"wk12-C2","section":"C","num":2,"type":"open","prompt":"<p>ให้ A = <code>[1, 2, 2]<\/code>, B = <code>[2, 1, 2]<\/code> จงคำนวณ cosine similarity<\/p>","answer_html":"<ul>\n<li><code>A·B = 1×2 + 2×1 + 2×2 = 8<\/code><\/li>\n<li><code>‖A‖ = √(1+4+4) = 3<\/code>, <code>‖B‖ = 3<\/code><\/li>\n<li><code>cos = 8/9 ≈ 0.889<\/code><\/li>\n<\/ul>"},{"id":"wk12-C3","section":"C","num":3,"type":"open","prompt":"<p>จง L1-normalize และ L2-normalize เวกเตอร์ <code>[6, 8]<\/code><\/p>","answer_html":"<ul>\n<li>L1: <code>‖v‖₁ = 6+8 = 14<\/code> → <code>[6/14, 8/14] = [3/7, 4/7] ≈ [0.429, 0.571]<\/code><\/li>\n<li>L2: <code>‖v‖₂ = √(36+64) = 10<\/code> → <code>[0.6, 0.8]<\/code><\/li>\n<\/ul>"},{"id":"wk12-C4","section":"C","num":4,"type":"open","prompt":"<p>กำหนดจุด 1 มิติ <code>[0, 0.1, 0.2, 0.8]<\/code> ใช้ DBSCAN ด้วย <code>eps=0.3<\/code>, <code>min_samples=3<\/code> (นับจุดตัวเองด้วย) จงระบุ label ของแต่ละจุด และอธิบายหลักการเลือก <code>eps<\/code> ด้วย k-distance graph<\/p>","answer_html":"<ul>\n<li>จุด <code>0<\/code>: มีเพื่อนบ้าน 0, 0.1, 0.2 ภายใน eps 0.3 → 3 จุด (รวมตัวเอง) → core → label 0<\/li>\n<li>จุด <code>0.1<\/code>: มี 0, 0.1, 0.2 → 3 จุด → core → label 0<\/li>\n<li>จุด <code>0.2<\/code>: มี 0, 0.1, 0.2 → 3 จุด → core → label 0<\/li>\n<li>จุด <code>0.8<\/code>: มีเพียงตัวเอง → 1 จุด → noise → label <strong>-1<\/strong><\/li>\n<li>ผลลัพธ์: <code>[0, 0, 0, -1]<\/code><\/li>\n<\/ul>\n<p>การเลือก eps: เรียงระยะของเพื่อนบ้านลำดับที่ k (เช่น k = min_samples) จากมากไปน้อย แล้ว plot k-distance graph — จุด “ข้อศอก” (elbow) คือ eps ที่เหมาะสม<\/p>"},{"id":"wk12-C5","section":"C","num":5,"type":"open","prompt":"<p>จงเขียนโค้ด Python ที่\n1. Fit <code>TfidfVectorizer<\/code> บน <code>train_docs<\/code>\n2. Transform <code>query_docs<\/code>\n3. คำนวณ cosine similarity ระหว่าง query กับ train\n4. สร้าง distance matrix สำหรับ DBSCAN ด้วย <code>1 - cosine_similarity<\/code> และรัน DBSCAN<\/p>","answer_html":"<pre><code class=\"language-python\">import numpy as np\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.metrics.pairwise import cosine_similarity\nfrom sklearn.cluster import DBSCAN\n\nvec = TfidfVectorizer()\nX_train = vec.fit_transform(train_docs)       # fit เฉพาะ train\nX_query = vec.transform(query_docs)            # query ใช้ transform\n\nsim = cosine_similarity(X_query, X_train)\n\nsim_docs = cosine_similarity(X_train)\ndist = np.clip(1 - sim_docs, 0, None)\n\nlabels = DBSCAN(\n    eps=0.8,\n    min_samples=3,\n    metric=&quot;precomputed&quot;,\n).fit_predict(dist)\n<\/code><\/pre>\n<p>หมายเหตุ: <code>np.clip<\/code> กันค่าลบจาก floating point; DBSCAN ใช้ distance matrix ที่มี diagonal เป็น 0<\/p>"}]},{"id":"wk13","label":"WK13","title":"Vector Database & RAG","short":"Vector DB & RAG","desc":"ChromaDB, distance→similarity, ANN, filter/reranking และ RAG","time":45,"bonus":false,"questions":[{"id":"wk13-A1","section":"A","num":1,"type":"mcq","prompt":"<p>Vector database คืออะไร?<\/p>","options":[{"key":"ก","text":"ฐานข้อมูลที่เก็บข้อมูลเป็นตารางและค้นด้วย SQL เท่านั้น"},{"key":"ข","text":"ฐานข้อมูลเฉพาะทางที่เก็บ dense vector และค้นหาความคล้ายคลึงได้เร็ว"},{"key":"ค","text":"ระบบจัดเก็บไฟล์ ZIP"},{"key":"ง","text":"ไลบรารีสำหรับ parse HTML"}],"answer":"ข","explanation":"<p>Vector DB เก็บ dense vector และค้นด้วยความคล้าย<\/p>"},{"id":"wk13-A2","section":"A","num":2,"type":"mcq","prompt":"<p>Vector database ต่างจากฐานข้อมูลเชิงสัมพันธ์ทั่วไปอย่างไร?<\/p>","options":[{"key":"ก","text":"ค้นด้วยการเทียบค่าเท่ากัน (<code>=<\/code>) เท่านั้น"},{"key":"ข","text":"ค้นด้วยความคล้ายเชิงความหมาย (semantic similarity) ของเวกเตอร์"},{"key":"ค","text":"ไม่ต้องมี index"},{"key":"ง","text":"เก็บได้เฉพาะข้อความภาษาไทย"}],"answer":"ข","explanation":"<p>ค้น semantic similarity ไม่ใช่ exact match<\/p>"},{"id":"wk13-A3","section":"A","num":3,"type":"mcq","prompt":"<p>กระบวนการหลัก 4 ขั้นของ vector database เรียงถูกต้องอย่างไร?<\/p>","options":[{"key":"ก","text":"Retrieval → Embedding → Query → Indexing"},{"key":"ข","text":"Embedding → Indexing → Query → Retrieval"},{"key":"ค","text":"Indexing → Retrieval → Embedding → Query"},{"key":"ง","text":"Query → Retrieval → Indexing → Embedding"}],"answer":"ข","explanation":"<p>Embedding → Indexing → Query → Retrieval<\/p>"},{"id":"wk13-A4","section":"A","num":4,"type":"mcq","prompt":"<p>ข้อใด <strong>ไม่ใช่<\/strong> use case ของ vector database?<\/p>","options":[{"key":"ก","text":"Semantic search และแนะนำสินค้า"},{"key":"ข","text":"จัดกลุ่มเอกสารและค้นรูปภาพ"},{"key":"ค","text":"ตรวจหาของซ้ำ/anomaly detection"},{"key":"ง","text":"บังคับใช้ foreign key constraint ในตาราง SQL"}],"answer":"ง","explanation":"<p>Foreign key constraint เป็นงานของ relational DB<\/p>"},{"id":"wk13-A5","section":"A","num":5,"type":"mcq","prompt":"<p>ข้อใดเปรียบเทียบ sparse vector กับ dense vector ถูกต้อง?<\/p>","options":[{"key":"ก","text":"Sparse ยาวเท่า vocabulary และมี 0 เยอะ; Dense มิติคงที่ เช่น 384–768"},{"key":"ข","text":"Sparse สั้นกว่า dense เสมอ"},{"key":"ค","text":"Dense ตีความแต่ละแกนง่ายกว่า sparse"},{"key":"ง","text":"Sparse ใช้ embedding จาก transformer เท่านั้น"}],"answer":"ก","explanation":"<p>Sparse = vocab-length/มี 0 เยอะ; Dense = fixed dim<\/p>"},{"id":"wk13-A6","section":"A","num":6,"type":"mcq","prompt":"<p>Dense embedding ทั่วไปที่ใช้ใน ChromaDB มีมิติประมาณเท่าไร?<\/p>","options":[{"key":"ก","text":"2–3 มิติ"},{"key":"ข","text":"10–20 มิติ"},{"key":"ค","text":"384–768 มิติ"},{"key":"ง","text":"100,000 มิติขึ้นไป"}],"answer":"ค","explanation":"<p>โดยทั่วไป 384–768 มิติ<\/p>"},{"id":"wk13-A7","section":"A","num":7,"type":"mcq","prompt":"<p><code>chromadb.PersistentClient(path=\"./chroma_db\")<\/code> ต่างจาก <code>chromadb.Client()<\/code> อย่างไร?<\/p>","options":[{"key":"ก","text":"PersistentClient เก็บข้อมูลลงดิสก์ ข้อมูลอยู่ต่อหลังปิดโปรแกรม"},{"key":"ข","text":"PersistentClient เก็บใน RAM เท่านั้น"},{"key":"ค","text":"Client() เก็บลงดิสก์ถาวร"},{"key":"ง","text":"ทั้งสองเหมือนกัน"}],"answer":"ก","explanation":"<p>PersistentClient เก็บลงดิสก์; Client() อยู่ใน memory<\/p>"},{"id":"wk13-A8","section":"A","num":8,"type":"mcq","prompt":"<p><code>client.get_or_create_collection(name=\"docs\")<\/code> ทำอะไร?<\/p>","options":[{"key":"ก","text":"สร้าง collection ใหม่ทุกครั้ง และ error ถ้ามีอยู่แล้ว"},{"key":"ข","text":"ดึง collection ที่มีอยู่ หรือสร้างใหม่ถ้ายังไม่มี"},{"key":"ค","text":"ลบ collection ทิ้ง"},{"key":"ง","text":"คืนรายชื่อทุก collection"}],"answer":"ข","explanation":"<p>get ถ้ามี, create ถ้าไม่มี<\/p>"},{"id":"wk13-A9","section":"A","num":9,"type":"mcq","prompt":"<p>การเรียก <code>collection.add(ids=..., documents=..., embeddings=..., metadatas=...)<\/code> มีข้อกำหนดสำคัญอะไร?<\/p>","options":[{"key":"ก","text":"ทุก list ต้องมีจำนวนสมาชิกเท่ากัน"},{"key":"ข","text":"ต้องมีเฉพาะ <code>ids<\/code> อย่างเดียว"},{"key":"ค","text":"<code>metadatas<\/code> ต้องเป็น string"},{"key":"ง","text":"<code>embeddings<\/code> ต้องเป็น 2 มิติเสมอ"}],"answer":"ก","explanation":"<p>จำนวน ids/documents/embeddings/metadatas ต้องเท่ากัน<\/p>"},{"id":"wk13-A10","section":"A","num":10,"type":"mcq","prompt":"<p>พารามิเตอร์ <code>n_results<\/code> ใน <code>collection.query<\/code> หมายถึงอะไร?<\/p>","options":[{"key":"ก","text":"จำนวน collection ที่จะค้น"},{"key":"ข","text":"จำนวนผลลัพธ์ top-k ที่ต้องการ"},{"key":"ค","text":"จำนวนมิติของ embedding"},{"key":"ง","text":"จำนวน metadata ที่จะเก็บ"}],"answer":"ข","explanation":"<p>top-k results<\/p>"},{"id":"wk13-A11","section":"A","num":11,"type":"mcq","prompt":"<p><code>where<\/code> กับ <code>where_document<\/code> ใน ChromaDB ต่างกันอย่างไร?<\/p>","options":[{"key":"ก","text":"<code>where<\/code> กรอง metadata; <code>where_document<\/code> กรองข้อความในเอกสาร"},{"key":"ข","text":"<code>where<\/code> กรองข้อความ; <code>where_document<\/code> กรอง metadata"},{"key":"ค","text":"ทั้งคู่กรอง metadata เหมือนกัน"},{"key":"ง","text":"<code>where_document<\/code> ใช้ได้เฉพาะรูปภาพ"}],"answer":"ก","explanation":"<p><code>where<\/code> = metadata; <code>where_document<\/code> = ข้อความ<\/p>"},{"id":"wk13-A12","section":"A","num":12,"type":"mcq","prompt":"<p>ข้อใดกล่าวถูกต้องเกี่ยวกับ metadata ใน ChromaDB?<\/p>","options":[{"key":"ก","text":"ใส่ metadata ทีหลังตอน query ได้ทุกกรณี"},{"key":"ข","text":"ต้องใส่ metadata ตอน <code>add<\/code> ถ้าต้องการกรองด้วย <code>where<\/code> ภายหลัง"},{"key":"ค","text":"<code>where<\/code> ใช้กรองข้อความเท่านั้น"},{"key":"ง","text":"metadata ต้องเป็น string เท่านั้น"}],"answer":"ข","explanation":"<p>ต้องใส่ metadata ตอน add; กรองทีหลังไม่ได้ถ้าไม่มีตั้งแต่แรก<\/p>"},{"id":"wk13-A13","section":"A","num":13,"type":"mcq","prompt":"<p>เหตุใดจึงต้องใช้โมเดล embedding ตัวเดียวกันกับตอนสร้างเอกสารและตอน query?<\/p>","options":[{"key":"ก","text":"เพื่อให้มิติและ “ความหมาย” ของเวกเตอร์อยู่ในปริภูมิเดียวกัน"},{"key":"ข","text":"เพื่อให้ ChromaDB ทำงานเร็วขึ้น 100 เท่า"},{"key":"ค","text":"เพราะ ChromaDB บังคับให้ใช้โมเดลฟรีเท่านั้น"},{"key":"ง","text":"เพื่อลดขนาดฐานข้อมูล"}],"answer":"ก","explanation":"<p>โมเดลเดียวกันทำให้ปริภูมิเวกเตอร์ตรงกัน<\/p>"},{"id":"wk13-A14","section":"A","num":14,"type":"mcq","prompt":"<p>ค่า <code>distance<\/code> ที่ ChromaDB คืนมาควรตีความอย่างไร?<\/p>","options":[{"key":"ก","text":"ยิ่งมากยิ่งใกล้"},{"key":"ข","text":"ยิ่งน้อยยิ่งใกล้"},{"key":"ค","text":"ต้องเป็น 1 เท่านั้น"},{"key":"ง","text":"ไม่มีความหมาย"}],"answer":"ข","explanation":"<p>Distance น้อย = ใกล้/คล้ายมาก<\/p>"},{"id":"wk13-A15","section":"A","num":15,"type":"mcq","prompt":"<p>ถ้าเวกเตอร์ถูก L2-normalize และ ChromaDB (L2) คืน distance = 0.4 Cosine similarity เท่าไร?<\/p>","options":[{"key":"ก","text":"0.2"},{"key":"ข","text":"0.4"},{"key":"ค","text":"0.8"},{"key":"ง","text":"1.4"}],"answer":"ค","explanation":"<p><code>cos = 1 - d/2 = 1 - 0.2 = 0.8<\/code><\/p>"},{"id":"wk13-A16","section":"A","num":16,"type":"mcq","prompt":"<p>ถ้า collection ใช้ cosine space และคืน distance = 0.3 Cosine similarity เท่าไร?<\/p>","options":[{"key":"ก","text":"0.3"},{"key":"ข","text":"0.7"},{"key":"ค","text":"0.85"},{"key":"ง","text":"1.3"}],"answer":"ข","explanation":"<p><code>cos = 1 - d = 1 - 0.3 = 0.7<\/code><\/p>"},{"id":"wk13-A17","section":"A","num":17,"type":"mcq","prompt":"<p>ทำไมจึงต้อง L2-normalize embedding ก่อนเก็บ?<\/p>","options":[{"key":"ก","text":"เพื่อตัดอิทธิพลของขนาด เหลือทิศทางที่เป็นความหมาย และทำให้ L2 distance สัมพันธ์กับ cosine"},{"key":"ข","text":"เพื่อให้เวกเตอร์ทุกตัวมีค่าเป็น 0"},{"key":"ค","text":"เพื่อเพิ่มจำนวนมิติ"},{"key":"ง","text":"เพื่อให้ค้นหาแบบ exact ทุกครั้ง"}],"answer":"ก","explanation":"<p>Normalize ตัดขนาด เหลือทิศทาง และทำให้สูตร distance↔cosine ใช้ได้<\/p>"},{"id":"wk13-A18","section":"A","num":18,"type":"mcq","prompt":"<p>ข้อใดเปรียบเทียบ Brute Force กับ ANN ถูกต้อง?<\/p>","options":[{"key":"ก","text":"Brute Force เทียบทุกเวกเตอร์ แม่น 100% แต่ O(N); ANN ใช้ index เทียบเฉพาะ candidate เร็วกว่าแต่ประมาณ"},{"key":"ข","text":"ANN แม่น 100% และเร็วกว่า Brute Force เสมอ"},{"key":"ค","text":"Brute Force ใช้ index แบบ HNSW"},{"key":"ง","text":"ANN ไม่ใช้ cosine similarity อีกต่อไป"}],"answer":"ก","explanation":"<p>Brute force exact/ช้า; ANN approximate/เร็ว<\/p>"},{"id":"wk13-A19","section":"A","num":19,"type":"mcq","prompt":"<p>Reranking ด้วย cross-encoder มีลักษณะอย่างไร?<\/p>","options":[{"key":"ก","text":"ดึง top 50 ด้วย vector search แล้วให้ cross-encoder อ่านคู่ query+document เพื่อจัดอันดับใหม่"},{"key":"ข","text":"ลบเอกสารที่ไม่เกี่ยวข้องออกทั้งหมดก่อนค้น"},{"key":"ค","text":"ใช้แทน embedding model"},{"key":"ง","text":"ใช้เฉพาะกับรูปภาพ"}],"answer":"ก","explanation":"<p>Cross-encoder อ่าน query+doc พร้อมกันเพื่อ rerank<\/p>"},{"id":"wk13-A20","section":"A","num":20,"type":"mcq","prompt":"<p>ข้อใดอธิบายความต่างระหว่าง RAG กับ Fine-tuning ถูกต้อง?<\/p>","options":[{"key":"ก","text":"RAG แก้ input/context; Fine-tuning แก้ model weights"},{"key":"ข","text":"RAG แก้ weights; Fine-tuning แก้ context"},{"key":"ค","text":"ทั้งสองใช้สำหรับเปลี่ยนโทนเสียงเท่านั้น"},{"key":"ง","text":"RAG ต้องเทรนโมเดลใหม่ทุกครั้งที่ข้อมูลเปลี่ยน"}],"answer":"ก","explanation":"<p>RAG แก้ context; fine-tuning แก้ weights<\/p>"},{"id":"wk13-B1","section":"B","num":1,"type":"tf","prompt":"<p><code>where_document={\"$contains\": \"energy\"}<\/code> ใช้กรอง metadata ที่เป็นคำว่า energy<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ผิด","explanation":"<p><code>where_document<\/code> กรองข้อความ ไม่ใช่ metadata<\/p>"},{"id":"wk13-B2","section":"B","num":2,"type":"tf","prompt":"<p>ถ้าเวกเตอร์ถูก L2-normalize และ ChromaDB คืน distance = 0.5 Cosine similarity จะเท่ากับ 0.75<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ถูก","explanation":"<p><code>1 - 0.5/2 = 0.75<\/code><\/p>"},{"id":"wk13-B3","section":"B","num":3,"type":"tf","prompt":"<p>ถ้าข้อมูลภายในบริษัทเปลี่ยนทุกวัน ควรใช้ Fine-tuning แทน RAG เพราะอัปเดตง่ายกว่า<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ผิด","explanation":"<p>ข้อมูลเปลี่ยนบ่อยเหมาะกับ RAG; fine-tuning ต้องเทรนใหม่และตามไม่ทัน<\/p>"},{"id":"wk13-B4","section":"B","num":4,"type":"tf","prompt":"<p>ANN (เช่น HNSW) ให้ผลลัพธ์ nearest neighbor ที่แม่นยำ 100% ทุกครั้ง<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ผิด","explanation":"<p>ANN เป็น approximate; recall ประมาณ 95–99%<\/p>"},{"id":"wk13-B5","section":"B","num":5,"type":"tf","prompt":"<p>เอกสารและ query ต้องถูก embed ด้วยโมเดลเดียวกัน มิติและความหมายจึงจะเทียบกันได้<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ถูก","explanation":"<p>ต้องใช้โมเดลเดียวกันทั้งเอกสารและ query<\/p>"},{"id":"wk13-C1","section":"C","num":1,"type":"open","prompt":"<p>จงเขียนโค้ด ChromaDB เพื่อเพิ่มเอกสาร 2 รายการ โดยมี <code>ids<\/code>, <code>documents<\/code>, <code>embeddings<\/code>, <code>metadatas<\/code> ครบถ้วน (สมมติว่ามีตัวแปร <code>emb1<\/code>, <code>emb2<\/code> อยู่แล้ว)<\/p>","answer_html":"<pre><code class=\"language-python\">collection.add(\n    ids=[&quot;1&quot;, &quot;2&quot;],\n    documents=[&quot;doc one&quot;, &quot;doc two&quot;],\n    embeddings=[emb1, emb2],\n    metadatas=[\n        {&quot;dept&quot;: &quot;HR&quot;, &quot;year&quot;: 2026},\n        {&quot;dept&quot;: &quot;IT&quot;, &quot;year&quot;: 2025},\n    ],\n)\n<\/code><\/pre>"},{"id":"wk13-C2","section":"C","num":2,"type":"open","prompt":"<p>จงเขียน <code>collection.query<\/code> เพื่อค้น 3 เอกสารที่ใกล้ที่สุด เฉพาะแผนก HR และมีคำว่า <code>\"energy\"<\/code> พร้อมขอ <code>documents<\/code>, <code>metadatas<\/code>, <code>distances<\/code><\/p>","answer_html":"<pre><code class=\"language-python\">results = collection.query(\n    query_embeddings=[q_vec],\n    n_results=3,\n    where={&quot;dept&quot;: &quot;HR&quot;},\n    where_document={&quot;$contains&quot;: &quot;energy&quot;},\n    include=[&quot;documents&quot;, &quot;metadatas&quot;, &quot;distances&quot;],\n)\n<\/code><\/pre>"},{"id":"wk13-C3","section":"C","num":3,"type":"open","prompt":"<p>กำหนด normalized L2 distances = <code>[0.2, 0.5, 1.2]<\/code> จงแปลงเป็น cosine similarity และถ้า collection ใช้ cosine space ให้แปลงอีกรอบ<\/p>","answer_html":"<ul>\n<li>Normalized L2: <code>cos = 1 - d/2<\/code><\/li>\n<li><code>0.2 → 0.9<\/code><\/li>\n<li><code>0.5 → 0.75<\/code><\/li>\n<li><code>1.2 → 0.4<\/code><\/li>\n<li>Cosine space: <code>cos = 1 - d<\/code><\/li>\n<li><code>0.2 → 0.8<\/code><\/li>\n<li><code>0.5 → 0.5<\/code><\/li>\n<li><code>1.2 → -0.2<\/code><\/li>\n<\/ul>"},{"id":"wk13-C4","section":"C","num":4,"type":"open","prompt":"<p>บริษัทมีนโยบายภายในที่เปลี่ยนทุกวัน ต้องการให้แชทบอตอบโดยอ้างอิงเอกสารล่าสุด และควบคุมสิทธิ์ตามแผนก ควรใช้ RAG หรือ Fine-tuning? จงอธิบายเหตุผลอย่างน้อย 3 ข้อ<\/p>","answer_html":"<p>ควรใช้ <strong>RAG<\/strong> เพราะ\n1. ข้อมูลเปลี่ยนทุกวัน — เพิ่ม/แก้เอกสารใน index ได้ทันที ไม่ต้องเทรนใหม่\n2. ต้องการ citation — RAG อ้างอิงเอกสารต้นทางได้ ตรวจสอบย้อนกลับได้\n3. ควบคุมสิทธิ์ตามแผนก — กรองด้วย metadata (<code>where={\"dept\": ...}<\/code>) ที่ชั้น retrieval\n4. ต้นทุนต่ำและเริ่มง่ายกว่า fine-tuning มาก<\/p>\n<p>Fine-tuning เหมาะกับกรณีที่ต้องการปรับพฤติกรรม/โทน/รูปแบบการตอบ ไม่เหมาะกับความรู้ที่เปลี่ยนบ่อย<\/p>"},{"id":"wk13-C5","section":"C","num":5,"type":"open","prompt":"<p>จงเขียน pipeline RAG ตั้งแต่รับคำถาม → ค้นเอกสาร → ประกอบ prompt → เรียก LLM โดยกำหนดให้ LLM ตอบจาก context เท่านั้น และถ้าค้นไม่เจอให้ตอบว่าไม่พบข้อมูล<\/p>","answer_html":"<pre><code class=\"language-python\">def rag_answer(query, collection, k=5):\n    q_vec = embed_query(query)  # ต้องเป็นโมเดลเดียวกับเอกสาร\n\n    results = collection.query(\n        query_embeddings=[q_vec],\n        n_results=k,\n        include=[&quot;documents&quot;, &quot;metadatas&quot;, &quot;distances&quot;],\n    )\n\n    docs = results[&quot;documents&quot;][0]\n    metas = results[&quot;metadatas&quot;][0]\n\n    if not docs:\n        return &quot;ไม่พบข้อมูลที่เกี่ยวข้อง&quot;\n\n    context_parts = []\n    for i, (doc, meta) in enumerate(zip(docs, metas), 1):\n        context_parts.append(f&quot;[{i}] {doc}\\n(metadata: {meta})&quot;)\n    context = &quot;\\n\\n&quot;.join(context_parts)\n\n    prompt = f&quot;&quot;&quot;ตอบคำถามจากเอกสารต่อไปนี้เท่านั้น\nถ้าไม่พบคำตอบในเอกสาร ให้ตอบว่า &quot;ไม่พบข้อมูล&quot;\nพร้อมอ้างอิงเลขเอกสารในวงเล็บ เช่น [1]\n\nเอกสาร:\n{context}\n\nคำถาม: {query}\n&quot;&quot;&quot;\n    return call_llm(prompt)\n<\/code><\/pre>\n<p>หลักสำคัญ: คุณภาพคำตอบ ≤ คุณภาพการค้นคืน; ควรมี citation และควรปฏิเสธเมื่อค้นไม่เจอ<\/p>"}]},{"id":"wk14","label":"WK14","title":"Image as Numbers","short":"Image & HOG","desc":"ndarray, indexing, color histogram, HOG, KDTree และ OCR","time":50,"bonus":false,"questions":[{"id":"wk14-A1","section":"A","num":1,"type":"mcq","prompt":"<p>ข้อใดอธิบายภาพในคอมพิวเตอร์ได้ถูกต้อง?<\/p>","options":[{"key":"ก","text":"ภาพเป็นข้อมูลมีโครงสร้างทั้งหมด ไม่ต้องใช้ ndarray"},{"key":"ข","text":"ภาพเป็นข้อมูลไร้โครงสร้าง แต่ถูกจัดเก็บใน container ที่มีโครงสร้างคือ ndarray"},{"key":"ค","text":"ภาพเป็นข้อมูลแบบตาราง SQL เท่านั้น"},{"key":"ง","text":"ภาพเก็บได้เฉพาะข้อความ Base64"}],"answer":"ข","explanation":"<p>ภาพเป็น unstructured data แต่เก็บใน ndarray ที่มีโครงสร้าง<\/p>"},{"id":"wk14-A2","section":"A","num":2,"type":"mcq","prompt":"<p>ภาพสี RGB มี shape อย่างไร?<\/p>","options":[{"key":"ก","text":"<code>(H, W)<\/code>"},{"key":"ข","text":"<code>(H, W, 3)<\/code>"},{"key":"ค","text":"<code>(3, H, W)<\/code>"},{"key":"ง","text":"<code>(H, 3)<\/code>"}],"answer":"ข","explanation":"<p>RGB = <code>(H, W, 3)<\/code><\/p>"},{"id":"wk14-A3","section":"A","num":3,"type":"mcq","prompt":"<p>ภาพขาวเทา (grayscale) มี shape อย่างไร?<\/p>","options":[{"key":"ก","text":"<code>(H, W)<\/code>"},{"key":"ข","text":"<code>(H, W, 3)<\/code>"},{"key":"ค","text":"<code>(H, W, 4)<\/code>"},{"key":"ง","text":"<code>(3,)<\/code>"}],"answer":"ก","explanation":"<p>Grayscale = <code>(H, W)<\/code>; RGBA = <code>(H, W, 4)<\/code><\/p>"},{"id":"wk14-A4","section":"A","num":4,"type":"mcq","prompt":"<p>ภาพ <code>.jpg<\/code> ที่อ่านด้วย <code>plt.imread<\/code> มักมี <code>dtype<\/code> และช่วงค่าแบบใด?<\/p>","options":[{"key":"ก","text":"<code>float32<\/code> ช่วง 0–1"},{"key":"ข","text":"<code>uint8<\/code> ช่วง 0–255"},{"key":"ค","text":"<code>int64<\/code> ช่วง -100 ถึง 100"},{"key":"ง","text":"<code>bool<\/code> ช่วง True/False"}],"answer":"ข","explanation":"<p>JPG มักได้ <code>uint8<\/code> 0–255; PNG อาจได้ <code>float32<\/code> 0–1<\/p>"},{"id":"wk14-A5","section":"A","num":5,"type":"mcq","prompt":"<p><code>img.size<\/code> ของ ndarray หมายถึงอะไร?<\/p>","options":[{"key":"ก","text":"จำนวนมิติ"},{"key":"ข","text":"ขนาดแต่ละแกน"},{"key":"ค","text":"จำนวนสมาชิกทั้งหมด"},{"key":"ง","text":"ชนิดข้อมูล"}],"answer":"ค","explanation":"<p><code>size<\/code> = จำนวนสมาชิกทั้งหมด = H×W×channels<\/p>"},{"id":"wk14-A6","section":"A","num":6,"type":"mcq","prompt":"<p>ndarray shape <code>(5, 4, 3)<\/code> หมายถึงอะไร?<\/p>","options":[{"key":"ก","text":"เวกเตอร์ 5 ตัว"},{"key":"ข","text":"เมทริกซ์ 5 แถว 4 คอลัมน์"},{"key":"ค","text":"5 ชั้นของเมทริกซ์ 4 แถว × 3 คอลัมน์"},{"key":"ง","text":"ภาพ 5×4 พิกเซล 3 ภาพ"}],"answer":"ค","explanation":"<p>5 ชั้น ของเมทริกซ์ 4×3<\/p>"},{"id":"wk14-A7","section":"A","num":7,"type":"mcq","prompt":"<p>กฎการ index ndarray ข้อใดถูกต้อง?<\/p>","options":[{"key":"ก","text":"ใส่เลขเดี่ยวลดมิติ; ใส่ slice คงมิติ"},{"key":"ข","text":"ใส่เลขเดี่ยวคงมิติ; ใส่ slice ลดมิติ"},{"key":"ค","text":"ทั้งสองแบบลดมิติเสมอ"},{"key":"ง","text":"ทั้งสองแบบคงมิติเสมอ"}],"answer":"ก","explanation":"<p>เลขเดี่ยวลดมิติ; slice คงมิติ<\/p>"},{"id":"wk14-A8","section":"A","num":8,"type":"mcq","prompt":"<p>ภาพ RGB shape <code>(H, W, 3)<\/code> — <code>img[0, 0]<\/code> มี shape ใด?<\/p>","options":[{"key":"ก","text":"<code>(3,)<\/code>"},{"key":"ข","text":"<code>(H, W)<\/code>"},{"key":"ค","text":"<code>(W, 3)<\/code>"},{"key":"ง","text":"scalar"}],"answer":"ก","explanation":"<p><code>img[0,0]<\/code> เลือก pixel หนึ่งจุด → ได้ค่าสี 3 ค่า shape <code>(3,)<\/code><\/p>"},{"id":"wk14-A9","section":"A","num":9,"type":"mcq","prompt":"<p>ภาพ RGB shape <code>(H, W, 3)<\/code> — <code>img[:, :, 0]<\/code> มี shape ใด?<\/p>","options":[{"key":"ก","text":"<code>(H, W)<\/code>"},{"key":"ข","text":"<code>(H, W, 3)<\/code>"},{"key":"ค","text":"<code>(W, 3)<\/code>"},{"key":"ง","text":"<code>(3,)<\/code>"}],"answer":"ก","explanation":"<p><code>img[:,:,0]<\/code> เลือกช่อง R ทั้งภาพ → <code>(H, W)<\/code><\/p>"},{"id":"wk14-A10","section":"A","num":10,"type":"mcq","prompt":"<p>ภาพ RGB shape <code>(H, W, 3)<\/code> — <code>img[0]<\/code> มี shape ใด?<\/p>","options":[{"key":"ก","text":"<code>(H, W)<\/code>"},{"key":"ข","text":"<code>(W, 3)<\/code>"},{"key":"ค","text":"<code>(3,)<\/code>"},{"key":"ง","text":"<code>(H, 3)<\/code>"}],"answer":"ข","explanation":"<p><code>img[0]<\/code> เลือกแถวแรกของทุกคอลัมน์/ทุกช่องสี → <code>(W, 3)<\/code><\/p>"},{"id":"wk14-A11","section":"A","num":11,"type":"mcq","prompt":"<p><code>img[0:100, 0:100]<\/code> ของภาพ RGB มี shape ใด?<\/p>","options":[{"key":"ก","text":"<code>(100, 100)<\/code>"},{"key":"ข","text":"<code>(100, 100, 3)<\/code>"},{"key":"ค","text":"<code>(100, 3)<\/code>"},{"key":"ง","text":"<code>(3, 100, 100)<\/code>"}],"answer":"ข","explanation":"<p>crop 100×100 ยังคง 3 ช่องสี<\/p>"},{"id":"wk14-A12","section":"A","num":12,"type":"mcq","prompt":"<p><code>np.dstack((red, green, blue))<\/code> ใช้ทำอะไร?<\/p>","options":[{"key":"ก","text":"รวมช่องสีเป็นภาพ RGB shape <code>(H, W, 3)<\/code>"},{"key":"ข","text":"แยกช่องสีออกจากกัน"},{"key":"ค","text":"หมุนภาพ 180°"},{"key":"ง","text":"แปลงภาพเป็นขาวเทา"}],"answer":"ก","explanation":"<p><code>dstack<\/code> ต่อช่องสีเป็นมิติที่ 3<\/p>"},{"id":"wk14-A13","section":"A","num":13,"type":"mcq","prompt":"<p>การทำ <code>np.fliplr(img)<\/code> ตามด้วย <code>np.flipud(img)<\/code> ให้ผลอย่างไร?<\/p>","options":[{"key":"ก","text":"หมุนภาพ 90°"},{"key":"ข","text":"หมุนภาพ 180°"},{"key":"ค","text":"กลับสีภาพ"},{"key":"ง","text":"ครอปภาพ"}],"answer":"ข","explanation":"<p>fliplr (ซ้าย-ขวา) + flipud (บน-ล่าง) = หมุน 180°<\/p>"},{"id":"wk14-A14","section":"A","num":14,"type":"mcq","prompt":"<p>สูตรแปลงภาพ RGB เป็น grayscale ข้อใดถูกต้อง?<\/p>","options":[{"key":"ก","text":"<code>0.299R + 0.587G + 0.114B<\/code>"},{"key":"ข","text":"<code>R + G + B<\/code>"},{"key":"ค","text":"<code>0.114R + 0.587G + 0.299B<\/code>"},{"key":"ง","text":"<code>(R + G + B) / 3<\/code> เท่านั้น"}],"answer":"ก","explanation":"<p>น้ำหนักตาม ITU-R 601; ตาไวต่อเขียวมากที่สุด<\/p>"},{"id":"wk14-A15","section":"A","num":15,"type":"mcq","prompt":"<p>ภาพ <code>uint8<\/code> ช่วง 0–255 การทำ negative ทำอย่างไร?<\/p>","options":[{"key":"ก","text":"<code>255 - img<\/code>"},{"key":"ข","text":"<code>img / 255<\/code>"},{"key":"ค","text":"<code>img * 2<\/code>"},{"key":"ง","text":"<code>1.0 - img<\/code>"}],"answer":"ก","explanation":"<p><code>uint8<\/code> ใช้ <code>255 - img<\/code>; ถ้า float 0–1 ใช้ <code>1.0 - img<\/code><\/p>"},{"id":"wk14-A16","section":"A","num":16,"type":"mcq","prompt":"<p>ฮิสโตแกรมของค่าสี (color histogram) มีแกน x และ y หมายถึงอะไร?<\/p>","options":[{"key":"ก","text":"x = ค่าสี 0–255; y = จำนวนพิกเซล"},{"key":"ข","text":"x = จำนวนพิกเซล; y = ค่าสี"},{"key":"ค","text":"x = ความกว้างภาพ; y = ความสูงภาพ"},{"key":"ง","text":"x = จำนวนภาพ; y = จำนวนสี"}],"answer":"ก","explanation":"<p>x = ค่าสี, y = จำนวนพิกเซล<\/p>"},{"id":"wk14-A17","section":"A","num":17,"type":"mcq","prompt":"<p>Color histogram แบบ RGB จำนวน 768 มิติ มาจากอะไร?<\/p>","options":[{"key":"ก","text":"768 พิกเซล"},{"key":"ข","text":"256 bins × 3 ช่องสี"},{"key":"ค","text":"128 bins × 6 ช่องสี"},{"key":"ง","text":"256 bins × 3 ภาพ"}],"answer":"ข","explanation":"<p>256 bins × 3 channels = 768<\/p>"},{"id":"wk14-A18","section":"A","num":18,"type":"mcq","prompt":"<p>ข้อจำกัดสำคัญของ color histogram คืออะไร?<\/p>","options":[{"key":"ก","text":"ไม่รู้ตำแหน่ง (position-blind) — ภาพที่สลับพิกเซลอาจได้ histogram เดียวกัน"},{"key":"ข","text":"ไม่รู้สีของภาพ"},{"key":"ค","text":"ต้องใช้ภาพขนาด 128×128 เท่านั้น"},{"key":"ง","text":"ใช้กับภาพขาวเทาไม่ได้"}],"answer":"ก","explanation":"<p>Histogram ไม่รู้ตำแหน่ง/รูปร่าง<\/p>"},{"id":"wk14-A19","section":"A","num":19,"type":"mcq","prompt":"<p>HOG ของภาพ 128×128, cell 16×16, 9 orientations มีกี่มิติ?<\/p>","options":[{"key":"ก","text":"144"},{"key":"ข","text":"512"},{"key":"ค","text":"576"},{"key":"ง","text":"768"}],"answer":"ค","explanation":"<p>(128/16) × (128/16) × 9 = 8×8×9 = 576<\/p>"},{"id":"wk14-A20","section":"A","num":20,"type":"mcq","prompt":"<p>OCR ด้วยโมเดล Typhoon-OCR ต่างจาก image search อย่างไร?<\/p>","options":[{"key":"ก","text":"OCR ส่งภาพเข้า vision-language model โดยตรงเพื่อได้ข้อความ; image search แปลงภาพเป็นเวกเตอร์แล้วค้น"},{"key":"ข","text":"OCR ใช้ histogram; image search ใช้ HOG"},{"key":"ค","text":"OCR ต้องสร้าง embedding 768 มิติก่อน"},{"key":"ง","text":"ทั้งสองใช้ KDTree เหมือนกัน"}],"answer":"ก","explanation":"<p>OCR ใช้ VLM โดยตรง; image search ใช้ embedding<\/p>"},{"id":"wk14-B1","section":"B","num":1,"type":"tf","prompt":"<p>Color histogram เก็บข้อมูลตำแหน่งของสีในภาพไว้ครบถ้วน<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ผิด","explanation":"<p>Color histogram ไม่รู้ตำแหน่ง (position-blind)<\/p>"},{"id":"wk14-B2","section":"B","num":2,"type":"tf","prompt":"<p>HOG ใช้ข้อมูลสีของภาพเป็นหลักในการสร้างเวกเตอร์<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ผิด","explanation":"<p>HOG ใช้ grayscale/gradient ไม่ใช้สี<\/p>"},{"id":"wk14-B3","section":"B","num":3,"type":"tf","prompt":"<p>ภาพ RGB shape <code>(H, W, 3)<\/code> — <code>img[0]<\/code> มี shape <code>(W, 3)<\/code><\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ถูก","explanation":"<p><code>img[0]<\/code> = แถวแรกของทุกคอลัมน์และทุกช่องสี → <code>(W, 3)<\/code><\/p>"},{"id":"wk14-B4","section":"B","num":4,"type":"tf","prompt":"<p>HOG ของภาพ 128×128, cell 16×16, 9 orientations มี 576 มิติ<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ถูก","explanation":"<p>8×8×9 = 576<\/p>"},{"id":"wk14-B5","section":"B","num":5,"type":"tf","prompt":"<p>KDTree มีประสิทธิภาพสูงกว่า brute force มากในข้อมูลมิติสูง เช่น embedding 768 มิติ<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ผิด","explanation":"<p>KDTree เหมาะกับมิติต่ำ (2–3D); มิติสูงประสิทธิภาพลดลง (curse of dimensionality) ควรใช้ ANN/HNSW<\/p>"},{"id":"wk14-C1","section":"C","num":1,"type":"open","prompt":"<p>ภาพ RGB มี shape <code>(100, 200, 3)<\/code> จงหา shape ของ\n1. <code>img[:, :, 1]<\/code>\n2. <code>img[0]<\/code>\n3. <code>img[50, 20]<\/code>\n4. <code>img[0:50, 0:50]<\/code>\n5. <code>img[::2, ::2]<\/code><\/p>","answer_html":"<ol>\n<li><code>img[:, :, 1]<\/code> → <code>(100, 200)<\/code><\/li>\n<li><code>img[0]<\/code> → <code>(200, 3)<\/code><\/li>\n<li><code>img[50, 20]<\/code> → <code>(3,)<\/code><\/li>\n<li><code>img[0:50, 0:50]<\/code> → <code>(50, 50, 3)<\/code><\/li>\n<li><code>img[::2, ::2]<\/code> → <code>(50, 100, 3)<\/code><\/li>\n<\/ol>"},{"id":"wk14-C2","section":"C","num":2,"type":"open","prompt":"<p>พิกเซลหนึ่งมีค่า <code>(R, G, B) = (100, 150, 200)<\/code> จงคำนวณค่า grayscale ตามสูตร <code>0.299R + 0.587G + 0.114B<\/code> (ปัดเป็นจำนวนเต็ม)<\/p>","answer_html":"<pre><code>0.299(100) + 0.587(150) + 0.114(200)\n= 29.9 + 88.05 + 22.8\n= 140.75\n<\/code><\/pre>\n<p>ปัดเป็นจำนวนเต็ม ≈ <strong>141<\/strong> (ถ้าไม่ปัดคือ 140.75)<\/p>"},{"id":"wk14-C3","section":"C","num":3,"type":"open","prompt":"<p>จงอธิบาย\n1. เพราะเหตุใด color histogram แบบ RGB จึงมี 768 มิติ\n2. สูตร normalized histogram <code>hᵢ<\/code> คืออะไร\n3. ถ้าภาพมี 4 พิกเซล และมี 2 พิกเซลตกใน bin แรก กับ 2 พิกเซลตกใน bin ที่สอง ค่า normalized histogram ของสอง bin นี้เป็นเท่าไร<\/p>","answer_html":"<ol>\n<li>256 bins ต่อช่องสี × 3 ช่อง (R, G, B) = 768<\/li>\n<li><code>hᵢ = จำนวนพิกเซลที่มีค่าอยู่ใน bin bᵢ / จำนวนพิกเซลทั้งหมด N<\/code><\/li>\n<li><code>h₁ = 2/4 = 0.5<\/code>, <code>h₂ = 2/4 = 0.5<\/code>; ผลรวมของทุก bin = 1 (ถ้าหารด้วย N ต่อช่อง)<\/li>\n<\/ol>"},{"id":"wk14-C4","section":"C","num":4,"type":"open","prompt":"<p>จงคำนวณจำนวนมิติ HOG สำหรับภาพ 128×128 ด้วย 9 orientations เมื่อ\n1. cell = 16×16\n2. cell = 8×8\n3. cell = 4×4<\/p>","answer_html":"<ol>\n<li>cell 16×16: <code>(128/16) × (128/16) × 9 = 8×8×9 = 576<\/code><\/li>\n<li>cell 8×8: <code>16×16×9 = 2,304<\/code><\/li>\n<li>cell 4×4: <code>32×32×9 = 9,216<\/code><\/li>\n<\/ol>"},{"id":"wk14-C5","section":"C","num":5,"type":"open","prompt":"<p>จงเขียนโค้ด Python เพื่อ\n1. อ่านภาพด้วย PIL และสร้าง normalized color histogram vector\n2. แปลงภาพเป็น grayscale ขนาด 128×128 แล้วสร้าง HOG features\n3. อธิบายขั้นตอน OCR ด้วย Typhoon-OCR แบบสั้น ๆ ตั้งแต่ภาพ → ข้อความ<\/p>","answer_html":"<pre><code class=\"language-python\">from PIL import Image\nimport numpy as np\nfrom skimage import feature\n\nimage = Image.open(&quot;image.jpg&quot;)\n\n# 1) Color histogram vector 768 มิติ\nhist = image.histogram()                  # 256×3 = 768\nhist_vec = np.array(hist) / sum(hist)     # normalize\n\n# 2) HOG features\ngray = image.resize((128, 128)).convert(&quot;L&quot;)\nhog_vec, hog_image = feature.hog(\n    np.array(gray),\n    pixels_per_cell=(16, 16),\n    cells_per_block=(1, 1),\n    orientations=9,\n    visualize=True,\n)\nprint(hist_vec.shape)   # (768,)\nprint(hog_vec.shape)    # (576,)\n<\/code><\/pre>\n<p><strong>OCR แบบสั้น:<\/strong>\n1. เปิดภาพด้วย PIL → แปลงเป็น PNG bytes → Base64 → data URL\n2. สร้าง messages ที่มีทั้ง text prompt และ <code>image_url<\/code>\n3. ใช้ processor เตรียม input แล้วเรียก <code>model.generate()<\/code> (temperature ต่ำ, max_new_tokens สูง)\n4. decode เฉพาะ token ใหม่ (ตัด prompt ออก)\n5. parse JSON → อ่าน <code>natural_text<\/code><\/p>"}]},{"id":"wk15","label":"WK15","title":"Agentic AI","short":"Agent (bonus)","desc":"Harness, skill, tool, agent loop และ tool call — bonus เพราะ syllabus ระบุ no exam","time":40,"bonus":true,"questions":[{"id":"wk15-A1","section":"A","num":1,"type":"mcq","prompt":"<p>องค์ประกอบใดทำหน้าที่เป็น “ห้องทำงาน” บนเครื่องผู้ใช้ และถือทุกอย่างไว้?<\/p>","options":[{"key":"ก","text":"Harness"},{"key":"ข","text":"API Key"},{"key":"ค","text":"LLM"},{"key":"ง","text":"Skill"}],"answer":"ก","explanation":"<p>Harness เป็นโปรเซสบนเครื่องผู้ใช้ที่ถือทุกอย่าง; ปิดโปรแกรม = หยุด<\/p>"},{"id":"wk15-A2","section":"A","num":2,"type":"mcq","prompt":"<p>ข้อใดอธิบาย LLM ในระบบ agent ได้ถูกต้อง?<\/p>","options":[{"key":"ก","text":"LLM มีมือและตาที่เข้าถึงไฟล์ได้โดยตรง"},{"key":"ข","text":"LLM เป็น “สมอง” ที่ตัดสินใจ แต่ไม่มีความจำ/มือ/ตา; มีแต่ข้อความ"},{"key":"ค","text":"LLM เรียก tool ได้โดยตรงโดยไม่ต้องผ่าน harness"},{"key":"ง","text":"LLM เก็บสถานะทั้งหมดไว้ใน weights ระหว่างงาน"}],"answer":"ข","explanation":"<p>LLM เป็นสมองที่ตัดสินใจ แต่ไม่มีความจำ/มือ/ตา; สื่อสารด้วยข้อความ<\/p>"},{"id":"wk15-A3","section":"A","num":3,"type":"mcq","prompt":"<p>Agent คืออะไร?<\/p>","options":[{"key":"ก","text":"LLM + system prompt + tools"},{"key":"ข","text":"ฐานข้อมูลเวกเตอร์"},{"key":"ค","text":"ไฟล์ SKILL.md"},{"key":"ง","text":"API Key"}],"answer":"ก","explanation":"<p>Agent = LLM + system prompt + tools<\/p>"},{"id":"wk15-A4","section":"A","num":4,"type":"mcq","prompt":"<p>Sub-agent มีลักษณะอย่างไร?<\/p>","options":[{"key":"ก","text":"ใช้ context เดียวกับ agent หลักและทำงานทีละขั้น"},{"key":"ข","text":"มี context แยก ทำงานขนานได้ และส่งกลับเฉพาะผลสรุป"},{"key":"ค","text":"ไม่ใช้ LLM"},{"key":"ง","text":"เรียก tool โดยตรงโดยไม่ผ่าน harness"}],"answer":"ข","explanation":"<p>Sub-agent มี context แยก ทำงานขนาน และส่งกลับเฉพาะผลสรุป<\/p>"},{"id":"wk15-A5","section":"A","num":5,"type":"mcq","prompt":"<p>Skill ต่างจาก Tool อย่างไร?<\/p>","options":[{"key":"ก","text":"Skill คือความรู้/ข้อความ; Tool คือโค้ดที่รันได้จริง"},{"key":"ข","text":"Skill คือโค้ด; Tool คือข้อความ"},{"key":"ค","text":"ทั้งสองคือไฟล์ JSON schema"},{"key":"ง","text":"ทั้งสองถูกเรียกโดย LLM โดยตรง"}],"answer":"ก","explanation":"<p>Skill = ความรู้ (ข้อความ); Tool = ความสามารถ (โค้ด)<\/p>"},{"id":"wk15-A6","section":"A","num":6,"type":"mcq","prompt":"<p>Tool call ในมุมของ LLM คืออะไร?<\/p>","options":[{"key":"ก","text":"การเรียกฟังก์ชัน Python จริงทันที"},{"key":"ข","text":"ข้อความ JSON ที่ “ขอ” ให้ harness เรียก tool"},{"key":"ค","text":"ไฟล์ SKILL.md"},{"key":"ง","text":"คำสั่ง SQL"}],"answer":"ข","explanation":"<p>Tool call เป็นข้อความ JSON ที่ LLM ขอให้ harness เรียก tool<\/p>"},{"id":"wk15-A7","section":"A","num":7,"type":"mcq","prompt":"<p>ใครเป็นคนรัน tool จริง?<\/p>","options":[{"key":"ก","text":"LLM"},{"key":"ข","text":"Harness"},{"key":"ค","text":"User"},{"key":"ง","text":"API Key"}],"answer":"ข","explanation":"<p>Harness เป็นคน dispatch และรัน tool จริง<\/p>"},{"id":"wk15-A8","section":"A","num":8,"type":"mcq","prompt":"<p>ความสัมพันธ์ข้อใดถูกต้อง?<\/p>","options":[{"key":"ก","text":"LLM คุยกับ tool โดยตรง"},{"key":"ข","text":"Skill สั่ง tool โดยตรง"},{"key":"ค","text":"LLM คุยกับ harness ด้วยข้อความเท่านั้น; harness เป็นคนเรียก tool"},{"key":"ง","text":"Tool เรียก LLM โดยตรง"}],"answer":"ค","explanation":"<p>LLM ↔ harness เท่านั้น; ไม่มีเส้นตรง LLM ↔ tool<\/p>"},{"id":"wk15-A9","section":"A","num":9,"type":"mcq","prompt":"<p>Agent loop เริ่มด้วยขั้นตอนใด?<\/p>","options":[{"key":"ก","text":"เรียก LLM หนึ่งครั้งด้วย messages + tools"},{"key":"ข","text":"ลบ messages ทั้งหมด"},{"key":"ค","text":"เขียนไฟล์ผลลัพธ์"},{"key":"ง","text":"สร้าง API Key ใหม่"}],"answer":"ก","explanation":"<p>เริ่มจากเรียก LLM ด้วย messages + tools<\/p>"},{"id":"wk15-A10","section":"A","num":10,"type":"mcq","prompt":"<p>Agent loop จบได้ด้วยเงื่อนไขใดบ้าง?<\/p>","options":[{"key":"ก","text":"ไม่มี <code>tool_calls<\/code> (ได้ content) หรือครบ <code>max_turns<\/code>"},{"key":"ข","text":"ครบ 1 turn เสมอ"},{"key":"ค","text":"เมื่อ LLM ตอบ error เท่านั้น"},{"key":"ง","text":"เมื่อ tools[] ว่าง"}],"answer":"ก","explanation":"<p>ไม่มี tool_calls → break; ครบ max_turns → หยุด<\/p>"},{"id":"wk15-A11","section":"A","num":11,"type":"mcq","prompt":"<p>ข้อใดโตขึ้นเมื่อ agent ทำงานหลายเทิร์น?<\/p>","options":[{"key":"ก","text":"<code>tools[]<\/code>"},{"key":"ข","text":"<code>messages[]<\/code>"},{"key":"ค","text":"จำนวน system prompt"},{"key":"ง","text":"จำนวน API Key"}],"answer":"ข","explanation":"<p>messages สะสมบทสนทนา/ผลลัพธ์; tools คงที่<\/p>"},{"id":"wk15-A12","section":"A","num":12,"type":"mcq","prompt":"<p><code>max_turns<\/code> ในตัวอย่างบทเรียนตั้งไว้เท่าไร?<\/p>","options":[{"key":"ก","text":"4"},{"key":"ข","text":"8"},{"key":"ค","text":"16"},{"key":"ง","text":"64"}],"answer":"ค","explanation":"<p>ตัวอย่างใช้ <code>max_turns = 16<\/code><\/p>"},{"id":"wk15-A13","section":"A","num":13,"type":"mcq","prompt":"<p>System prompt ถูกสร้างเมื่อใด?<\/p>","options":[{"key":"ก","text":"ทุกเทิร์นก่อนเรียก LLM"},{"key":"ข","text":"ครั้งเดียวตอนเริ่ม run"},{"key":"ค","text":"ทุกครั้งที่เรียก tool"},{"key":"ง","text":"หลังจบ agent loop"}],"answer":"ข","explanation":"<p>สร้างครั้งเดียวตอนเริ่ม run<\/p>"},{"id":"wk15-A14","section":"A","num":14,"type":"mcq","prompt":"<p>ข้อใดกล่าวถูกเกี่ยวกับ body ของ Skill?<\/p>","options":[{"key":"ก","text":"ถูกใส่ใน system prompt ตั้งแต่ต้นทั้งหมด"},{"key":"ข","text":"ไม่อยู่ใน system prompt; จะถูกโหลดเมื่อ LLM สั่ง <code>load_skill<\/code> (progressive disclosure)"},{"key":"ค","text":"ถูกเก็บใน <code>tools[]<\/code>"},{"key":"ง","text":"ถูกลบถาวรหลังอ่าน"}],"answer":"ข","explanation":"<p>Body ไม่อยู่ใน system prompt; โหลดเมื่อ <code>load_skill<\/code> (progressive disclosure)<\/p>"},{"id":"wk15-A15","section":"A","num":15,"type":"mcq","prompt":"<p><code>SCHEMAS<\/code> กับ <code>FUNCS<\/code> ใน tools.py ต่างกันอย่างไร?<\/p>","options":[{"key":"ก","text":"<code>SCHEMAS<\/code> คือเมนูที่ LLM เห็น; <code>FUNCS<\/code> คือฟังก์ชัน Python จริงที่ harness เรียก"},{"key":"ข","text":"<code>SCHEMAS<\/code> คือโค้ดที่รัน; <code>FUNCS<\/code> คือข้อความ"},{"key":"ค","text":"ทั้งสองถูกส่งให้ LLM เห็นเหมือนกัน"},{"key":"ง","text":"<code>FUNCS<\/code> ใช้เก็บ API Key"}],"answer":"ก","explanation":"<p>SCHEMAS = เมนูที่ LLM เห็น; FUNCS = ฟังก์ชันจริง<\/p>"},{"id":"wk15-A16","section":"A","num":16,"type":"mcq","prompt":"<p><code>tool_menu()<\/code> ในบทเรียนประกอบด้วย schema กี่ตัว?<\/p>","options":[{"key":"ก","text":"5"},{"key":"ข","text":"6"},{"key":"ค","text":"7"},{"key":"ง","text":"10"}],"answer":"ค","explanation":"<p>5 จาก SCHEMAS + <code>load_skill<\/code> + <code>spawn_subagent<\/code> = 7<\/p>"},{"id":"wk15-A17","section":"A","num":17,"type":"mcq","prompt":"<p>ขั้นตอนการ dispatch tool call ข้อใดถูกต้อง?<\/p>","options":[{"key":"ก","text":"<code>json.loads(arguments)<\/code> → <code>FUNCS[name](**args)<\/code> → คืน string"},{"key":"ข","text":"<code>FUNCS[name]<\/code> → <code>json.dumps<\/code> → ส่งให้ LLM รัน"},{"key":"ค","text":"LLM เรียก <code>FUNCS[name]<\/code> โดยตรง"},{"key":"ง","text":"<code>eval(arguments)<\/code> โดยไม่ต้องตรวจชื่อ tool"}],"answer":"ก","explanation":"<p><code>json.loads(arguments)<\/code> แล้วเรียก <code>FUNCS[name](**args)<\/code>; ผลลัพธ์เป็น string<\/p>"},{"id":"wk15-A18","section":"A","num":18,"type":"mcq","prompt":"<p>ถ้า <code>tool_call_id<\/code> ใน message role <code>\"tool\"<\/code> ไม่ตรงกับ id ของ assistant จะเกิดอะไร?<\/p>","options":[{"key":"ก","text":"ไม่มีอะไรเกิดขึ้น"},{"key":"ข","text":"API ตอบ HTTP 400 และอาจพังทุกเทิร์นถัดไป"},{"key":"ค","text":"LLM จะสร้าง id ใหม่ให้อัตโนมัติ"},{"key":"ง","text":"ระบบจะเปลี่ยนเป็น JSON-RPC"}],"answer":"ข","explanation":"<p>API ตอบ HTTP 400 และประวัติบทสนทนาเสีย<\/p>"},{"id":"wk15-A19","section":"A","num":19,"type":"mcq","prompt":"<p>Tool ทุกตัวในระบบนี้คืนค่าอะไร?<\/p>","options":[{"key":"ก","text":"JSON object เท่านั้น"},{"key":"ข","text":"string เสมอ; ถ้าพังจะคืน <code>ERROR: ...<\/code> ไม่ throw ออกมา"},{"key":"ค","text":"ไม่คืนค่า"},{"key":"ง","text":"ไฟล์เสมอ"}],"answer":"ข","explanation":"<p>Tool คืน string เสมอ; error คืน <code>ERROR: ...<\/code><\/p>"},{"id":"wk15-A20","section":"A","num":20,"type":"mcq","prompt":"<p>ถ้า agent จะเรียก <code>write<\/code> หรือ <code>shell<\/code> โดยไม่มี <code>--yes<\/code> จะเกิดอะไร?<\/p>","options":[{"key":"ก","text":"ทำงานทันที"},{"key":"ข","text":"ได้ <code>DENIED: user refused<\/code> และ LLM ต้องเปลี่ยนแผน"},{"key":"ค","text":"ระบบ crash"},{"key":"ง","text":"กลายเป็น HTTP 400"}],"answer":"ข","explanation":"<p>ถ้าไม่อนุมัติจะได้ <code>DENIED: user refused<\/code>; LLM เปลี่ยนแผน<\/p>"},{"id":"wk15-B1","section":"B","num":1,"type":"tf","prompt":"<p>LLM สามารถเรียก tool ได้โดยตรงโดยไม่ต้องผ่าน harness<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ผิด","explanation":"<p>LLM เรียก tool ตรง ๆ ไม่ได้ ต้องผ่าน harness<\/p>"},{"id":"wk15-B2","section":"B","num":2,"type":"tf","prompt":"<p>Skill คือโค้ด Python ที่รันบนเครื่อง<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ผิด","explanation":"<p>Skill เป็นข้อความความรู้ ไม่ใช่โค้ด<\/p>"},{"id":"wk15-B3","section":"B","num":3,"type":"tf","prompt":"<p><code>tools[]<\/code> จะโตขึ้นเรื่อย ๆ เมื่อ agent เรียก tool มากขึ้น<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ผิด","explanation":"<p><code>tools[]<\/code> เป็นเมนูคงที่ 7 ตัว; <code>messages[]<\/code> ต่างหากที่โต<\/p>"},{"id":"wk15-B4","section":"B","num":4,"type":"tf","prompt":"<p>ถ้า LLM ตอบโดยไม่มี <code>tool_calls<\/code> loop จะจบและใช้ <code>content<\/code> เป็นคำตอบสุดท้าย<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ถูก","explanation":"<p>ไม่มี tool_calls = จบปกติ<\/p>"},{"id":"wk15-B5","section":"B","num":5,"type":"tf","prompt":"<p>การลืมใส่ <code>tool_call_id<\/code> หรือใส่ id ผิดใน message role <code>\"tool\"<\/code> ทำให้ API ตอบ HTTP 400<\/p>","options":[{"key":"ถูก","text":"ถูก"},{"key":"ผิด","text":"ผิด"}],"answer":"ถูก","explanation":"<p>id ต้องตรงกัน ไม่งั้น HTTP 400<\/p>"},{"id":"wk15-C1","section":"C","num":1,"type":"open","prompt":"<p>จงเขียน pseudocode ของ agent loop 4 ขั้น พร้อมระบุทางออก 2 ทาง<\/p>","answer_html":"<pre><code class=\"language-python\">messages = [system, user]\nfinal = &quot;&quot;\nmax_turns = 16\n\nfor turn in range(1, max_turns + 1):\n    msg = call_llm(messages, tools=tools)\n    tool_calls = msg.get(&quot;tool_calls&quot;) or []\n\n    if not tool_calls:\n        final = msg[&quot;content&quot;].strip()\n        break\n\n    messages.append(msg)  # assistant + tool_calls\n\n    for tc in tool_calls:\n        result = dispatch(tc)\n        messages.append({\n            &quot;role&quot;: &quot;tool&quot;,\n            &quot;tool_call_id&quot;: tc[&quot;id&quot;],\n            &quot;content&quot;: result,\n        })\n<\/code><\/pre>\n<p>ทางออก:\n1. ไม่มี <code>tool_calls<\/code> → ได้ <code>content<\/code> เป็นคำตอบสุดท้าย\n2. ครบ <code>max_turns<\/code> → หยุดเพื่อกันค่าใช้จ่าย/ลูปไม่จบ<\/p>"},{"id":"wk15-C2","section":"C","num":2,"type":"open","prompt":"<p>จงอธิบายความแตกต่างของ <code>harness<\/code>, <code>LLM<\/code>, <code>skill<\/code>, <code>tool<\/code> และระบุว่าใครเป็นคนลงมือเรียก tool<\/p>","answer_html":"<ul>\n<li><strong>Harness<\/strong> = โปรแกรมบนเครื่องผู้ใช้ ถือทุกอย่างและลงมือทำ<\/li>\n<li><strong>LLM<\/strong> = สมองที่ตัดสินใจว่าจะเรียก tool ใด/ตอบอะไร แต่ไม่มีมือ/ตา/ความจำ<\/li>\n<li><strong>Skill<\/strong> = ความรู้/คู่มือ (ข้อความ) บอกว่าควรทำงานอย่างไร<\/li>\n<li><strong>Tool<\/strong> = โค้ดที่รันจริง เช่น read, write, shell, browser, search<\/li>\n<li><strong>คนที่เรียก tool<\/strong> = <strong>harness<\/strong> (ผ่าน <code>dispatch<\/code>); LLM เพียงขอร้องด้วย tool_calls<\/li>\n<\/ul>"},{"id":"wk15-C3","section":"C","num":3,"type":"open","prompt":"<p>จงอธิบายขั้นตอนการสร้าง system prompt ตั้งแต่ต้น run จนถึง <code>messages[0]<\/code> และบอกว่าอะไร <strong>ไม่<\/strong> ถูกใส่ใน system prompt<\/p>","answer_html":"<p>ขั้นตอน:\n1. อ่านไฟล์ <code>skills/*/SKILL.md<\/code> จากดิสก์ (เรียงด้วย <code>sorted(glob(...))<\/code>)\n2. แยก front matter ด้วย <code>parse_front_matter(text)<\/code> → <code>(meta, body)<\/code>; ถ้าไม่มี/ไม่ครบให้ถือว่าทั้งไฟล์เป็น body\n3. ประกอบ 3 ส่วนด้วย f-string:\n   - template + 7 กติกา\n   - วันที่จาก <code>date.today()<\/code>\n   - ทะเบียน skill: <code>name<\/code> + <code>description<\/code> เท่านั้น\n4. ใส่เป็น <code>{\"role\": \"system\", \"content\": self.system}<\/code> ใน <code>messages[0]<\/code><\/p>\n<p><strong>ไม่ถูกใส่:<\/strong> body ของ skill (จะโหลดเมื่อ LLM สั่ง <code>load_skill<\/code> เท่านั้น)<\/p>"},{"id":"wk15-C4","section":"C","num":4,"type":"open","prompt":"<p>จงวินิจฉัยปัญหาต่อไปนี้ว่าเกิดจากอะไร และจะแก้อย่างไร\n1. <code>ERROR: arguments ... not valid JSON<\/code>\n2. <code>ERROR: unknown tool<\/code>\n3. <code>DENIED: user refused<\/code>\n4. API ตอบ HTTP 400 หลังมี tool call<\/p>","answer_html":"<ol>\n<li><strong>arguments ถูกตัด<\/strong> — <code>max_tokens<\/code> หมดกลาง JSON → <code>json.loads<\/code> ไม่ได้; แก้โดยเพิ่ม <code>max_tokens<\/code> หรือให้ LLM เขียน arguments สั้นลง<\/li>\n<li><strong>unknown tool<\/strong> — มีชื่อใน <code>SCHEMAS<\/code> แต่ไม่มีใน <code>FUNCS<\/code> (หรือพิมพ์ชื่อผิด); แก้ให้ชื่อตรงกันและมีฟังก์ชันจริง<\/li>\n<li><strong>DENIED<\/strong> — ผู้ใช้ไม่อนุมัติ <code>write<\/code>/<code>shell<\/code> (ไม่มี <code>--yes<\/code>); เป็นพฤติกรรมปกติ LLM ต้องเปลี่ยนแผนหรือขออนุญาต<\/li>\n<li><strong>HTTP 400<\/strong> — <code>tool_call_id<\/code> ใน message role <code>\"tool\"<\/code> ไม่ตรง/หายไป; ต้องใส่ id ให้ตรงกับ assistant message ก่อนหน้า<\/li>\n<\/ol>"},{"id":"wk15-C5","section":"C","num":5,"type":"open","prompt":"<p>เหตุใด <code>tools[]<\/code> จึงไม่โต แต่ <code>messages[]<\/code> โตขึ้นทุกเทิร์น? ผลต่อค่าใช้จ่ายคืออะไร และเพราะเหตุใด <code>load_skill<\/code> จึงช่วยประหยัด context<\/p>","answer_html":"<ul>\n<li><code>tools[]<\/code> เป็น <strong>เมนูคงที่<\/strong> 7 ตัว ไม่เปลี่ยนระหว่างงาน<\/li>\n<li><code>messages[]<\/code> สะสม <code>system<\/code>, <code>user<\/code>, <code>assistant<\/code> (พร้อม tool_calls) และ <code>tool<\/code> results ทุกเทิร์น → โตขึ้นเรื่อย ๆ<\/li>\n<li>ทุกเทิร์นต้องส่ง messages ทั้งก้อน → จำนวน input token และค่าใช้จ่ายเพิ่มตามจำนวนรอบ<\/li>\n<li><code>load_skill<\/code> ใช้ <strong>progressive disclosure<\/strong>: system prompt มีแค่ name + description; body ถูกโหลดเมื่อจำเป็น → ไม่ต้องจ่าย token ของ skill ที่ไม่ได้ใช้ และไม่ทำให้ context บวมตั้งแต่ต้น<\/li>\n<li>แต่เมื่อโหลดแล้ว ข้อความ skill จะถูกส่งซ้ำทุกเทิร์นหลังจากนั้น<\/li>\n<\/ul>"}]}]};
+
+const STORAGE_KEY = "da2603655-final-mock-v1";
+const weeks = EXAM_DATA.weeks;
+const weekById = Object.fromEntries(weeks.map(w => [w.id, w]));
+const questionById = {};
+weeks.forEach(w => w.questions.forEach(q => { questionById[q.id] = { week: w, q }; }));
+
+function freshState() {
+  return {
+    currentWeek: weeks[0].id,
+    instant: false,
+    answers: {},
+    checked: {},
+    revealed: {},
+    selfGrades: {},
+    openText: {},
+    submitted: {},
+  };
+}
+
+function loadState() {
+  const base = freshState();
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return base;
+    const saved = JSON.parse(raw);
+    return {
+      ...base,
+      ...saved,
+      answers: saved.answers || {},
+      checked: saved.checked || {},
+      revealed: saved.revealed || {},
+      selfGrades: saved.selfGrades || {},
+      openText: saved.openText || {},
+      submitted: saved.submitted || {},
+    };
+  } catch (e) {
+    return base;
+  }
+}
+
+let state = loadState();
+if (!weekById[state.currentWeek]) state.currentWeek = weeks[0].id;
+
+let timerState = { remaining: 45 * 60, running: false, handle: null, week: null };
+
+function save() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+}
+
+function getWeek() { return weekById[state.currentWeek] || weeks[0]; }
+
+function calcScore(week) {
+  let score = 0, a = 0, b = 0, c = 0, answered = 0, gradedC = 0, checkedCount = 0;
+  week.questions.forEach(q => {
+    if (q.type === "open") {
+      const txt = (state.openText[q.id] || "").trim();
+      if (txt || state.revealed[q.id] || state.selfGrades[q.id] != null) answered++;
+      const g = state.selfGrades[q.id];
+      if (g === 1) { c++; score++; }
+      if (g != null) gradedC++;
+    } else {
+      const sel = state.answers[q.id];
+      if (sel) answered++;
+      if (state.checked[q.id]) {
+        checkedCount++;
+        if (sel === q.answer) {
+          score++;
+          if (q.section === "A") a++; else b++;
+        }
+      }
+    }
+  });
+  return { score, a, b, c, answered, gradedC, checkedCount, total: 30 };
+}
+
+function pct(n, d) { return d ? Math.round((n / d) * 100) : 0; }
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+}
+
+function renderWeekNav() {
+  const nav = document.getElementById("weekNav");
+  nav.innerHTML = weeks.map(w => {
+    const s = calcScore(w);
+    const active = w.id === state.currentWeek;
+    return `
+      <button type="button" class="week-tab ${active ? "active" : ""} ${w.bonus ? "bonus" : ""}"
+              data-week="${w.id}" aria-current="${active ? "page" : "false"}">
+        <span class="wt-top"><span class="wt-label">${w.label}</span><span class="wt-score">${s.score}/30</span></span>
+        <span class="wt-title">${w.short}</span>
+        <span class="wt-bar"><i style="width:${pct(s.score, 30)}%"></i></span>
+      </button>`;
+  }).join("");
+}
+
+function renderWeekHead() {
+  const w = getWeek();
+  const s = calcScore(w);
+  document.getElementById("weekHead").innerHTML = `
+    <section class="week-head ${w.bonus ? "bonus" : ""}">
+      <div>
+        <div class="eyebrow">${w.label}${w.bonus ? " · Bonus — No Exam" : " · Final Scope"}</div>
+        <h2>${w.title}</h2>
+        <p>${w.desc}</p>
+        <div class="week-meta">
+          <span>30 ข้อ</span>
+          <span>${w.time} นาที</span>
+          <span>20 ปรนัย</span>
+          <span>5 ถูก/ผิด</span>
+          <span>5 อัตนัย</span>
+          <span>เฉลยละเอียดทุกข้อ</span>
+        </div>
+      </div>
+      <div class="head-score">
+        <strong>${s.score}</strong><span>/ 30</span>
+        <small>คะแนนปัจจุบัน</small>
+      </div>
+      <div class="head-progress">
+        <div class="bar"><i style="width:${pct(s.answered, 30)}%"></i></div>
+        <span>ตอบแล้ว ${s.answered}/30 · ตรวจแล้ว ${s.checkedCount + s.gradedC}/30</span>
+      </div>
+    </section>`;
+}
+
+function statusFor(q) {
+  if (q.type === "open") {
+    const g = state.selfGrades[q.id];
+    if (g === 1) return { text: "ได้ 1 คะแนน", cls: "ok" };
+    if (g === 0) return { text: "ยังไม่ได้", cls: "bad" };
+    if (state.revealed[q.id]) return { text: "ดูเฉลย", cls: "seen" };
+    if ((state.openText[q.id] || "").trim()) return { text: "ตอบแล้ว", cls: "done" };
+    return { text: "ยังไม่ตอบ", cls: "" };
+  }
+  const sel = state.answers[q.id];
+  if (state.checked[q.id]) {
+    return sel === q.answer ? { text: "ถูก", cls: "ok" } : { text: "ผิด", cls: "bad" };
+  }
+  if (sel) return { text: "ตอบแล้ว", cls: "done" };
+  if (state.revealed[q.id]) return { text: "ดูเฉลย", cls: "seen" };
+  return { text: "ยังไม่ตอบ", cls: "" };
+}
+
+function optionsHtml(q) {
+  const selected = state.answers[q.id];
+  const checked = !!state.checked[q.id];
+  const revealed = !!state.revealed[q.id];
+  const showAnswer = checked || revealed;
+  return `<div class="options" role="radiogroup" aria-label="ตัวเลือกข้อ ${q.section}${q.num}">
+    ${q.options.map(o => {
+      const isSelected = selected === o.key;
+      const isCorrect = o.key === q.answer;
+      let cls = "option";
+      if (isSelected) cls += " selected";
+      if (showAnswer && isCorrect) cls += " correct";
+      if (showAnswer && isSelected && !isCorrect) cls += " wrong";
+      if (q.type === "tf") cls += " wide";
+      return `<button type="button" class="${cls}" data-key="${escapeHtml(o.key)}"
+        ${checked ? "disabled" : ""} aria-pressed="${isSelected}">
+        <span class="opt-key">${escapeHtml(o.key)}</span>
+        <span class="opt-text">${o.text}</span>
+      </button>`;
+    }).join("")}
+  </div>`;
+}
+
+function mcqFeedback(q) {
+  const selected = state.answers[q.id];
+  const checked = !!state.checked[q.id];
+  const revealed = !!state.revealed[q.id];
+  if (!checked && !revealed) return "";
+  const ok = checked && selected === q.answer;
+  const cls = checked ? (ok ? "ok" : "bad") : "info";
+  const verdict = checked
+    ? (ok ? "ถูกต้อง" : `ยังไม่ถูก — คำตอบที่ถูกคือ ${q.answer}`)
+    : `เฉลย: ${q.answer}`;
+  return `<div class="feedback ${cls}">
+    <div class="verdict"><span class="dot"></span>${verdict}</div>
+    <div class="explain">${q.explanation || ""}</div>
+  </div>`;
+}
+
+function openFeedback(q) {
+  if (!state.revealed[q.id]) return "";
+  const g = state.selfGrades[q.id];
+  return `<div class="feedback info open-feedback">
+    <div class="verdict"><span class="dot"></span>เฉลยแนวทาง</div>
+    <div class="answer-label">Model answer</div>
+    <div class="model-answer">${q.answer_html || ""}</div>
+    <div class="self-grade">
+      <span>ให้คะแนนตัวเอง:</span>
+      <button type="button" class="grade-btn ${g === 1 ? "active-ok" : ""}" data-action="grade" data-grade="1">ได้ 1 คะแนน</button>
+      <button type="button" class="grade-btn ${g === 0 ? "active-bad" : ""}" data-action="grade" data-grade="0">ยังไม่ได้</button>
+      ${g != null ? `<span class="graded-note">บันทึกแล้ว: ${g} คะแนน</span>` : `<span class="graded-note">กดเพื่อเก็บคะแนนข้อนี้</span>`}
+    </div>
+  </div>`;
+}
+
+function questionCard(q) {
+  const st = statusFor(q);
+  const checked = !!state.checked[q.id];
+  const revealed = !!state.revealed[q.id];
+  const isOpen = q.type === "open";
+  const selected = state.answers[q.id];
+  const actions = isOpen
+    ? `<button type="button" class="btn btn-ghost" data-action="reveal">${revealed ? "ซ่อนเฉลย" : "ดูเฉลย"}</button>
+       <button type="button" class="btn btn-ghost" data-action="retry">ล้างข้อนี้</button>
+       <span class="q-hint">เปิดเฉลยแล้วให้คะแนนตัวเองด้านล่าง</span>`
+    : `<button type="button" class="btn btn-primary" data-action="check" ${checked || !selected ? "disabled" : ""}>ตรวจข้อนี้</button>
+       <button type="button" class="btn btn-ghost" data-action="reveal">${revealed ? "ซ่อนเฉลย" : "ดูเฉลย"}</button>
+       ${checked ? `<button type="button" class="btn btn-ghost" data-action="retry">ลองใหม่</button>` : `<span class="q-hint">เลือกคำตอบก่อนแล้วกดตรวจ</span>`}`;
+
+  return `<article class="q-card" id="q-${q.id}" data-qid="${q.id}">
+    <div class="q-top">
+      <span class="q-num">${q.section}${q.num}</span>
+      <span class="q-type">${isOpen ? "อัตนัย / เขียนโค้ด" : q.type === "tf" ? "ถูก / ผิด" : "ปรนัย"}</span>
+      <span class="q-status ${st.cls}">${st.text}</span>
+    </div>
+    <div class="q-prompt">${q.prompt}</div>
+    ${isOpen
+      ? `<textarea class="open-input" data-open="${q.id}" placeholder="จดคำตอบหรือโครงร่างของคุณที่นี่ (ไม่บังคับ) — คะแนนข้อนี้ให้ตัวเองหลังดูเฉลย">${escapeHtml(state.openText[q.id] || "")}</textarea>`
+      : optionsHtml(q)}
+    <div class="q-actions">${actions}</div>
+    ${isOpen ? openFeedback(q) : mcqFeedback(q)}
+  </article>`;
+}
+
+function renderQuiz() {
+  const w = getWeek();
+  let html = "";
+  const sections = [
+    { key: "A", title: "ปรนัย 20 ข้อ", note: "เลือกคำตอบที่ถูกที่สุด · ข้อละ 1 คะแนน" },
+    { key: "B", title: "ถูก / ผิด 5 ข้อ", note: "ตัดสินว่าข้อความถูกหรือผิด · ข้อละ 1 คะแนน" },
+    { key: "C", title: "อัตนัย / คำนวณ / เขียนโค้ด 5 ข้อ", note: "จดคำตอบ → ดูเฉลย → ให้คะแนนตัวเอง · ข้อละ 1 คะแนน" },
+  ];
+  sections.forEach(sec => {
+    const qs = w.questions.filter(q => q.section === sec.key);
+    html += `<div class="section-head">
+      <span class="section-kicker">Section ${sec.key}</span>
+      <h3>${sec.title}</h3>
+      <p>${sec.note}</p>
+    </div>`;
+    html += qs.map(questionCard).join("");
+  });
+  document.getElementById("quiz").innerHTML = html;
+}
+
+function renderToolbar() {
+  const s = calcScore(getWeek());
+  document.getElementById("toolbarScore").textContent = s.score;
+  const toggle = document.getElementById("instantToggle");
+  toggle.checked = !!state.instant;
+  document.getElementById("modeHint").textContent = state.instant
+    ? "เปิดอยู่ = คลิกตัวเลือกแล้วเฉลยทันที"
+    : "ปิดอยู่ = ทำแบบสอบก่อน แล้วค่อยตรวจ";
+}
+
+function renderSummary() {
+  const w = getWeek();
+  const s = calcScore(w);
+  const box = document.getElementById("summary");
+  if (!state.submitted[w.id]) { box.innerHTML = ""; return; }
+  const p = pct(s.score, 30);
+  let msg = "ยังไม่พร้อม — กลับไปอ่านหัวข้อที่ผิดแล้วทำใหม่";
+  if (p >= 90) msg = "แม่นมาก — ทบทวนเฉพาะจุดเล็ก ๆ ก่อนสอบ";
+  else if (p >= 80) msg = "ดี — อ่านคำอธิบายข้อที่ผิด 1 รอบ";
+  else if (p >= 60) msg = "ผ่านแบบเสียว — ควรทำ Week นี้ซ้ำใน 2 วัน";
+  const wrong = w.questions.filter(q => {
+    if (q.type === "open") return state.selfGrades[q.id] === 0;
+    return state.checked[q.id] && state.answers[q.id] !== q.answer;
+  });
+  const ungraded = w.questions.filter(q => q.type === "open" && state.selfGrades[q.id] == null).length;
+  box.innerHTML = `<section class="summary-card">
+    <div class="summary-top">
+      <div class="summary-score"><strong>${s.score}</strong><span>/ 30</span></div>
+      <div class="summary-title">
+        <h3>สรุปคะแนน ${w.label}</h3>
+        <p>${msg}</p>
+      </div>
+      <button type="button" class="btn btn-dark" data-action="retry-week">ทำใหม่ทั้ง Week</button>
+    </div>
+    <div class="summary-breakdown">
+      <span class="score-chip">Section A <b>${s.a}/20</b></span>
+      <span class="score-chip">Section B <b>${s.b}/5</b></span>
+      <span class="score-chip">Section C <b>${s.c}/5</b></span>
+      <span class="score-chip">ตอบแล้ว <b>${s.answered}/30</b></span>
+      <span class="score-chip">คิดเป็น <b>${p}%</b></span>
+    </div>
+    ${ungraded ? `<p class="summary-note">Section C ยังไม่ได้ให้คะแนนตัวเอง ${ungraded} ข้อ — เปิดเฉลยแล้วกด “ได้ 1 คะแนน” หรือ “ยังไม่ได้” เพื่อให้คะแนนรวมสมบูรณ์</p>` : ""}
+    ${wrong.length ? `<p class="summary-note">ข้อที่ยังผิด/ยังไม่ได้คะแนน:</p>
+      <ul class="wrong-list">${wrong.map(q => `<li><a href="#q-${q.id}" data-goto="${q.id}">${q.section}${q.num}</a></li>`).join("")}</ul>`
+      : `<p class="summary-note">ยังไม่มีข้อที่ผิดที่ตรวจแล้ว — เยี่ยมมาก</p>`}
+  </section>`;
+}
+
+function renderAnswerKey() {
+  const w = getWeek();
+  const root = document.getElementById("answerKey");
+  const wasOpen = !!root.querySelector("details")?.open;
+  const groups = ["A", "B", "C"];
+  const body = groups.map(g => {
+    const qs = w.questions.filter(q => q.section === g);
+    return `<div class="key-section-label">Section ${g}</div>
+      <div class="key-grid">${qs.map(q => `
+        <button type="button" class="key-chip" data-reveal-qid="${q.id}" title="เปิดเฉลยข้อนี้">
+          <span>${q.section}${q.num}</span><b>${q.type === "open" ? "ดู" : q.answer}</b>
+        </button>`).join("")}</div>`;
+  }).join("");
+  root.innerHTML = `<details class="answer-key" ${wasOpen ? "open" : ""}>
+    <summary>ตารางเฉลยลัด + เปิดเฉลยทุกข้อ <span>${w.label} · 30 ข้อ</span></summary>
+    <div class="key-body">
+      ${body}
+      <div class="key-actions">
+        <button type="button" class="btn btn-ghost" data-action="reveal-all">เปิดเฉลยทุกข้อ</button>
+        <button type="button" class="btn btn-ghost" data-action="check-all">ตรวจทั้งชุด</button>
+      </div>
+    </div>
+  </details>`;
+}
+
+function renderAll() {
+  renderWeekNav();
+  renderWeekHead();
+  renderToolbar();
+  renderQuiz();
+  renderSummary();
+  renderAnswerKey();
+}
+
+function switchWeek(id) {
+  if (!weekById[id] || id === state.currentWeek) return;
+  state.currentWeek = id;
+  save();
+  resetTimer();
+  renderAll();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function selectOption(qid, key) {
+  const rec = questionById[qid];
+  if (!rec || state.checked[qid]) return;
+  state.answers[qid] = key;
+  if (state.instant) state.checked[qid] = true;
+  save();
+  renderAll();
+  if (state.instant) {
+    const { q } = rec;
+    if (key === q.answer) showToast("ถูกต้อง! ดูคำอธิบายด้านล่างได้เลย");
+    else showToast(`ยังไม่ถูก — คำตอบที่ถูกคือ ${q.answer}`);
+  }
+}
+
+function checkQuestion(qid) {
+  const rec = questionById[qid];
+  if (!rec) return;
+  if (!state.answers[qid]) { showToast("เลือกคำตอบก่อนแล้วค่อยกดตรวจ"); return; }
+  state.checked[qid] = true;
+  save();
+  renderAll();
+  const { q } = rec;
+  const ok = state.answers[qid] === q.answer;
+  showToast(ok ? "ถูกต้อง" : `ยังไม่ถูก — คำตอบที่ถูกคือ ${q.answer}`);
+  maybeSubmit();
+}
+
+function revealQuestion(qid) {
+  const rec = questionById[qid];
+  if (!rec) return;
+  state.revealed[qid] = !state.revealed[qid];
+  save();
+  renderAll();
+}
+
+function retryQuestion(qid) {
+  delete state.answers[qid];
+  delete state.checked[qid];
+  delete state.revealed[qid];
+  delete state.selfGrades[qid];
+  delete state.openText[qid];
+  save();
+  renderAll();
+}
+
+function gradeQuestion(qid, grade) {
+  state.selfGrades[qid] = grade;
+  save();
+  renderAll();
+  maybeSubmit();
+  showToast(grade === 1 ? "บันทึก: ได้ 1 คะแนน" : "บันทึก: ยังไม่ได้คะแนน");
+}
+
+function checkAll() {
+  const w = getWeek();
+  w.questions.forEach(q => {
+    if (q.type === "open") state.revealed[q.id] = true;
+    else state.checked[q.id] = true;
+  });
+  state.submitted[w.id] = true;
+  save();
+  renderAll();
+  showToast("ตรวจทั้งชุดแล้ว — เลื่อนลงดูสรุปคะแนน");
+  setTimeout(() => document.getElementById("summary")?.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+}
+
+function revealAll() {
+  const w = getWeek();
+  w.questions.forEach(q => { state.revealed[q.id] = true; });
+  save();
+  renderAll();
+  showToast("เปิดเฉลยทุกข้อแล้ว (คะแนนจะนับเมื่อกดตรวจ/ให้คะแนนตัวเอง)");
+}
+
+function maybeSubmit() {
+  const w = getWeek();
+  const allAb = w.questions.filter(q => q.type !== "open").every(q => state.checked[q.id]);
+  if (allAb) state.submitted[w.id] = true;
+}
+
+function retryWeek() {
+  const w = getWeek();
+  w.questions.forEach(q => {
+    delete state.answers[q.id];
+    delete state.checked[q.id];
+    delete state.revealed[q.id];
+    delete state.selfGrades[q.id];
+    delete state.openText[q.id];
+  });
+  delete state.submitted[w.id];
+  save();
+  resetTimer();
+  renderAll();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  showToast(`ล้างคำตอบ ${w.label} แล้ว — เริ่มใหม่ได้เลย`);
+}
+
+function clearAll() {
+  if (!confirm("ล้างคำตอบและคะแนนทั้งหมดของทุก Week หรือไม่?")) return;
+  state = freshState();
+  try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+  save();
+  resetTimer();
+  renderAll();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  showToast("ล้างข้อมูลทั้งหมดแล้ว");
+}
+
+function goToQuestion(qid, reveal) {
+  const rec = questionById[qid];
+  if (!rec) return;
+  if (reveal) state.revealed[qid] = true;
+  save();
+  renderAll();
+  setTimeout(() => {
+    const el = document.getElementById(`q-${qid}`);
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+    el.classList.remove("flash");
+    void el.offsetWidth;
+    el.classList.add("flash");
+  }, 60);
+}
+
+let toastHandle = null;
+function showToast(msg) {
+  const el = document.getElementById("toast");
+  el.textContent = msg;
+  el.classList.add("show");
+  clearTimeout(toastHandle);
+  toastHandle = setTimeout(() => el.classList.remove("show"), 2600);
+}
+
+function formatTime(sec) {
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+}
+
+function renderTimer() {
+  const t = document.getElementById("timer");
+  t.textContent = formatTime(timerState.remaining);
+  t.classList.toggle("warn", timerState.remaining <= 300);
+  document.getElementById("timerToggle").textContent = timerState.running ? "หยุด" : "เริ่ม";
+}
+
+function stopTimer() {
+  if (timerState.handle) clearInterval(timerState.handle);
+  timerState.handle = null;
+  timerState.running = false;
+  renderTimer();
+}
+
+function resetTimer() {
+  stopTimer();
+  timerState.remaining = (getWeek().time || 45) * 60;
+  timerState.week = getWeek().id;
+  renderTimer();
+}
+
+function toggleTimer() {
+  if (timerState.running) { stopTimer(); return; }
+  timerState.running = true;
+  renderTimer();
+  timerState.handle = setInterval(() => {
+    if (!timerState.running) return;
+    timerState.remaining--;
+    if (timerState.remaining <= 0) {
+      timerState.remaining = 0;
+      renderTimer();
+      stopTimer();
+      showToast("หมดเวลา — ระบบตรวจคำตอบให้แล้ว");
+      checkAll();
+      return;
+    }
+    renderTimer();
+  }, 1000);
+}
+
+document.getElementById("weekNav").addEventListener("click", e => {
+  const btn = e.target.closest("[data-week]");
+  if (btn) switchWeek(btn.dataset.week);
+});
+
+document.getElementById("quiz").addEventListener("click", e => {
+  const card = e.target.closest(".q-card");
+  if (!card) return;
+  const qid = card.dataset.qid;
+  const opt = e.target.closest(".option");
+  if (opt) { selectOption(qid, opt.dataset.key); return; }
+  const actionEl = e.target.closest("[data-action]");
+  if (!actionEl) return;
+  const action = actionEl.dataset.action;
+  if (action === "check") checkQuestion(qid);
+  else if (action === "reveal") revealQuestion(qid);
+  else if (action === "retry") retryQuestion(qid);
+  else if (action === "grade") gradeQuestion(qid, Number(actionEl.dataset.grade));
+});
+
+document.getElementById("quiz").addEventListener("input", e => {
+  const ta = e.target.closest("[data-open]");
+  if (!ta) return;
+  const qid = ta.dataset.open;
+  state.openText[qid] = ta.value;
+  save();
+  const card = ta.closest(".q-card");
+  const badge = card?.querySelector(".q-status");
+  if (badge) {
+    const st = statusFor(questionById[qid].q);
+    badge.textContent = st.text;
+    badge.className = `q-status ${st.cls}`;
+  }
+  const s = calcScore(getWeek());
+  document.getElementById("toolbarScore").textContent = s.score;
+});
+
+document.getElementById("summary").addEventListener("click", e => {
+  const retry = e.target.closest('[data-action="retry-week"]');
+  if (retry) { retryWeek(); return; }
+  const link = e.target.closest("[data-goto]");
+  if (link) {
+    e.preventDefault();
+    goToQuestion(link.dataset.goto, false);
+  }
+});
+
+document.getElementById("answerKey").addEventListener("click", e => {
+  const chip = e.target.closest("[data-reveal-qid]");
+  if (chip) { goToQuestion(chip.dataset.revealQid, true); return; }
+  const actionEl = e.target.closest("[data-action]");
+  if (!actionEl) return;
+  if (actionEl.dataset.action === "reveal-all") revealAll();
+  else if (actionEl.dataset.action === "check-all") checkAll();
+});
+
+document.getElementById("instantToggle").addEventListener("change", e => {
+  state.instant = e.target.checked;
+  save();
+  renderToolbar();
+  showToast(state.instant ? "เปิดโหมดเฉลยทันที" : "ปิดโหมดเฉลยทันที — ทำแบบสอบก่อน");
+});
+
+document.getElementById("checkAllBtn").addEventListener("click", checkAll);
+document.getElementById("retryWeekBtn").addEventListener("click", retryWeek);
+document.getElementById("clearAllBtn").addEventListener("click", clearAll);
+document.getElementById("timerToggle").addEventListener("click", toggleTimer);
+document.getElementById("timerReset").addEventListener("click", resetTimer);
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") {
+    document.getElementById("toast").classList.remove("show");
+  }
+});
+
+resetTimer();
+renderAll();
+</script>
+<script>
+if ("serviceWorker" in navigator && location.protocol.indexOf("http") === 0) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("sw.js").catch(function () {});
+  });
+}
+</script>
+</body>
+</html>
